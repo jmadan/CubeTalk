@@ -1,3 +1,5 @@
 tmp
 out
+.idea
+.settings
 !.gitignore

@@ -1,0 +1,8 @@
+	<module name='hibernate-entitymanager'
+		licenseType='lgpl'
+		version='3.2.0.GA'
+		projectHome='http://entitymanager.hibernate.org/'
+		description='Hibernate EntityManager for EJB3'>
+		<jar name='hibernate-entitymanager.jar' />
+		<jar name='ejb3-persistence.jar' />
+	</module>
