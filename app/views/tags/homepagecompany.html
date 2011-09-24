@@ -1,0 +1,15 @@
+<div class="content">
+    <div class="section-header">
+        ${_featuredCompany.orgName}
+    </div>
+    <div class="section-overview">
+        ${_featuredCompany.overview.nl2br()}
+    </div>
+    <div class="company-review">
+       #{list items:_featuredCompany.companyReviews, as:'companyReview'}
+        Pros: ${companyReview.company_pro}
+        <br/> <br/>
+        Cons: ${companyReview.company_con}
+       #{/list}
+    </div>
+</div>

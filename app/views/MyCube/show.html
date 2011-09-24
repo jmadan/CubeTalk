@@ -1,0 +1,285 @@
+#{extends 'main.html' /}
+#{set title:'Post your Experience Anonymously' /}
+
+ <div class='boxed'>
+					<h1 class='smaller'>
+						Post one of the following to upgrade to free unlimited membership:</h1>
+
+<div id='SurveyStartCombinedForm'>
+	<div id='SurveyStartCombinedFormContainer'>
+		<table class='surveyTypeChoices'>
+				<th>
+					<strong>Share your anonymous&hellip;</strong>
+					<div id='SurveyChoiceSalaryContextText'
+							  class="minorText contextualSurveyTypeText hidden">
+							(You don't even have to tell us your company)
+						</div>
+					<div id='SurveyChoiceReviewContextText'
+							  class="minorText contextualSurveyTypeText ">
+							(You don't even have to tell us your job title or city)
+						</div>
+					<div id='SurveyChoiceInterviewContextText'
+							  class="minorText contextualSurveyTypeText hidden">
+							(You don't even have to tell us your city)
+						</div>
+					<div id='SurveyChoicePhotoContextText'
+							  class="minorText contextualSurveyTypeText hidden">
+						</div>
+				</th>
+				<td>
+					<ul>
+						<li>
+								<input id='SurveyChoiceReview' type='radio'
+										checked='checked' tabindex='6' />
+								<label for='SurveyChoiceReview'
+									   class="selected">Company Review</label>
+							</li>
+						<li>
+								<input id='SurveyChoiceSalary' type='radio'
+										 tabindex='5' />
+								<label for='SurveyChoiceSalary'
+									   class="">Salary</label>
+							</li>
+						<li>
+								<input id='SurveyChoiceInterview' type='radio'
+										 tabindex='7' />
+								<label for='SurveyChoiceInterview'
+									   class="">Interview Review</label>
+							</li>
+						<li>
+								<input id='SurveyChoicePhoto' type='radio'
+										 tabindex='8' />
+								<label for='SurveyChoicePhoto'
+										class="">Workplace Photo</label>
+							</li>
+						</ul>
+                </td>
+			</table>
+		<div id='SurveyChoiceReviewContainer' class="surveyFormOption ">
+
+<form id="SurveyChoiceReviewForm" onsubmit="return true;" action="/survey/start_execute.htm" method="post">
+<table class="formLayout">
+	<tr>
+		<th class='alignBottom'>
+		    Job Status
+		</th>
+		<td>
+			<ul class='surveyModeChoices jobStatusChoices'>
+				<li class="selected">
+					<input id='EmployerSurveyRadioCurrent' type='radio' tabindex='20'
+						   name='employerUIData.state.employerReview.currentJob' value='true'
+							jobYearRow='EmployerJobEndingYearRow' checked='checked' />
+					<label for='EmployerSurveyRadioCurrent'>Current Employer</label>
+				</li>
+				<li class="">
+					<input id='EmployerSurveyRadioFormer' type='radio' tabindex='20'
+						   name='employerUIData.state.employerReview.currentJob' value='false'
+						   jobYearRow='EmployerJobEndingYearRow'  />
+					<label for='EmployerSurveyRadioFormer'>Former Employer</label>
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr id='EmployerJobEndingYearRow' class="hidden">
+		<th>
+			<label for='EmployerJobEndingYearSelectField'>
+				Job Ending Year
+			</label>
+		</th>
+		<td>
+	<div id="wwgrp_EmployerJobEndingYearSelectField" class="wwgrp">
+    <div id="wwctrl_EmployerJobEndingYearSelectField" class="wwctrl">
+    <select name="employerUIData.state.employerReview.jobEndingYear" tabindex="21" id="EmployerJobEndingYearSelectField">
+        <option value="1"
+        >-- Please Select --</option>
+        <option value="2011" selected="selected">2011</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+    </select>
+    </div>
+    </div>
+</td>
+	</tr>
+	<tr>
+		<th class='alignBottom'>
+			<label for='ReviewEmployerNameEditField'>
+			    Employer
+			</label>
+		</th>
+		<td>
+			<input type='hidden' name='showSurvey' value='REVIEWS' />
+
+	<div id="wwgrp_ReviewEmployerNameEditField" class="wwgrp">
+
+        <div id="wwctrl_ReviewEmployerNameEditField" class="wwctrl">
+            <input type="text" name="employerName" value="" tabindex="22" id="ReviewEmployerNameEditField"/>
+        </div>
+    </div>
+<input type="hidden" name="employerId" value="0" id="ReviewEmployerId"/>
+</td>
+	</tr>
+
+	<tr>
+		<th class='alignBottom'>
+			<label for='EmployerCountry'>
+				Job Location - Country
+			</label>
+		</th>
+		<td>
+			<div id="wwgrp_EmployerCountry" class="wwgrp">
+
+<div id="wwctrl_EmployerCountry" class="wwctrl">
+<select name="employerCountryId" tabindex="23" id="EmployerCountry">
+    <option value="7">Afghanistan</option>
+    <option value="10">Albania</option>
+    <option value="8">Algeria</option>
+    <option value="14">American Samoa</option>
+    <option value="15">Argentina</option>
+    <option value="11">Armenia</option>
+    <option value="4">Aruba</option>
+    <option value="16">Australia</option>
+    <option value="18">Austria</option>
+    <option value="26">Bahamas</option>
+    <option value="21">Bahrain</option>
+    <option value="27">Bangladesh</option>
+    <option value="33">Belarus</option>
+    <option value="25">Belgium</option>
+    <option value="24">Bermuda</option>
+    <option value="30">Bolivia</option>
+    <option value="29">Bosnia and Herzegovina</option>
+    <option value="36">Brazil</option>
+    <option value="250">British Virgin Islands</option>
+    <option value="39">Bulgaria</option>
+    <option value="3">Canada</option>
+    <option value="49">Chile</option>
+    <option value="48">China</option>
+    <option value="54">Colombia</option>
+    <option value="57">Costa Rica</option>
+    <option value="110">Croatia</option>
+    <option value="77">Czech Republic</option>
+    <option value="63">Denmark</option>
+    <option value="67">Dominican Republic</option>
+    <option value="68">Ecuador</option>
+    <option value="69">Egypt</option>
+    <option value="74">El Salvador</option>
+    <option value="72">Estonia</option>
+    <option value="79">Finland</option>
+    <option value="86">France</option>
+    <option value="96">Germany</option>
+    <option value="100">Greece</option>
+    <option value="99">Guam</option>
+    <option value="101">Guatemala</option>
+    <option value="108">Honduras</option>
+    <option value="106">Hong Kong</option>
+    <option value="111">Hungary</option>
+    <option value="112">Iceland</option>
+    <option value="115">India</option>
+    <option value="113">Indonesia</option>
+    <option value="118">Iran</option>
+    <option value="122">Iraq</option>
+    <option value="70">Ireland</option>
+    <option value="119">Israel</option>
+    <option value="120">Italy</option>
+    <option value="125">Jamaica</option>
+    <option value="123">Japan</option>
+    <option value="130">Kenya</option>
+    <option value="137">Kuwait</option>
+    <option value="139">Laos</option>
+    <option value="141">Latvia</option>
+    <option value="140">Lebanon</option>
+    <option value="149">Libya</option>
+    <option value="142">Lithuania</option>
+    <option value="148">Luxembourg</option>
+    <option value="170">Malaysia</option>
+    <option value="151">Martinique</option>
+    <option value="169">Mexico</option>
+    <option value="161">Monaco</option>
+    <option value="178">Netherlands</option>
+    <option value="186">New Zealand</option>
+    <option value="185">Nicaragua</option>
+    <option value="177">Nigeria</option>
+    <option value="132">North Korea</option>
+    <option value="180">Norway</option>
+    <option value="192">Pakistan</option>
+    <option value="194">Panama</option>
+    <option value="187">Paraguay</option>
+    <option value="189">Peru</option>
+    <option value="204">Philippines</option>
+    <option value="193">Poland</option>
+    <option value="195">Portugal</option>
+    <option value="199">Qatar</option>
+    <option value="203">Romania</option>
+    <option value="205">Russia</option>
+    <option value="207">Saudi Arabia</option>
+    <option value="200">Serbia</option>
+    <option value="217">Singapore</option>
+    <option value="144">Slovakia</option>
+    <option value="214">Slovenia</option>
+    <option value="211">South Africa</option>
+    <option value="135">South Korea</option>
+    <option value="219">Spain</option>
+    <option value="45">Sri Lanka</option>
+    <option value="223">Sweden</option>
+    <option value="226">Switzerland</option>
+    <option value="225">Syrian Arab Republic</option>
+    <option value="240">Taiwan</option>
+    <option value="229">Thailand</option>
+    <option value="227">Trinidad and Tobago</option>
+    <option value="236">Tunisia</option>
+    <option value="238">Turkey</option>
+    <option value="244">Ukraine</option>
+    <option value="6">United Arab Emirates</option>
+    <option value="2">United Kingdom</option>
+    <option value="1" selected="selected">United States</option>
+    <option value="246">Uruguay</option>
+    <option value="249">Venezuela</option>
+    <option value="251">Vietnam</option>
+    <option value="252">Virgin Islands (US)</option>
+    <option value="261">Yemen</option>
+    <option value="263">Zimbabwe</option>
+
+
+</select>
+</div> </div>
+</td>
+	</tr>
+
+	<tr>
+		<th class='alignBottom'>
+			<label for='EmployerCityName'>
+				Job Location - City
+			</label>
+		</th>
+		<td>
+			<div id="wwgrp_EmployerCityName" class="wwgrp">
+
+<div id="wwctrl_EmployerCityName" class="wwctrl">
+<input type="text" name="employerCityName" size="50" value="" tabindex="24" id="EmployerCityName"/>
+</div> </div>
+<span class='minorText'>(optional)</span>
+
+			<input type="hidden" name="employerCityID" value="0" id="EmployerCityID"/>
+</td>
+	</tr>
+
+	<tr class='buttons'>
+		<th></th>
+		<td>
+			<div class='gdBtnWrapper gdBtnAlignFloatLeft' style='width:98px;'>
+<span class='gdBtn gdSubmitBtn' >
+			<a href='#' tabindex='30' style='width:80px;' class='primary'>
+				<span><i class='btnLabel'>Next</i></span></a>
+
+			<input type='image' src='http://img.glassdoor.com/static/img/spacer.gif?rev=37884'
+					   class='gdBtnReturnKeyCatcher' />
+			</span>		</div>
+<div class='clear'>
+</div>
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+</div>
+</div>
+</div>

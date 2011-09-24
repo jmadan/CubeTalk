@@ -1,0 +1,353 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $(function() {
+		$( "input:submit, button", ".demo" ).button();
+	});
+
+    $("form#cubeReviewForm").submit(function(){
+        var q1 = $('#q1').attr('value');
+        var a1 = $('#a1:checked').val();
+        var form_data = "reviewType="+reviewType.value +"&job_status="+job_status.value+"&jobEndingYear="+jobEndingYear.value+"&employerId="+employerId.value+"&employerCountryName="+employerCountryName.value+"&employerCityName="+employerCityName.value+"&job_title="+job_title.value+"&headlineAnswer="+headlineAnswer.value+"&proAnswer="+proAnswer.value+"&conAnswer="+conAnswer.value+"&adviceAnswer="+adviceAnswer.value;
+        $.ajax({
+                type: "POST",
+                url: "saveReview1",
+                data: form_data,
+                success: function(){
+                    $('form#cubeReviewForm').hide(function(){$('div.success').fadeIn();});
+                }
+            });
+        return false;
+    });
+
+    $('#showReview').click(function() {
+        $('#content_1').hide();
+        $('#content_2').show();
+        return false;
+        });
+
+    $('#showRating').click(function() {
+        $('#content_2').hide();
+        $('#content_3').show();
+        return false;
+        });
+
+    $('#tab_3').click(function() {
+        $('#content_1').hide();
+        $('#content_2').show();
+        return false;
+        });
+
+    $('#goBack').click(function() {
+        $('#content_2').hide();
+        $('#content_1').show();
+        return false;
+        });
+
+    $('#tab_3back').click(function() {
+        $('#content_3').hide();
+        $('#content_2').show();
+        return false;
+        });
+});
+</script>
+<script>
+	$(function() {
+		$( "#radio" ).buttonset();
+	});
+	</script>
+
+<div class="content">
+<h1 class='smaller'>
+    Review and Rate you company anonymously</h1>
+#{form @Experiences.saveReview(), id:'cubeReviewForm'}
+
+<div id="content_1" class="review_content">
+ <table>
+     <tr>
+        <td width="40%">
+           <p> Share your anonymous..</br>
+            <small>(You don't even have to tell us your job title or city)</small>
+            </p>
+        </td>
+        <td align="lefts">
+           <input id='reviewType' name="reviewType" type='radio' checked='checked' value="companyReview" />Company Review
+         </td>
+        </tr>
+	<tr>
+		<td>
+		   Job Status
+        </td>
+        <td>
+           <input id='job_current' type='radio' name='job_status' value='true' checked='checked' />Current Employer
+		   <input id='job_former' type='radio' name='job_status' value='false' />Former Employer
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for='jobEndingYear'>Job Ending Year</label>
+		</td>
+		<td>
+    <select name="jobEndingYear" id="jobEndingYear">
+        <option value="1">-- Please Select --</option>
+        <option value="2011" selected="selected">2011</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+        <option value="2008">2008</option>
+        <option value="2007">2007</option>
+        <option value="2006">2006</option>
+        <option value="2005">2005</option>
+        <option value="2004">2004</option>
+        <option value="2003">2003</option>
+    </select>
+</td>
+	</tr>
+	<tr>
+		<td class='alignBottom'>
+			<label for='employerName'>
+			    Employer
+			</label>
+		</td>
+		<td>
+            <input type="text" name="employerName" value="${_companyReview.orgName}" id="employerName" size="25"/>
+            <input type="hidden" name="employerId" value="${_companyReview.id}" id="employerId"/>
+        </td>
+	</tr>
+	<tr>
+		<td class='alignBottom'>
+			<label for='employerCountryName'>
+				Job Location - Country
+			</label>
+		</td>
+		<td>
+        <select name="employerCountryName" tabindex="23" id="employerCountryName">
+            <option value="7">Afghanistan</option>
+            <option value="10">Albania</option>
+            <option value="8">Algeria</option>
+            <option value="14">American Samoa</option>
+            <option value="15">Argentina</option>
+            <option value="11">Armenia</option>
+            <option value="4">Aruba</option>
+            <option value="16">Australia</option>
+            <option value="18">Austria</option>
+            <option value="26">Bahamas</option>
+            <option value="21">Bahrain</option>
+            <option value="27">Bangladesh</option>
+            <option value="33">Belarus</option>
+            <option value="25">Belgium</option>
+            <option value="24">Bermuda</option>
+            <option value="30">Bolivia</option>
+            <option value="29">Bosnia and Herzegovina</option>
+            <option value="36">Brazil</option>
+            <option value="250">British Virgin Islands</option>
+            <option value="39">Bulgaria</option>
+            <option value="3">Canada</option>
+            <option value="49">Chile</option>
+            <option value="48">China</option>
+            <option value="54">Colombia</option>
+            <option value="57">Costa Rica</option>
+            <option value="110">Croatia</option>
+            <option value="77">Czech Republic</option>
+            <option value="63">Denmark</option>
+            <option value="67">Dominican Republic</option>
+            <option value="68">Ecuador</option>
+            <option value="69">Egypt</option>
+            <option value="74">El Salvador</option>
+            <option value="72">Estonia</option>
+            <option value="79">Finland</option>
+            <option value="86">France</option>
+            <option value="96">Germany</option>
+            <option value="100">Greece</option>
+            <option value="99">Guam</option>
+            <option value="101">Guatemala</option>
+            <option value="108">Honduras</option>
+            <option value="106">Hong Kong</option>
+            <option value="111">Hungary</option>
+            <option value="112">Iceland</option>
+            <option value="115" selected="selected">India</option>
+            <option value="113">Indonesia</option>
+            <option value="118">Iran</option>
+            <option value="122">Iraq</option>
+            <option value="70">Ireland</option>
+            <option value="119">Israel</option>
+            <option value="120">Italy</option>
+            <option value="125">Jamaica</option>
+            <option value="123">Japan</option>
+            <option value="130">Kenya</option>
+            <option value="137">Kuwait</option>
+            <option value="139">Laos</option>
+            <option value="141">Latvia</option>
+            <option value="140">Lebanon</option>
+            <option value="149">Libya</option>
+            <option value="142">Lithuania</option>
+            <option value="148">Luxembourg</option>
+            <option value="170">Malaysia</option>
+            <option value="151">Martinique</option>
+            <option value="169">Mexico</option>
+            <option value="161">Monaco</option>
+            <option value="178">Netherlands</option>
+            <option value="186">New Zealand</option>
+            <option value="185">Nicaragua</option>
+            <option value="177">Nigeria</option>
+            <option value="132">North Korea</option>
+            <option value="180">Norway</option>
+            <option value="192">Pakistan</option>
+            <option value="194">Panama</option>
+            <option value="187">Paraguay</option>
+            <option value="189">Peru</option>
+            <option value="204">Philippines</option>
+            <option value="193">Poland</option>
+            <option value="195">Portugal</option>
+            <option value="199">Qatar</option>
+            <option value="203">Romania</option>
+            <option value="205">Russia</option>
+            <option value="207">Saudi Arabia</option>
+            <option value="200">Serbia</option>
+            <option value="217">Singapore</option>
+            <option value="144">Slovakia</option>
+            <option value="214">Slovenia</option>
+            <option value="211">South Africa</option>
+            <option value="135">South Korea</option>
+            <option value="219">Spain</option>
+            <option value="45">Sri Lanka</option>
+            <option value="223">Sweden</option>
+            <option value="226">Switzerland</option>
+            <option value="225">Syrian Arab Republic</option>
+            <option value="240">Taiwan</option>
+            <option value="229">Thailand</option>
+            <option value="227">Trinidad and Tobago</option>
+            <option value="236">Tunisia</option>
+            <option value="238">Turkey</option>
+            <option value="244">Ukraine</option>
+            <option value="6">United Arab Emirates</option>
+            <option value="2">United Kingdom</option>
+            <option value="1">United States</option>
+            <option value="246">Uruguay</option>
+            <option value="249">Venezuela</option>
+            <option value="251">Vietnam</option>
+            <option value="252">Virgin Islands (US)</option>
+            <option value="261">Yemen</option>
+            <option value="263">Zimbabwe</option>
+        </select>
+</td>
+	</tr>
+
+	<tr>
+		<td class='alignBottom'>
+			<label for='employerCityName'>
+				Job Location - City
+			</label>
+		</td>
+		<td>
+            <input type="text" name="employerCityName" size="25" value="" id="employerCityName"/>
+            <span class='minorText'>(optional)</span>
+        </td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+            <br>
+            <div class="demo">
+                <input type="submit" value="Review ${_companyReview.orgName}" id="showReview" >
+            </div>
+		    <!--<a class="button" href='#' id="showReview"><span>Review ${_companyReview.orgName}</span></a>-->
+		</td>
+	</tr>
+</table>
+</div>
+
+<div id="content_2" class="review_content">
+    <h3>
+        <strong>Write a review of Company</strong>
+    </h3>
+    <p class="spaced">Your review will be posted anonymously for viewing by our community.
+        To further protect your anonymity, we encourage you not to include any personally
+        identifiable information in your review.
+    </p>
+
+    <table width="100%">
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Your Job Title <span class="minorText">(optional)</span></td>
+            <td><input type="text" name="job_title" maxlength="140" value="" size="30" id="job_title" name="job_title"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3 class="tightTop">Review Headline</h3>
+                In one sentence, how would you describe your experience at ${_companyReview.orgName}?
+                <br>
+                <textarea name="headlineAnswer" cols="45" rows="5" id="headlineAnswer" maxlength="150"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3 class="tightTop">Pros</h3>
+                Describe some of the best reasons to work at ${_companyReview.orgName}
+                <p class="tightVert minorText">20 word minimum (to make it on the site)</p>
+            <br>
+                <textarea name="proAnswer" cols="50" rows="5" id="proAnswer"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3 class="tightTop">Cons</h3>
+                Describe some of the downsides of working at ${_companyReview.orgName}
+                <p class="tightVert minorText">20 word minimum (to make it on the site)</p>
+            <br>
+                <textarea name="cosAnswer" cols="50" rows="5" id="cosAnswer"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3 class="tightTop">Advice to Management</h3>
+		        Offer some advice or feedback to the leadership at ${_companyReview.orgName}
+        		<p class="tightVert minorText">20 word minimum (to make it on the site)</p>
+            <br>
+                <textarea name="adviceAnswer" cols="50" rows="3" id="adviceAnswer"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <div class="demo">
+                    <input type="submit" value="Go Back" id="goBack" >
+                    <input type="submit" value="Rate ${_companyReview.orgName}" id="showRating" >
+                </div>
+            </td>
+        </tr>
+    </table>
+
+        </div>
+
+<div id="content_3" class="review_content">
+<div id="demo">
+<table>
+     #{list items:_reviewQuestions, as:'questions'}
+        <tr>
+            <td>
+                <input type="hidden" name="quest${questions.id}"  id="quest${questions.id}" value="${questions.id}" />
+                <div class="row">
+                    <span id="q${questions.id}"> ${questions.question}</span>
+                </div>
+                <br/>
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}a" value="1">Strongly Disapprove
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}b" value="2">Disapprove
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}c" value="3">No Opinion
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}d" value="4">Approve
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}e" value="5">Strongly Approve
+            </td>
+        </tr>
+ #{/list}
+        <tr>
+            <td align="center">
+                <div class="demo">
+                    <input type="submit" value="Go Back" id="tab_3back">
+                   <input type="submit" value="Review">
+                </div>
+            </td>
+        </tr>
+</table>
+
+    </div>
+</div>
+#{/form}
+</div>
