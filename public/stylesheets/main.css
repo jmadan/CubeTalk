@@ -6,8 +6,8 @@ html, body {
 }
 
 body {
-    width: 900px;
-    padding: 0 30px;
+    width: 950px;
+    padding: 0 10px;
     margin: auto;
 }
 
@@ -190,8 +190,8 @@ a.button:active span {
 .content {
     padding: 1em;
     border: 1px solid white;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
 }
 
 .section-header {
@@ -214,7 +214,7 @@ a.button:active span {
     background: -webkit-gradient(linear, left top, left 30%, from(#444), to(#444));
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
-    padding: 10px;
+    padding: 5px;
     width: inherit;
     float: left;
 }
@@ -270,9 +270,9 @@ a.button:active span {
     position: relative;
     background: #fff;
     padding: 10px;
-    margin: 10px 0 50px 0;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+    margin: 5px 0 20px 0;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
     -webkit-box-shadow: 0 2px 0 #fff;
 }
 

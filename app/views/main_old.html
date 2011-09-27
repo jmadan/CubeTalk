@@ -34,12 +34,24 @@
                 <span class="about">About this blog</span>
                 <!--<h1><a href="@{Application.index()}">${blogTitle}</a></h1>-->
                 <h2>${blogBaseline}
+                    #{if !session.contains("loggedIn")}
+                        #{form @Authenticate.signIn(), id:"signInForm"}
+                            <input type="text" id="userEmail" name="userEmail" value='${session.get("userAlias")}'>&nbsp;
+                            <input type="password" id="userPassword" name="userPassword">&nbsp;
+                            <input type=submit value="SignIn">
+                        #{/form}
+                    #{/if}
+                    #{else}
+                        <div id="userLabel">
+                            hello ${session.get("userAlias")}
+                        </div>
+                    #{/else}
                 </h2>
             </div>
             <div id="navigation">
                 <ul>
-                    <li><a href="@{Articles.home()}">Articles</a></li>
-                    <li><a href="@{Experiences.show()}">Experience</a></li>
+                    <li><a href="@{Articles.show()}">Articles</a></li>
+                    <li><a href="@{Experiences.postExperience()}">Experience</a></li>
                     <li><a href="#">Cube Rating</a></li>
                     <li><a href="@{MyCube.show()}">My Cube</a></li>
                     <li><a href="@{Users.register()}">SignUp</a></li>

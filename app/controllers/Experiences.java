@@ -36,7 +36,8 @@ public class Experiences extends Controller {
     }
 
     public static void show() {
-        render();
+        List<Company> companies = Company.findAll();
+        render(companies);
     }
 
     public static void postExperience() {

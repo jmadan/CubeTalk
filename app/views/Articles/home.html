@@ -1,6 +1,8 @@
-*{ Display a article in one of these modes: 'full', 'home' or 'teaser' }*
+#{extends 'main.html' /}
+#{set title:'Cube-talk.com' /}
 
-#{list items:_article, as:'articleList'}
+
+#{list items:articles, as:'articleList'}
 <div class="article ${_as == 'teaser' ? 'teaser' : ''}">
     <div class="content">
     <h2 class="article-title">
@@ -32,14 +34,14 @@
     #{/if}
     </div>
 </div>
- 
+
 #{if _as == 'full'}
     <div class="comments">
         <h3>
-            ${_article.comments.size() ?: 'no'} 
+            ${_article.comments.size() ?: 'no'}
             comment${_article.comments.size().pluralize()}
         </h3>
-        
+
         #{list items:_article.comments, as:'comment'}
             <div class="comment">
                 <div class="comment-metadata">
@@ -73,23 +75,3 @@
     </div>
 #{/if}
 #{/list}
-
-     <!--<div class="company-list">-->
-        <!--<div class="list-header">-->
-            <!--Company Reviews-->
-        <!--</div>-->
-        <!--<div class="review-list">-->
-            <!--<ul id="company-reviews">-->
-                <!--#{if _articles == null}-->
-                    <!--No Company List-->
-                <!--#{/if}-->
-                <!--#{else}-->
-                <!--#{list items:_companies, as:'company'}-->
-                    <!--<li>-->
-                        <!--${company.title}-->
-                    <!--</li>-->
-                <!--#{/list}-->
-                <!--#{/else}-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->

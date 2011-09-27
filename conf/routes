@@ -7,6 +7,7 @@ GET     /                                       Application.index
 
 #Article
 GET     /Articles/{title}                       Articles.show
+GET     /Articles/                              Articles.home
 
 #Experience
 POST    /Experiences/saveReview                 Experiences.saveReview

@@ -1,8 +1,11 @@
 package controllers;
 
+import models.Article;
 import play.Play;
 import play.mvc.Before;
 import play.mvc.Controller;
+
+import java.util.List;
 
 public class Articles extends Controller {
 
@@ -13,11 +16,15 @@ public class Articles extends Controller {
     }
 
     public static void show(String title) {
-        System.out.println(title);
-//        Article article = Article.find("byTitle", title.replace('_', ' ')).first();
-//        article.article_view += 1;
-//        article.save();
-//        render(article);
+        Article article = Article.find("byTitle", title.replace('_', ' ')).first();
+        article.article_view += 1;
+        article.save();
+        render(article);
+    }
+
+    public static void home(){
+        List<Article> articles = Article.find("order by submit_date desc").fetch();
+        render(articles);
     }
 
 }

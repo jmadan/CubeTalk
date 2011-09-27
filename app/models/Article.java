@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
@@ -10,16 +11,23 @@ import java.util.List;
 @Entity
 public class Article extends Model {
 
+    @Required
     public String title;
-    public Boolean approved = false;
+
+    @Required
+    public Boolean approved = true;
+
     public int article_view;
 
+    @Required
     @Lob
     public String content;
 
+    @Required
     @ManyToOne
     public User author;
 
+    @Required
     @ManyToOne
     public Category category;
 
@@ -30,13 +38,22 @@ public class Article extends Model {
 
     public Article(String title, String content, User author, Category category, Boolean approved){
         this.title = title;
-        this.content = content;
+        this.content = sanitizeContent(content);
         this.author = author;
         this.category = category;
         this.submit_date = new Date();
         this.approved = approved;
         this.comments = new ArrayList<Comment>();
         this.article_view = 0;
+    }
+
+    private String sanitizeContent(String content) {
+        if(content != null){
+            content.replace("[\']", "&rsquo;");
+            content.replace("'","&rsquo;");
+
+        }
+        return content;
     }
 
     public Article addComment(Long articleId, User author, String content) {
