@@ -20,13 +20,13 @@ public class Company extends Model {
     @ManyToOne
     public IndustryType industry_type;
 
-    @OneToMany(mappedBy="company", fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<CompanyAddress> companyAddresses;
 
-    @OneToMany(mappedBy="company", fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<CubeReview> companyReviews;
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     public List<CubeRating> companyRatings;
 
 
@@ -42,8 +42,11 @@ public class Company extends Model {
         this.companyRatings = new ArrayList<CubeRating>();
     }
 
-    public List<CubeRating> getCompanyRatings(Long id) {
-        return companyRatings = CubeRating.find("byCompany_Id", id).fetch();
+    public List<CubeRating> getCompanyRatings() {
+//        companyRatings = CubeRating.find("byCompany", Company.this).fetch();
+//        companyRatings = CubeRating.findAll();
+//        System.out.println(companyRatings.size());
+        return companyRatings;
     }
 
     public List<CubeReview> getCompanyReviews(Long id) {
@@ -76,5 +79,10 @@ public class Company extends Model {
             }
         });
         return null;
+    }
+
+    public static Company getCompanyData(Company homeCompany) {
+        Company companyObject = Company.find("byID", homeCompany.id).first();
+        return companyObject;
     }
 }

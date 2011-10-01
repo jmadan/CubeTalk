@@ -10,6 +10,7 @@ GET     /Articles/{title}                       Articles.show
 GET     /Articles/                              Articles.home
 
 #Experience
+GET     /Experiences/postExperience/{orgName}       Experiences.postExperience
 POST    /Experiences/saveReview                 Experiences.saveReview
 
 #Login

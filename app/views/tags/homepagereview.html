@@ -1,3 +1,15 @@
 <div class="content">
-
+   #{list items:_homePageReview, as:'reviews'}
+   <div class="section-header">
+        ${reviews.review_heading}
+    </div>
+    <div class="section-overview">
+        for ${reviews.company.orgName} by ${reviews.anonymousUser.job_title}
+    </div>
+    <div class="company-review">
+       Pros: ${reviews.company_pro}
+        <br>
+       Cons: ${reviews.company_con}
+    </div>
+    #{/list}
 </div>

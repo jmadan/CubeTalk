@@ -108,8 +108,8 @@ $(document).ready(function(){
 			</label>
 		</td>
 		<td>
-            <input type="text" name="employerName" value="${_companyReview.orgName}" id="employerName" size="25"/>
-            <input type="hidden" name="employerId" value="${_companyReview.id}" id="employerId"/>
+            <input type="text" name="employerName" value="${_companyReview?.orgName}" id="employerName" size="25"/>
+            <input type="hidden" name="employerId" value="${_companyReview?.id}" id="employerId"/>
         </td>
 	</tr>
 	<tr>
@@ -246,9 +246,9 @@ $(document).ready(function(){
 		<td colspan="2" align="center">
             <br>
             <div class="demo">
-                <input type="submit" value="Review ${_companyReview.orgName}" id="showReview" >
+                <input type="submit" value="Review ${_companyReview?.orgName}" id="showReview" >
             </div>
-		    <!--<a class="button" href='#' id="showReview"><span>Review ${_companyReview.orgName}</span></a>-->
+		    <!--<a class="button" href='#' id="showReview"><span>Review ${_companyReview?.orgName}</span></a>-->
 		</td>
 	</tr>
 </table>
@@ -274,7 +274,7 @@ $(document).ready(function(){
         <tr>
             <td colspan="2">
                 <h3 class="tightTop">Review Headline</h3>
-                In one sentence, how would you describe your experience at ${_companyReview.orgName}?
+                In one sentence, how would you describe your experience at ${_companyReview?.orgName}?
                 <br>
                 <textarea name="headlineAnswer" cols="45" rows="5" id="headlineAnswer" maxlength="150"></textarea>
             </td>
@@ -282,7 +282,7 @@ $(document).ready(function(){
         <tr>
             <td colspan="2">
                 <h3 class="tightTop">Pros</h3>
-                Describe some of the best reasons to work at ${_companyReview.orgName}
+                Describe some of the best reasons to work at ${_companyReview?.orgName}
                 <p class="tightVert minorText">20 word minimum (to make it on the site)</p>
             <br>
                 <textarea name="proAnswer" cols="50" rows="5" id="proAnswer"></textarea>
@@ -291,16 +291,16 @@ $(document).ready(function(){
         <tr>
             <td colspan="2">
                 <h3 class="tightTop">Cons</h3>
-                Describe some of the downsides of working at ${_companyReview.orgName}
+                Describe some of the downsides of working at ${_companyReview?.orgName}
                 <p class="tightVert minorText">20 word minimum (to make it on the site)</p>
             <br>
-                <textarea name="cosAnswer" cols="50" rows="5" id="cosAnswer"></textarea>
+                <textarea name="conAnswer" cols="50" rows="5" id="conAnswer"></textarea>
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <h3 class="tightTop">Advice to Management</h3>
-		        Offer some advice or feedback to the leadership at ${_companyReview.orgName}
+		        Offer some advice or feedback to the leadership at ${_companyReview?.orgName}
         		<p class="tightVert minorText">20 word minimum (to make it on the site)</p>
             <br>
                 <textarea name="adviceAnswer" cols="50" rows="3" id="adviceAnswer"></textarea>
@@ -310,7 +310,7 @@ $(document).ready(function(){
             <td colspan="2" align="center">
                 <div class="demo">
                     <input type="submit" value="Go Back" id="goBack" >
-                    <input type="submit" value="Rate ${_companyReview.orgName}" id="showRating" >
+                    <input type="submit" value="Rate ${_companyReview?.orgName}" id="showRating" >
                 </div>
             </td>
         </tr>

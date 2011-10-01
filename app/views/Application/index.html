@@ -12,6 +12,17 @@
                     There is currently nothing to read here.
                 </div>
         #{/else}
+        <br>
+        #{if ratingGraphData != null}
+
+                #{ratingDisplay crating:ratingGraphData, homeCompany:homeCompany, cubeRating:cubeRating /}
+
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here.
+                </div>
+        #{/else}
 	</div>
 	<div id="right">
         #{if homePageArticleList}
@@ -36,9 +47,9 @@
                 </div>
         #{/else}
         <br>
-        #{if recentReview}
+        #{if cubeReviewsList}
 
-                #{homepagereview homePageReview:recentReview /}
+                #{homepagereview homePageReview:cubeReviewsList /}
 
         #{/if}
         #{else}

@@ -27,6 +27,7 @@ public class CubeReview extends Model{
     @ManyToOne
     public Company company;
 
+    @ManyToOne
     public AnonymousUser anonymousUser;
 
     public Boolean approved = false;

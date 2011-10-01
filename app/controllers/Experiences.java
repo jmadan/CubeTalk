@@ -40,19 +40,27 @@ public class Experiences extends Controller {
         render(companies);
     }
 
-    public static void postExperience() {
-//        List<String> cubeQuestions  = qs;
+    public static void postExperience(String orgName) {
+        System.out.println(orgName);
         List<CubeQuestion> cubeQuestions = CubeQuestion.find("order by id asc").fetch();
-        Company company = Company.find("byOrgName","Thoughtworks").first();
+        Company company = Company.find("byOrgName", orgName).first();
         render(cubeQuestions, company);
     }
 
     public static void saveReview(){
 
         Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
+        AnonymousUser anonymousUser = null;
 
-        AnonymousUser anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),Http.Request.current().params.get("jobEndingYear"),
+        if(!session.contains("anonymousUserId")){
+            anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),Http.Request.current().params.get("jobEndingYear"),
                 Http.Request.current().params.get("job_title"), Http.Request.current().params.get("employerCountryName"),Http.Request.current().params.get("employerCityName")).save();
+
+            session.put("anonymousUserId", anonymousUser.id);
+        }
+        else{
+            anonymousUser = AnonymousUser.find("id", session.get("anonymousUserId")).first();
+        }
 
         CubeReview cubeReview = new CubeReview(Http.Request.current().params.get("reviewType"),company,Http.Request.current().params.get("headlineAnswer"),
                 Http.Request.current().params.get("proAnswer"),Http.Request.current().params.get("conAnswer"),

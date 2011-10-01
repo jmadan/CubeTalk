@@ -1,11 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Express your Experience' /}
-
+ <div id="left">
   <div class="content">
      <div id="sectionHeading">
         <a href="@{Experiences.postExperience()}"> Post your Experience Anonymously.</a>
      </div>
       #{list items:companies, as:'companyList'}
-         ${companyList.orgName}
+         <a href="/Experiences/postExperience/${companyList?.orgName}">${companyList.orgName}</a>
       #{/list}
   </div>
+</div>
+<div id="right">
+
+</div>

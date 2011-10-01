@@ -1,8 +1,6 @@
 package controllers;
 
-import models.Article;
-import models.Company;
-import models.User;
+import models.*;
 import play.Play;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -22,9 +20,11 @@ public class Application extends Controller {
 
         List<Article> homePageArticleList = Article.find("order by article_view desc").fetch();
         Company homeCompany = Company.findHomeCompany();
-        Company recentReview = Company.findLatestReview();
-
-        render(homePagePost, homePageArticleList, homeCompany);
+//        Company recentReview = Company.findLatestReview();
+        List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
+        List<CubeRating> cubeRatings = homeCompany.getCompanyRatings();
+        String ratingGraphData = CubeRating.getGraphData(cubeRatings);
+        render(homePagePost, ratingGraphData, cubeRatings, homePageArticleList, homeCompany, cubeReviewsList);
     }
 
     public static void show(Long id) {
