@@ -55,6 +55,33 @@ public class CubeRating extends Model {
             }
         }
         graphData = veryDisatisfied.toString()+","+disatisfied.toString()+","+neutral.toString()+","+satisfied.toString()+","+verySatisfied.toString();
-        return graphData;
+
+        String graphJs="<script>\n" +
+                "    window.onload = function ()\n" +
+                "    {\n" +
+                "        // The data to be shown on the Pie chart\n" +
+                "        var data = ["+veryDisatisfied.toString()+","+ disatisfied.toString()+","+neutral.toString()+","+satisfied.toString()+","+verySatisfied.toString()+"];\n" +
+                "    \n" +
+                "        // Create the Pie chart. The arguments are the canvas ID and the data to be shown.\n" +
+                "        var pie = new RGraph.Pie('myPie', data);\n" +
+                "\n" +
+                "        // Configure the chart to look as you want.\n" +
+                "        pie.Set('chart.labels', ['I Wanna Leave now', 'I am Looking', 'I am Used to this', 'Like It', 'This is Great']);\n" +
+                "        pie.Set('chart.colors', ['red','maroon','white','blue','green']);\n" +
+                "        pie.Set('chart.labels.sticks', 'true');\n" +
+                "        pie.Set('chart.title', 'What Employees say');\n" +
+                "        pie.Set('chart.title.color', 'white');\n" +
+                "        pie.Set('chart.gutter.top', 50);\n" +
+                "        pie.Set('chart.linewidth', 2);\n" +
+                "        pie.Set('chart.text.size', 10);\n" +
+                "        pie.Set('chart.text.font', 'Helvetica');\n" +
+                "        pie.Set('chart.text.color', 'white');\n" +
+                "        pie.Set('chart.stroke', 'white');\n" +
+                "        \n" +
+                "        // Call the .Draw() chart to draw the Pie chart.\n" +
+                "        pie.Draw();\n" +
+                "    }\n" +
+                "</script>";
+        return graphJs;
     }
 }

@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Cube-talk.com' /}
+
+<div id="left">
+    #{if articles.size()>0}
+                #{postlist article:articles, page:page, noOfPages:pages, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here.
+                </div>
+        #{/else}
+</div>
+<div id="right">
+        #{if topViewed}
+
+                #{toparticlelist articles:topViewed, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    No Top Read Article yet..
+                </div>
+        #{/else}
+        <br>
+        #{if cubeReviewsList}
+                #{homepagereview homePageReview:cubeReviewsList /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    No Company Reviewed yet.
+                </div>
+        #{/else}
+</div>

@@ -1,15 +1,18 @@
-import models.*;
 import models.Article;
 import models.Category;
-import org.junit.*;
-import java.util.*;
-import play.test.*;
+import models.User;
+import org.junit.Before;
+import org.junit.Test;
+import play.test.Fixtures;
+import play.test.UnitTest;
+
+import java.util.List;
 
 public class ArticleTest extends UnitTest {
 
     @Before
     public void setup() {
-        Fixtures.deleteAll();
+        Fixtures.deleteAllModels();
     }
 
     @Test

@@ -1,0 +1,123 @@
+/** Display Article **/
+.article {
+	margin: 0;
+	}
+
+.article .article-title {
+    margin: 0;
+}
+
+.article .article-title a {
+    font-size: 28px;
+    color: #9FA85D;
+    text-decoration: none;
+    font-weight: normal
+}
+
+.article .article-metadata {
+    color: #BAC36E;
+    display: block;
+    font-size: 70%;
+    display: inline-block;
+}
+
+.article .article-author {
+    font-size: 130%;
+    font-weight: normal;
+}
+
+.article .article-metadata a {
+    color: #9FA85D;
+}
+
+.article .article-content {
+    font-size: 14px;
+    position: relative;
+    background: #fff;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 15px;
+    -webkit-box-shadow: 0 2px 0 #fff;
+}
+	
+
+/** Top Article List**/
+
+.top-articles {
+    border: 0px solid #333;
+}
+
+.top-articles .heading{
+	font-size: 24px;
+	color: #9FA85D;
+	margin: 0;
+}
+.top-articles .article-title {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+	margin: 0, 0, 0, 0;
+}
+
+.top-articles .article-title a {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+/** Comments **/
+
+.comments {
+    margin-bottom: 30px;
+}
+
+.comment {
+    width: 70%;
+    clear: both;
+}
+
+.comment .comment-metadata {
+    color: #869AB1;
+    display: block;
+    font-size: 50%;
+    display: block;
+    float: left;
+    width: 80px;
+    text-align: right;
+}
+
+.comment .comment-author {
+    font-size: 150%;
+    font-weight: bold;
+    display: block;
+}
+
+.comment .comment-content {
+    position: relative;
+    background: #E4EAFF;
+    color: #242C58;
+    font-size: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.comment .about {
+    text-indent: -999em;
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #E4EAFF;
+    border-left: 0;
+    position: absolute;
+    top: 4px;
+    left: -4px;
+}

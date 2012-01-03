@@ -21,10 +21,10 @@
             <ul id="tools">
                 <li>
                     #{if !session.contains("loggedIn")}
-                        <a href="@{Authenticate.signIn()}">Sign In</a> |
+                    <a href="@{Authenticate.signIn()}">Sign In</a> |
                     #{/if}
                     #{else}
-                        <a href="@{Authenticate.signOut()}">Sign out</a> |
+                    <a href="@{Authenticate.signOut()}">Sign out</a> |
                     #{/else}
                     <a href="#">About Us</a> |
                     <a href="#">Feedback</a>

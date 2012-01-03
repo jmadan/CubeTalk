@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+	<div id="left">
+        #{if homePagePost.size()>0}
+                #{display article:homePagePost, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here.
+                </div>
+        #{/else}
+        <br>
+        #{ if homeCompany}
+                #{companyDisplay homeCompany:homeCompany /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here.
+                </div>
+        #{/else}
+	</div>
+	<div id="right">
+        #{if topViewed}
+                #{toparticlelist articles:topViewed, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here2.
+                </div>
+        #{/else}
+        <br>
+        #{if cubeReviewsList}
+                #{homepagereview homePageReview:cubeReviewsList /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here4.
+                </div>
+        #{/else}
+	</div>

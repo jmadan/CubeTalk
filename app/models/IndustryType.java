@@ -24,4 +24,13 @@ public class IndustryType extends Model{
         this.created_on = new Date();
         this.companies = new ArrayList<Company>();
     }
+    
+    public String toString(){
+        return industry_type;
+    }
+
+    public static List<IndustryType> getTopReviewedIndustry() {
+
+        return IndustryType.find("").fetch();
+    }
 }

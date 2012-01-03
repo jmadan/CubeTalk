@@ -1,5 +1,6 @@
 package controllers;
 
+import models.User;
 import play.Play;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -12,7 +13,12 @@ public class MyCube extends Controller{
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
     }
 
-    public static void show() {
-
+    public static void index() {
+        if(session.isEmpty() == false){
+            System.out.println("I am here");
+            redirect("/authenticate/index");
+        }
+        User user = User.find("byUserAliasAndUserEmail", session.get("userAlias"), session.get("userEmail")).first();
+        render(user);
     }
 }

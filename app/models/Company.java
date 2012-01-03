@@ -1,5 +1,6 @@
 package models;
 
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Company extends Model {
     public Boolean approved = false;
     public Date created_on;
     public Date updated_on;
+    public Blob logo;
 
     @Lob
     public String overview;
@@ -20,17 +22,17 @@ public class Company extends Model {
     @ManyToOne
     public IndustryType industry_type;
 
-    @OneToMany(mappedBy="company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<CompanyAddress> companyAddresses;
 
-    @OneToMany(mappedBy="company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<CubeReview> companyReviews;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     public List<CubeRating> companyRatings;
 
 
-    public Company (String orgName, String website, String overview, IndustryType industry_type, Boolean approved) {
+    public Company (String orgName, String website, String overview, IndustryType industry_type, Boolean approved, Blob logo) {
         this.orgName = orgName;
         this.website = website;
         this.overview = overview;
@@ -40,12 +42,11 @@ public class Company extends Model {
         this.companyAddresses = new ArrayList<CompanyAddress>();
         this.companyReviews = new ArrayList<CubeReview>();
         this.companyRatings = new ArrayList<CubeRating>();
+        this.logo = logo;
     }
 
     public List<CubeRating> getCompanyRatings() {
-//        companyRatings = CubeRating.find("byCompany", Company.this).fetch();
-//        companyRatings = CubeRating.findAll();
-//        System.out.println(companyRatings.size());
+
         return companyRatings;
     }
 
@@ -55,34 +56,51 @@ public class Company extends Model {
 
 
     public static List<Company> findTopRated() {
-        List<Company> topRated = new ArrayList<Company>();
         List<Company> companies = Company.findAll();
-        System.out.println(companies.size());
-        Iterator i = companies.iterator();
+        List<Company> sortedCompanies = new ArrayList<Company>();
+        Map ratingMap = new HashMap();
         int rating_sum = 0;
         for(Company company : companies){
-
+            for(int i=0; i<company.companyRatings.size(); i++)
+                rating_sum += company.companyRatings.get(i).rating.intValue();
+            ratingMap.put(company.orgName, rating_sum);
         }
-        return null;
+
+        SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(ratingMap));
+        MapValueSort.printMap(ratingMap);
+
+        sortedData.putAll(ratingMap);
+        MapValueSort.printMap(sortedData);
+
+        sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
+        return sortedCompanies;
     }
 
-    public static Company findHomeCompany() {
-        return Company.find("order by RAND()").first();
+    public static Company getHomeCompany() {
+        Company company = homePageCompany();
+//        while (company.companyReviews.size() == 0)
+//        {
+//            company = homePageCompany();
+//        }
+
+        return company;
     }
 
-    public static Company findLatestReview() {
-        List<Company> companies = Company.findAll();
-        Collections.sort(companies, new Comparator() {
-            public int compare(Object o, Object o1) {
-
-                return 0;  //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
-        return null;
+    public static Company homePageCompany() {
+//        return Company.find("order by RAND()").first();
+        return Company.find("orgName", "Thoughtworks").first();
     }
 
-    public static Company getCompanyData(Company homeCompany) {
-        Company companyObject = Company.find("byID", homeCompany.id).first();
-        return companyObject;
+    public static String getRatingGraph(List<CubeRating> ratings){
+        return CubeRating.getGraphData(ratings);
     }
+
+    public static List<Company> leatestReviwed(){
+        return Company.find("where id = cubereview.company_id order by cubereview.created_on desc").fetch();
+    }
+
+    public String toString(){
+        return orgName;
+    }
+
 }

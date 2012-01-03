@@ -15,17 +15,19 @@ public class User extends Model {
     public String userEmail;
     public String password;
     public Date registeredDate;
+    public String profile;
 
 //    @OneToMany(mappedBy="User")
 //    public List<Articles> articles;
 
-    public User(String firstName, String lastName, String userAlias, String userEmail, String password){
+    public User(String firstName, String lastName, String userAlias, String userEmail, String password, String profile){
         this.firstName = firstName;
         this.lastName = lastName;
         this.userAlias = userAlias;
         this.userEmail = userEmail;
         this.password = password;
         this.registeredDate = new Date();
+        this.profile = profile;
 //        this.articles = new ArrayList<Articles>();
     }
 

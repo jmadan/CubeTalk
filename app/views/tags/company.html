@@ -1,0 +1,13 @@
+<div class="section-header">
+    Featured Companies
+</div>
+<div class="section-overview">
+
+    <ul>
+        #{list items:company, as:'companyList'}
+        <li>
+            <a href="/Experiences/postExperience/${companyList?.orgName}">${companyList.orgName}</a>
+        </li>
+        #{/list}
+    </ul>
+</div>

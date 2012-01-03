@@ -6,10 +6,8 @@
           #{review reviewQuestions:cubeQuestions, companyReview:company , as:'home' /}
 	</div>
 	<div id="right">
-        #{if homePageArticleList}
-
-                #{toparticlelist articles:homePageArticleList, as:'home' /}
-
+         #{if topViewed}
+                #{toparticlelist articles:topViewed, as:'home' /}
         #{/if}
         #{else}
                 <div class="empty">

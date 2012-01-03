@@ -1,55 +1,58 @@
 #{extends 'main.html' /}
 #{set title:'Register' /}
 
-<div id="left">
+<div class="content">
     <div id="formTable">
-       <div id="formHeading">
-           Join Cube-Talk community...It's Free
+       <div id="formHeading" class="section-header">
+           <p align="center">Join Cube-Talk community...It's Free</p>
        </div>
+        <div class="section-overview">
+            All new members automatically get access to everything posted on Cube-Talk.com – that's company reviews and more.
+            All posted anonymously by those on the inside.
+        </div>
          #{form @Users.registerUser(), id:"registerForm"}
         #{ifErrors}
           <p class="error">
             All fields are required!
           </p>
         #{/ifErrors}
-            <label for="user.Alias">User Alias</label>
-            &nbsp;
-            <input type="text" id="user.Alias" name="userAlias"/>
-        </br>
-            <label for="userEmail">Email</label>
-            &nbsp;
-            <input type="text" id="userEmail" name="userEmail"/>
-        </br>
-            <label for="userPassword">Password</label>
-            &nbsp;
-            <input type="password" id="userPassword" name="userPassword"/>
-        </br>
-           <input type="submit" value="Register">
-
+        <table align="center">
+            <tr>
+                <td align="right">
+                    User Alias:
+                </td>
+                <td align="left">
+                    <input type="text" id="user.Alias" name="userAlias" size="25"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Email:
+                </td>
+                <td align="left">
+                    <input type="text" id="userEmail" name="userEmail" size="25"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Password:
+                </td>
+                <td align="left">
+                    <input type="password" id="userPassword" name="userPassword" size="25"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Register">
+                </td>
+            </tr>
+        </table>
          #{/form}
+        <div class="section-text">
+            All posts are anonymous to other users.
+            Your email address or personal information is never displayed, and you can post without signing up with us. And even if you choose to sign up and post, only your chosen alias is displayed on Cube-talk.com.
+        </div>
      </div>
-</div>
-<div id="right">
-        #{if homePageArticleList}
-
-                #{toparticlelist articles:homePageArticleList, as:'home' /}
-
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here2.
-                </div>
-        #{/else}
-        #{if homeCompany}
-
-                #{display2 featuredCompany:homeCompany , as:'home' /}
-
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here3.
-                </div>
-        #{/else}
 </div>
 
 <script type="text/javascript" charset="utf-8">

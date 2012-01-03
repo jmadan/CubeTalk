@@ -1,11 +1,9 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'Cube-Talk Home' /}
 
 	<div id="left">
         #{if homePagePost.size()>0}
-
                 #{display article:homePagePost, as:'home' /}
-
         #{/if}
         #{else}
                 <div class="empty">
@@ -13,10 +11,8 @@
                 </div>
         #{/else}
         <br>
-        #{if ratingGraphData != null}
-
-                #{ratingDisplay crating:ratingGraphData, homeCompany:homeCompany, cubeRating:cubeRating /}
-
+        #{ if homeCompany}
+                #{companyDisplay homeCompany:homeCompany /}
         #{/if}
         #{else}
                 <div class="empty">
@@ -25,10 +21,8 @@
         #{/else}
 	</div>
 	<div id="right">
-        #{if homePageArticleList}
-
-                #{toparticlelist articles:homePageArticleList, as:'home' /}
-
+        #{if topViewed}
+                #{toparticlelist articles:topViewed, as:'home' /}
         #{/if}
         #{else}
                 <div class="empty">
@@ -36,21 +30,8 @@
                 </div>
         #{/else}
         <br>
-        #{if homeCompany}
-
-                #{homepagecompany featuredCompany:homeCompany , as:'home' /}
-
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here3.
-                </div>
-        #{/else}
-        <br>
         #{if cubeReviewsList}
-
                 #{homepagereview homePageReview:cubeReviewsList /}
-
         #{/if}
         #{else}
                 <div class="empty">

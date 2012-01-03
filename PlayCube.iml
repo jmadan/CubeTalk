@@ -5,9 +5,13 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/SoftwareLibs/play-1.2.3/modules/crud">
-      <sourceFolder url="file://$USER_HOME$/SoftwareLibs/play-1.2.3/modules/crud/app" isTestSource="false" />
+    <content url="file://$USER_HOME$/SoftwareLibs/play/modules/crud">
+      <sourceFolder url="file://$USER_HOME$/SoftwareLibs/play/modules/crud/app" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/SoftwareLibs/play/modules/secure">
+      <sourceFolder url="file://$USER_HOME$/SoftwareLibs/play/modules/secure/app" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -25,21 +29,21 @@
     <orderEntry type="module-library">
       <library name="PlayFramework Dependencies">
         <CLASSES>
-          <root url="file://$USER_HOME$/SoftwareLibs/play-1.2.3/framework/lib" />
+          <root url="file://$USER_HOME$/SoftwareLibs/play/framework/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/SoftwareLibs/play-1.2.3/framework/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/SoftwareLibs/play/framework/lib" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/SoftwareLibs/play-1.2.3/framework/play-1.2.3.jar!/" />
+          <root url="jar://$USER_HOME$/SoftwareLibs/play/framework/play-1.2.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$USER_HOME$/SoftwareLibs/play-1.2.3/framework/src" />
+          <root url="file://$USER_HOME$/SoftwareLibs/play/framework/src" />
         </SOURCES>
       </library>
     </orderEntry>

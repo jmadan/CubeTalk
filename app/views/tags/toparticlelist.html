@@ -1,21 +1,20 @@
 <div class="content">
-<div class="top-articles">
-        <div class="article-title">
+    <div class="widget-box">
+        <div class="header">
             Popular Articles
         </div>
-        <div class="article-list">
-            <ul id="popular-articles">
-                #{if _articles == null}
-                    No List
-                #{/if}
-                #{else}
-                #{list items:_articles, as:'alist'}
-                    <li>
-                        ${alist.title}
-                    </li>
-                #{/list}
-                #{/else}
-            </ul>
-        </div>
-</div>
+            #{list items:_articles, as:'article'}
+                 <div class="text">
+                     <div class="listBox">
+                         <a href="/articles/${article.title.slugify()}">${article.title}</a>
+                         <br>
+                         <div class="widget-metadata">
+                             - by ${article.author.firstName}
+                         </div>
+                     </div>
+                     <br><hr>
+                 </div>
+            </br>
+            #{/list}
+    </div>
 </div>

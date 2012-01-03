@@ -24,4 +24,8 @@ public class Category extends Model {
         this.created_on = new Date();
         this.articles = new ArrayList<Article>();
     }
+
+    public String toString(){
+        return category;
+    }
 }

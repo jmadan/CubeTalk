@@ -1,3 +1,245 @@
-27 Aug 2011 19:51:18,986 INFO  ~ Starting /Users/Jasdeep/Jprojects/playCube
-27 Aug 2011 19:51:19,935 WARN  ~ You're running Play! in DEV mode
-27 Aug 2011 19:51:20,074 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11 Dec 2011 01:09:08,397 INFO  ~ Starting /Users/Jasdeep/Jprojects/playCube
+11 Dec 2011 01:09:08,412 WARN  ~ Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.crud)
+11 Dec 2011 01:09:08,412 INFO  ~ Module crud is available (/Users/Jasdeep/SoftwareLibs/play-1.2.3/modules/crud)
+11 Dec 2011 01:09:08,413 INFO  ~ Module crud is available (/Users/Jasdeep/SoftwareLibs/play-1.2.3/modules/crud)
+11 Dec 2011 01:09:09,123 WARN  ~ You're running Play! in DEV mode
+11 Dec 2011 01:09:09,279 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11 Dec 2011 01:09:22,326 ERROR ~ 
+
+@68kcho659
+Internal Server Error (500) for request GET /home
+
+Compilation error (In {module:crud}/app/controllers/CRUD.java around line 16)
+The file {module:crud}/app/controllers/CRUD.java could not be compiled. Error raised is : The type CRUD is already defined
+
+play.exceptions.CompilationException: The type CRUD is already defined
+	at play.classloading.ApplicationCompiler$2.acceptResult(ApplicationCompiler.java:246)
+	at org.eclipse.jdt.internal.compiler.Compiler.handleInternalException(Compiler.java:676)
+	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:520)
+	at play.classloading.ApplicationCompiler.compile(ApplicationCompiler.java:278)
+	at play.classloading.ApplicationClassloader.getAllClasses(ApplicationClassloader.java:412)
+	at play.Play.start(Play.java:485)
+	at play.Play.detectChanges(Play.java:610)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+11 Dec 2011 01:09:29,499 INFO  ~ Connected to jdbc:mysql://localhost/cubedata?useUnicode=yes&characterEncoding=UTF-8&connectionCollation=utf8_general_ci
+11 Dec 2011 01:09:38,428 INFO  ~ Application 'PlayCube' is now started !
+11 Dec 2011 01:09:39,169 ERROR ~ 
+
+@68kcho65a
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:21:45,948 ERROR ~ 
+
+@68kcho65b
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:22:28,727 ERROR ~ 
+
+@68kcho65c
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read companyReviews on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:23:08,549 ERROR ~ 
+
+@68kcho65d
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:25:34,613 ERROR ~ 
+
+@68kcho65e
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:25:41,763 ERROR ~ 
+
+@68kcho65f
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:25:43,987 ERROR ~ 
+
+@68kcho65g
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:25:45,441 ERROR ~ 
+
+@68kcho65h
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:26:26,268 ERROR ~ 
+
+@68kcho65i
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+11 Dec 2011 01:34:12,073 ERROR ~ 
+
+@68kcho65j
+Internal Server Error (500) for request GET /home
+
+Execution exception (In /app/models/Company.java around line 68)
+NullPointerException occured : Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+
+play.exceptions.JavaExecutionException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Try to read orgName on null object models.Company (models.Company.getHomeCompany, line 68)
+	at play.classloading.enhancers.PropertiesEnhancer$FieldAccessor.invokeReadProperty(PropertiesEnhancer.java:202)
+	at models.Company.getHomeCompany(Company.java:68)
+	at controllers.Application.index(Application.java:20)
+	at controllers.Home.index(Home.java:9)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more

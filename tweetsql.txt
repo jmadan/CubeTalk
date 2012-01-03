@@ -1,0 +1,31 @@
+-- Table structure for table 'access' 
+CREATE TABLE IF NOT EXISTS 'access' ('record_id' int(4) NOT NULL, 'password' varchar(255) NOT NULL, PRIMARY KEY ('record_id')) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Table structure for table 'autotweet_profiles' 
+CREATE TABLE IF NOT EXISTS 'autotweet_profiles' ( 'record_id' int(11) NOT NULL auto_increment,'user_name' varchar(50) NOT NULL, 'password' varchar(255) NOT NULL, 'rss_url' varchar(255) NOT NULL, 'date_processed' timestamp NOT NULL default CURRENT_TIMESTAMP, 'is_enabled' tinyint(4) NOT NULL default '1',
+PRIMARY KEY ('record_id'), KEY 'is_enabled' ('is_enabled'), KEY 'user_name' ('user_name')) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'bestof_favorites' 
+CREATE TABLE IF NOT EXISTS 'bestof_favorites' ( 'record_id' int(11) NOT NULL auto_increment,'status_id' int(11) NOT NULL, 'user_id' int(11) NOT NULL, 'created_at' datetime NOT NULL, PRIMARY KEY ('record_id'),KEY 'status_id' ('status_id','user_id','created_at') ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'bestof_queue' 
+CREATE TABLE IF NOT EXISTS 'bestof_queue' ('record_id' int(11) NOT NULL auto_increment, 'user_id' int(11) NOT NULL, 'user_name' varchar(50) NOT NULL,'user_avatar' varchar(255) NOT NULL, 'last_status_id' int(11) NOT NULL, 'last_checked_date' datetime NOT NULL, 'queue_date' timestamp NOT NULL default CURRENT_TIMESTAMP, PRIMARY KEY ('record_id'),KEY 'user_id' ('user_id','last_status_id','last_checked_date'),KEY 'queue_date' ('queue_date') ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'bestof_tweets' 
+CREATE TABLE IF NOT EXISTS 'bestof_tweets' ('record_id' int(11) NOT NULL auto_increment, 'status_id' int(11) NOT NULL, 'author_user_name' varchar(50) NOT NULL, 'author_user_id' int(11) NOT NULL, 'author_avatar' varchar(255) NOT NULL, 'tweet' varchar(160) NOT NULL, 'favorited' int(11) NOT NULL default '1', 'created_at' datetime NOT NULL, PRIMARY KEY ('record_id'), KEY 'status_id' ('status_id','author_user_id','favorited','created_at')) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'tweetalert_log' 
+CREATE TABLE IF NOT EXISTS 'tweetalert_log' ('record_id' int(11) NOT NULL auto_increment, 'status_id' int(11) NOT NULL, 'scan_datetime' datetime NOT NULL, 'keywords' int(11) NOT NULL default '0', 'matches' int(11) NOT NULL default '0', 'messages' int(11) NOT NULL default '0', PRIMARY KEY ('record_id'), KEY 'status_id' ('status_id'), KEY 'keywords' ('keywords') ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'tweetalert_profiles' 
+CREATE TABLE IF NOT EXISTS 'tweetalert_profiles' ('record_id' int(11) NOT NULL auto_increment, 'user_name' varchar(50) NOT NULL, 'keyword' varchar(140) NOT NULL, PRIMARY KEY ('record_id'), KEY 'user_name' ('user_name'), KEY 'keyword' ('keyword') ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'tweetbroadcast_groups'
+CREATE TABLE IF NOT EXISTS 'tweetbroadcast_groups' ( 'record_id' int(11) NOT NULL auto_increment, 'owner' varchar(50) NOT NULL, 'other' varchar(50) NOT NULL, PRIMARY KEY ('record_id'), KEY 'owner' ('owner'), KEY 'other' ('other')) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- Table structure for table 'tweetbroadcast_tweets' 
+CREATE TABLE IF NOT EXISTS 'tweetbroadcast_tweets' ('record_id' int(11) NOT NULL auto_increment, 'status_id' int(11) NOT NULL, 'author_username' varchar(50) NOT NULL, 'author_fullname' varchar(50) NOT NULL, 'author_avatar' varchar(255) NOT NULL, 'tweet_text' varchar(160) NOT NULL, 'tweet_html' varchar(255) NOT NULL, 'pub_date' timestamp NOT NULL default '0000-00-00 00:00:00', PRIMARY KEY ('record_id'), KEY 'author_username' ('author_username'), KEY 'pub_date' ('pub_date') ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+
+1-11949728032 Tata service request
+1-11952757997

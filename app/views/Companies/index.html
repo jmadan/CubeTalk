@@ -1,0 +1,78 @@
+#{extends 'main.html' /}
+#{set title:'Cube-talk.com Companies' /}
+
+<div id="left">
+    <div class="section-header">
+        Featured Companies
+    </div>
+    <div class="section-overview">
+        <table class="tableData">
+            %{  maxrows = (companies.size()/3);
+                z=0
+                for(i=0;i<maxrows;i++){
+            %}
+                    <tr>
+            %{          for(j=0;j<3;j++){
+                        %}
+                        <td>
+                            <a href="/companies/${companies.get(z).toString().slugify()}">${companies.get(z)}</a>
+                        </td>
+                        %{
+                            z++;
+                        }
+                        }%
+                    </tr>
+            %{
+                }
+            }%
+        </table>
+    </div>
+    <div class="section-header">
+         By Industry
+    </div>
+    <div class="section-overview">
+     <table class="tableData">
+        %{  maxrows = companyCategories.size()/4
+            cat=0
+            for(ii=0;ii<maxrows;ii++){
+        %}
+        <tr>
+            %{    for(jj=0;jj<2;jj++){
+            %}
+                <td>
+                    <a href="/companies/category/${companyCategories.get(cat).toString().slugify()}">${companyCategories.get(cat)}</a>
+                </td>
+            %{
+                cat++;
+                }
+            }%
+        </tr>
+        %{
+        }
+        }%
+     </table>
+    </div>
+
+    <div class="note">
+        To add your oranization, please email us at admin@cube-talk.com.
+    </div>
+</div>
+<div id="right">
+        #{if topViewed}
+                #{toparticlelist articles:topViewed, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here2.
+                </div>
+        #{/else}
+        <br>
+        #{if cubeReviewsList}
+                #{homepagereview homePageReview:cubeReviewsList /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here4.
+                </div>
+        #{/else}
+</div>

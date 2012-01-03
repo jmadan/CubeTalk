@@ -1,4 +1,27 @@
 #{extends 'main.html' /}
-#{set title:article.title /}
- 
-#{display article:article, as:'full' /}
+#{set title:'Cube-Talk.com article.title' /}
+
+<div id="left">
+    #{article article:article, as:'full' /}
+</div>
+<div id="right">
+
+        #{if topViewed}
+                #{toparticlelist articles:topViewed, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here2.
+                </div>
+        #{/else}
+        <br>
+        #{if cubeReviewsList}
+                #{homepagereview homePageReview:cubeReviewsList /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here4.
+                </div>
+        #{/else}
+
+	</div>

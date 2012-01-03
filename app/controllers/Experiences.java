@@ -6,7 +6,9 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Http;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Experiences extends Controller {
@@ -35,16 +37,37 @@ public class Experiences extends Controller {
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
     }
 
-    public static void show() {
+    public static void index() {
         List<Company> companies = Company.findAll();
-        render(companies);
+        List<Company> topRated = getTopRated(companies);
+        List<Article> topViewed = Application.getTopViewedArticles();
+        render(companies, topRated, topViewed);
+    }
+
+    private static List<Company> getTopRated(List<Company> companies) {
+        double ratingSum = 0;
+        Iterator<Company> companyIterator = companies.iterator();
+        while(companyIterator.hasNext()){
+            Company company = (Company)companyIterator.next();
+            for (Integer i=0; i < company.companyRatings.size(); i++){
+                ratingSum += company.companyRatings.get(i).rating;
+            }
+            DecimalFormat twoDecimal = new DecimalFormat("#.##");
+            if(ratingSum > 0 && company.companyRatings.size() > 0){
+               double ratingPecentage = Double.valueOf(twoDecimal.format(ratingSum/company.companyRatings.size()));
+            }
+        }
+
+        return null;
     }
 
     public static void postExperience(String orgName) {
-        System.out.println(orgName);
+        List<Company> companies = Company.findAll();
+        List<Company> topRated = getTopRated(companies);
+        List<Article> topViewed = Application.getTopViewedArticles();
         List<CubeQuestion> cubeQuestions = CubeQuestion.find("order by id asc").fetch();
         Company company = Company.find("byOrgName", orgName).first();
-        render(cubeQuestions, company);
+        render(cubeQuestions, company, topRated, topViewed);
     }
 
     public static void saveReview(){

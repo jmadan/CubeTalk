@@ -11,20 +11,21 @@ public class Application extends Controller {
 
     @Before
     static void addDefaults(){
-//        renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
     }
 
     public static void index() {
-        List<Article> homePagePost = Article.find("order by submit_date desc").fetch(5);
+        List<Article> homePagePost = Article.find("order by submit_date desc").fetch(1);
 
-        List<Article> homePageArticleList = Article.find("order by article_view desc").fetch();
-        Company homeCompany = Company.findHomeCompany();
-//        Company recentReview = Company.findLatestReview();
+        Company homeCompany = Company.getHomeCompany();
+        List<Article> topViewed = getTopViewedArticles();
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
-        List<CubeRating> cubeRatings = homeCompany.getCompanyRatings();
-        String ratingGraphData = CubeRating.getGraphData(cubeRatings);
-        render(homePagePost, ratingGraphData, cubeRatings, homePageArticleList, homeCompany, cubeReviewsList);
+        Company.findTopRated();
+        render(homePagePost, homeCompany, topViewed, cubeReviewsList);
+    }
+
+    public static List<Article> getTopViewedArticles() {
+        return Article.find("order by article_view desc").fetch();
     }
 
     public static void show(Long id) {
@@ -37,15 +38,16 @@ public class Application extends Controller {
         render(article);
     }
 
-    public static void postComment(Long id, String content, String userAlias){
-        Article article = Article.findById(id);
-        User user = User.find("byUserEmailAndUserAlias", session.get("userEmail"),session.get("userAlias")).first();
-        article.addComment(article.id,user,content);
-        System.out.println("Comment Posted");
+    public static void about(){
+        render();
     }
 
-//    public static void signIn(String userEmail, String userPassword){
-//        System.out.println(userEmail + "-" + userPassword);
-//    }
+    public static void feedback(){
+        render();
+    }
+    
+    public static void sendEmail(){
+        CubeMail.feedback(params.get("writingAbout"), params.get("contactSubject"), params.get("userName"), params.get("userEmail"), params.get("userMessage"));
+    }
 
 }

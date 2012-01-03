@@ -1,10 +1,48 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+#{extends 'main.html' /}
+#{set title:'Cube-talk.com Companies' /}
 
-</body>
-</html>
+<div id="one-column">
+    <div class="section-overview">
+        <div class="company">
+            <div class="company-header">
+                <a href="companies/${company.orgName.slugify()}">${company.orgName}</a>
+            </div>
+            <div class="company-intro">
+        <span class="detail">${company.overview.nl2br()}
+            #{if company.companyReviews.size() == 0}
+                <p>Be the first to review <a href="/Experiences/postExperience/${company?.orgName}">${company.orgName}</a></p>
+            #{/if}
+            #{if company.companyRatings.size() > 0}
+            <div class="company-graph">
+                <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
+                <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/Experiences/postExperience/${company?.orgName}">${company.orgName}?</a></div>
+            </div>
+                ${company.getRatingGraph(company.companyRatings).raw()}
+            #{/if}
+        </span>
+            </div>
+
+            #{if company.companyReviews.size() > 0}
+            <div class="company-teaser">
+                <div class="section-subheader">Reviews (${company.companyReviews.size()})</div>
+                #{list items:company.companyReviews, as:'reviews'}
+                <div class="review-header">
+                    ${reviews.review_heading} - <div class="review-subheader">by ${reviews.anonymousUser.job_title}</div>
+                </div>
+
+                <div class="review">
+                    <p>
+                        Pros: ${reviews.company_pro}
+                    </p>
+                    <p>
+                        Cons: ${reviews.company_con}
+                    </p>
+                    <p> My Say: ${reviews.company_advice}</p>
+                </div>
+                <hr>
+                #{/list}
+            </div>
+            #{/if}
+        </div>
+    </div>
+</div>

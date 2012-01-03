@@ -1,10 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="company">
+   <div class="company-header">
+          <a href="companies/${_homeCompany.orgName.slugify()}">${_homeCompany.orgName}</a>
+   </div>
+   <div class="company-intro">
+        <span class="detail">${_homeCompany.overview.substring(0,300).nl2br()}... <a href="companies/${_homeCompany.orgName.slugify()}">Read more -></a>
+          <!--<img src="http://chart.apis.google.com/chart?chf=bg,lg,0,EFEFEF,0,BBBBBB,1&chs=400x225&cht=p&chco=700000|800000|FFFFFF|009900|007000&chds=0,95&chd=t:${_homeCompany.getRatingGraph(_homeCompany.companyRatings)}&chl=Very+Dissatisfied|Dissatisfied|Neutral|Satisfied|Very+Satisfied&chtt=Company+Name" />-->
+        <div class="company-graph">
+            <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
+        </div>
+          ${ _homeCompany.getRatingGraph(_homeCompany.companyRatings).raw()}
+        </span>
+   </div>
+    <div class="company-teaser">
+       #{list items:_homeCompany.companyReviews, as:'reviews'}
+       <div class="teaser-header">
+            ${reviews.review_heading}
+        </div>
+        <div class="teaser-metadata">
+            for ${reviews.company.orgName} by ${reviews.anonymousUser.job_title}
+        </div>
+        <div class="teaser-detail">
+          <p>
+          	  <span class="detail-header">Pros:</span> <span class="detail">${reviews.company_pro}</span>
+       	  </p>
+          <p>
+              <span class="detail-header">Cons:</span> <span class="detail">${reviews.company_con}</span>
+          </p>
+        </div>
+        #{/list}
+    </div>
+</div>

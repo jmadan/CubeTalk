@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title:'Express your Experience' /}
+ <div id="left">
+     <div class="section-header">
+        Post your Experience Anonymously.
+     </div>
+	 <div class="section-overview">
+	      <ul>
+	      #{list items:companies, as:'companyList'}
+	          <li>
+	            <a href="/Experiences/postExperience/${companyList?.orgName}">${companyList.orgName}</a>
+	          </li>
+	      #{/list}
+	      </ul>
+	  </div>
+</div>
+<div id="right">
+        #{if topViewed}
+                #{toparticlelist articles:topViewed, as:'home' /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here2.
+                </div>
+        #{/else}
+        #{if cubeReviewsList}
+                #{homepagereview homePageReview:cubeReviewsList /}
+        #{/if}
+        #{else}
+                <div class="empty">
+                    There is currently nothing to read here4.
+                </div>
+        #{/else}
+</div>

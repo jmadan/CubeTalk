@@ -1,0 +1,79 @@
+#{extends 'main.html' /}
+#{set title:' SignIn Cube-talk.com' /}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    $("form#signInForm").submit(function(){
+    var email = $('#userEmail').attr('value');
+    var pass = $('#userPassword').attr(value');
+
+    var form_data = "userEmail="+userEmail.value+"&userPassword="+userPassword.value;
+    $.ajax({
+    type: "POST",
+    url: "userSave",
+    data: form_data,
+    success: function(){
+    $('form#signInForm').hide(function(){$('div.success').fadeIn();});
+    }
+    });
+    return false;
+    });
+
+});
+</script>
+
+<div class="one-column">
+
+    <div class="content">
+        <div class="section-header">
+            SignIn
+        </div>
+        <div class="formData">
+            #{form @Authenticate.signIn(), id:'signInForm'}
+            <table class="formTable">
+                  <tr>
+                      <td colspan="2">
+                          <div class="error-heading">
+                              #{ifErrors}
+                              <span>Errors</span><br>
+                              <span class="error">#{error 'userPassword' /}</span><br>
+                              <span class="error">#{error 'userEmail' /}</span>
+                              #{/ifErrors}
+                          </div>
+                      </td>
+                  </tr>
+                  <tr><td colspan="2">&nbsp;</td> </tr>
+                  <tr>
+                      <td align="right" width="50%">
+                          <span>User Email :</span>
+                      </td>
+                      <td align="left" width="50%">
+                          <input type="text" id="userEmail" name="userEmail" value="${flash.userEmail}" size="25">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2">&nbsp;</td>
+                  </tr>
+                  <tr>
+                      <td align="right">
+                          <span>Password :</span></td>
+                      <td align="left">
+                          <input type="password" id="userPassword" name="userPassword" value="${flash.userPassword}" size="25">
+                    </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2">&nbsp;</td>
+                  </tr>
+                  <tr>
+                      <td colspan="2" align="center">
+                          <span><input type="submit" value="SignIn"></span>
+                      </td>
+                  </tr>
+                  <tr><td colspan="2">&nbsp;</td> </tr>
+                  <tr><td colspan="2"><span class="text"> Not a cubetalker yet! <a href="/Users/register"><span class="pointer">Join Now.</span></a> </span></td> </tr>
+            </table>
+            #{/form}
+        </div>
+    </div>
+</div>

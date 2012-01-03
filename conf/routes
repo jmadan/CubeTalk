@@ -4,30 +4,51 @@
 
 # Home page
 GET     /                                       Application.index
+GET     /home                                   Application.index
+GET     /about                                  Application.about
+GET     /feedback                               Application.feedback
 
-#Article
-GET     /Articles/{title}                       Articles.show
-GET     /Articles/                              Articles.home
+# Article
+GET     /articles/{page}                        Articles.index
+GET     /articles/                              Articles.index
+GET     /articles/{title}                       Articles.show
+POST    /articles/{id}                          Articles.postComment
 
-#Experience
-GET     /Experiences/postExperience/{orgName}       Experiences.postExperience
-POST    /Experiences/saveReview                 Experiences.saveReview
+# Experience
+GET     /experiences/                           Experiences.index
+GET     /experiences/show                       Experiences.show
+GET     /Experiences/postExperience/{orgName}   Experiences.postExperience
+POST    /experiences/saveReview                 Experiences.saveReview
 
-#Login
-POST    /Autenticate/singIn                     Autenticate.signIn
+# Login
+POST    /authenticate/singIn                   Authenticate.signIn
+GET     /authenticate/index                    Authenticate.index
+# Company
+GET     /companies                             Companies.index
+GET     /companies/{orgName}                   Companies.show
+GET     /companies/category/{category}         Companies.category
 
-#User
+# User
 GET    /Users/register                         Users.register
 POST   /Users/registerUser                     Users.registerUser
 
+# MyCube
+GET    /mycube                                 MyCube.index
+
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET    /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
+#Feeds
+*    /Feeds/show/                            Feeds.show
+
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+#*       /{controller}/{action}                  {controller}.{action}
 
 # Import CRUD routes
 *      /admin                                   module:crud
+
+# Secure
+*       /                                       module:secure

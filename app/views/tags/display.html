@@ -2,9 +2,8 @@
 
 #{list items:_article, as:'articleList'}
 <div class="article ${_as == 'teaser' ? 'teaser' : ''}">
-    <div class="content">
     <h2 class="article-title">
-        <a href="/articles/${articleList.title}">${articleList.title}</a>
+        <a href="/articles/${articleList.title.slugify()}">${articleList.title}</a>
     </h2>
     <div class="article-metadata">
         <span class="article-author">by ${articleList.author.firstName}</span>,
@@ -22,15 +21,16 @@
     #{if _as != 'teaser'}
         <div class="article-content">
             <div class="about">Detail: </div>
+            <img src="/Users/Jasdeep/jasdeep.png" style="float:left; margin-right: 5px;"/>
             #{if articleList.content.length() > 350}
                 ${articleList.content.substring(0,350).nl2br()}
             #{/if}
             #{else}
             ${articleList.content}
-            #{/else}<br/> <span class="pointer">Read More</span>
+            #{/else}<br/>
+            <a href="/articles/${articleList.title.slugify()}"><span class="pointer">Read More</span></a>
         </div>
     #{/if}
-    </div>
 </div>
  
 #{if _as == 'full'}
@@ -73,23 +73,3 @@
     </div>
 #{/if}
 #{/list}
-
-     <!--<div class="company-list">-->
-        <!--<div class="list-header">-->
-            <!--Company Reviews-->
-        <!--</div>-->
-        <!--<div class="review-list">-->
-            <!--<ul id="company-reviews">-->
-                <!--#{if _articles == null}-->
-                    <!--No Company List-->
-                <!--#{/if}-->
-                <!--#{else}-->
-                <!--#{list items:_companies, as:'company'}-->
-                    <!--<li>-->
-                        <!--${company.title}-->
-                    <!--</li>-->
-                <!--#{/list}-->
-                <!--#{/else}-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->

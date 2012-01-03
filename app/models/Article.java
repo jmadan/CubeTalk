@@ -1,6 +1,8 @@
 package models;
 
+import play.data.validation.MaxSize;
 import play.data.validation.Required;
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
@@ -9,18 +11,20 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Article extends Model {
+public class  Article extends Model {
 
     @Required
+    @MaxSize(250)
     public String title;
 
     @Required
-    public Boolean approved = true;
+    public boolean approved = true;
 
     public int article_view;
 
     @Required
     @Lob
+    @MaxSize(20000)
     public String content;
 
     @Required
@@ -30,13 +34,15 @@ public class Article extends Model {
     @Required
     @ManyToOne
     public Category category;
+	
+	public Blob articleImage;
 
-    @OneToMany(mappedBy="article", fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="article", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     public List<Comment> comments;
 
     public Date submit_date;
 
-    public Article(String title, String content, User author, Category category, Boolean approved){
+    public Article(String title, String content, User author, Category category, boolean approved, Blob articleImage){
         this.title = title;
         this.content = sanitizeContent(content);
         this.author = author;
@@ -45,6 +51,7 @@ public class Article extends Model {
         this.approved = approved;
         this.comments = new ArrayList<Comment>();
         this.article_view = 0;
+		this.articleImage = articleImage;
     }
 
     private String sanitizeContent(String content) {

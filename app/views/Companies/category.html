@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Cube-talk.com Companies' /}
+
+<div id="left">
+    <div class="section-header">
+        Featured Companies
+    </div>
+    <div class="section-overview">
+        #{  if categoryCompanies.size()>0 }
+            <table class="tableData">
+                %{  z=0
+                for(i=0;i<3;i++){
+                %}
+                <tr>
+                    %{  for(j=0;j<3;j++){
+                        z=z+i+j
+                    %}
+                    <td>
+                        <a href="/companies/show/${companies.get(z).toString().slugify()}">${categoryCompanies.get(z)}</a>
+                    </td>
+                    %{
+                    }
+                    }%
+                </tr>
+                %{
+                }
+                }%
+            </table>
+        #{/if}
+    </div>
+</div>
