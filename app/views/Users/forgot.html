@@ -1,0 +1,53 @@
+#{extends 'main.html' /}
+#{set title:'Forgot Password' /}
+
+<div class="content">
+    <div id="formTable">
+        <div id="formHeading" class="section-header">
+            <p align="center">Forgot your Password?</p>
+        </div>
+        <div class="section-overview">
+            It happens to all of us. Please enter your email address below and we will send you an email with instructions for resetting your password.
+        </div>
+        #{form @Users.forgotPassword(), id:"forgotForm"}
+        #{ifErrors}
+        <p class="error" align="center">
+            #{errors}
+                ${error}
+            #{/errors}
+        </p>
+        #{/ifErrors}
+        <table align="center">
+            <tr>
+                <td align="right">
+                    Email Address:
+                </td>
+                <td align="left">
+                    <input type="text" id="userEmail" name="userEmail" size="25" class="inputField"/>
+                </td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="  Send Password  ">
+                </td>
+            </tr>
+        </table>
+        #{/form}
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+    // Expose the form
+    $('form').click(function() {
+    $('form').expose({api: true}).load();
+    });
+
+    // If there is an error, focus to form
+    if($('form .error').size()) {
+    $('form').expose({api: true, loadSpeed: 0}).load();
+    $('form input[type=text]').get(0).focus();
+    }
+    });
+</script>

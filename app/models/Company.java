@@ -67,10 +67,8 @@ public class Company extends Model {
         }
 
         SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(ratingMap));
-        MapValueSort.printMap(ratingMap);
 
         sortedData.putAll(ratingMap);
-        MapValueSort.printMap(sortedData);
 
         sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
         return sortedCompanies;
@@ -95,12 +93,31 @@ public class Company extends Model {
         return CubeRating.getGraphData(ratings);
     }
 
-    public static List<Company> leatestReviwed(){
-        return Company.find("where id = cubereview.company_id order by cubereview.created_on desc").fetch();
+    public static List<Company> latestReviewed(){
+        return Company.find("id = cubereview.company_id order by cubereview.created_on desc").fetch();
     }
 
     public String toString(){
         return orgName;
     }
 
+    public static List<Company> getTopReviewed(List<Company> companies) {
+        List<Company> sortedCompanies = new ArrayList<Company>();
+        Map reviewMap = new HashMap();
+        for(Company company : companies){
+            System.out.println(company.orgName + "--"+ company.companyReviews.size());
+            if(company.companyReviews.size()>0){
+                reviewMap.put(company.orgName, company.companyReviews.size());
+            }
+        }
+
+        SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(reviewMap));
+
+
+        sortedData.putAll(reviewMap);
+//        MapValueSort.printMap(sortedData);
+
+        sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
+        return sortedCompanies;
+    }
 }

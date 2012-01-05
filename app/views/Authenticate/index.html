@@ -23,33 +23,31 @@
 });
 </script>
 
-<div class="one-column">
-
     <div class="content">
         <div class="section-header">
-            SignIn
+            <p align="center">SignIn</p>
         </div>
-        <div class="formData">
+        <div class="section-overview">
             #{form @Authenticate.signIn(), id:'signInForm'}
-            <table class="formTable">
+            <table class="tableData">
                   <tr>
                       <td colspan="2">
-                          <div class="error-heading">
-                              #{ifErrors}
-                              <span>Errors</span><br>
-                              <span class="error">#{error 'userPassword' /}</span><br>
-                              <span class="error">#{error 'userEmail' /}</span>
-                              #{/ifErrors}
-                          </div>
+                          #{ifErrors}
+                              <div class="error-heading">
+                                  <span>Errors</span><br>
+                                  <span class="error">#{error 'userPassword' /}</span><br>
+                                  <span class="error">#{error 'userEmail' /}</span>
+                              </div>
+                          #{/ifErrors}
                       </td>
                   </tr>
-                  <tr><td colspan="2">&nbsp;</td> </tr>
+                  <!--<tr><td colspan="2">&nbsp;</td> </tr>-->
                   <tr>
                       <td align="right" width="50%">
                           <span>User Email :</span>
                       </td>
                       <td align="left" width="50%">
-                          <input type="text" id="userEmail" name="userEmail" value="${flash.userEmail}" size="25">
+                          <input type="text" id="userEmail" name="userEmail" value="${flash.userEmail}" size="25" class="inputField">
                       </td>
                   </tr>
                   <tr>
@@ -59,7 +57,7 @@
                       <td align="right">
                           <span>Password :</span></td>
                       <td align="left">
-                          <input type="password" id="userPassword" name="userPassword" value="${flash.userPassword}" size="25">
+                          <input type="password" id="userPassword" name="userPassword" value="${flash.userPassword}" size="25" class="inputField">
                     </td>
                   </tr>
                   <tr>
@@ -67,7 +65,8 @@
                   </tr>
                   <tr>
                       <td colspan="2" align="center">
-                          <span><input type="submit" value="SignIn"></span>
+                          <span><input type="submit" value="  SignIn  "></span><br>
+                          <span class="text">Forgot your password <a href="/Users/forgot"><span class="pointer">click here</span></a></span>
                       </td>
                   </tr>
                   <tr><td colspan="2">&nbsp;</td> </tr>
@@ -76,4 +75,3 @@
             #{/form}
         </div>
     </div>
-</div>

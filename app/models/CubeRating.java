@@ -69,12 +69,12 @@ public class CubeRating extends Model {
                 "        pie.Set('chart.labels', ['I Wanna Leave now', 'I am Looking', 'I am Used to this', 'Like It', 'This is Great']);\n" +
                 "        pie.Set('chart.colors', ['red','maroon','white','blue','green']);\n" +
                 "        pie.Set('chart.labels.sticks', 'true');\n" +
-                "        pie.Set('chart.title', 'What Employees say');\n" +
-                "        pie.Set('chart.title.color', 'white');\n" +
+                "        pie.Set('chart.title', 'What Employees say');\n\n" +
+                "        pie.Set('chart.title.color', '#9FA85D');\n" +
                 "        pie.Set('chart.gutter.top', 50);\n" +
                 "        pie.Set('chart.linewidth', 2);\n" +
                 "        pie.Set('chart.text.size', 10);\n" +
-                "        pie.Set('chart.text.font', 'Helvetica');\n" +
+                "        pie.Set('chart.text.font', 'Trebuchet MS');\n" +
                 "        pie.Set('chart.text.color', 'white');\n" +
                 "        pie.Set('chart.stroke', 'white');\n" +
                 "        \n" +

@@ -18,13 +18,15 @@ a {
 }
 
 .text {
-    font-size: 16px;
+    color: #fff;
+    font-size: 13px;
     font-weight: normal;
-    font-family: interstate, 'Trebuchet MS', Helvetica, Arial, Sans !important;
+    font: interstate;
 }
 
 .text a {
-    font-size: 16px;
+    color: #fff;
+    font-size: 14px;
     font-weight: normal;
     font-family: interstate, 'Trebuchet MS', Helvetica, Arial, Sans !important;
 }
@@ -55,9 +57,8 @@ h3 span {
 }
 
 .error {
-    color: maroon;
-    font-size: 80%;
-    padding: 3px 5px;
+    color: #a10000;
+    font-size: 100%;
 }
 
 /** Teaser **/
@@ -294,6 +295,25 @@ a.button:active span {
     -moz-border-radius: 16px;
 }
 
+.one-column {
+    width: 90%;
+    padding: 0px 5px 10px 5px;
+    text-align: center;
+    margin: auto;
+}
+
+#left {
+    float: left;
+    width: 70%;
+    padding: 0.5em;
+}
+
+#right {
+    float: right;
+    width: 27%;
+    padding: 0.25em;
+}
+
 .section-header {
     font-size: 24px;
     color: #9FA85D;
@@ -327,25 +347,6 @@ a.button:active span {
     color: #869AB1;
     font-size: 14px;
     margin-bottom: 15px;
-}
-
-.one-column {
-    width: 90%;
-    padding: 0px 5px 10px 5px;
-    text-align: center;
-    margin: auto;
-}
-
-#left {
-    float: left;
-    width: 70%;
-    padding: 0px 5px 10px 5px;
-}
-
-#right {
-    float: right;
-    width: 27%;
-    padding: 0px 5px 10px 5px;
 }
 
 /** Form **/
@@ -703,9 +704,10 @@ h1.smaller {
     font-size: 12px;
     font-style: italic;
 	float: right;
+	color: #9FA85D;
 }
 
 .widget-box .widget-detail {
     position: relative;
-    font-size: 14px;
+    font-size: 13px;
 }

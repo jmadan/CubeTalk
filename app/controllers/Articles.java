@@ -44,7 +44,6 @@ public class Articles extends Controller {
         Article article = Article.findById(id);
         User user = User.find("byUserEmailAndUserAlias", session.get("userEmail"),session.get("userAlias")).first();
         article.addComment(article.id,user,content);
-        System.out.println("Comment Posted");
     }
 
     public Article previous() {

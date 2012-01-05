@@ -48,6 +48,7 @@ public class Application extends Controller {
     
     public static void sendEmail(){
         CubeMail.feedback(params.get("writingAbout"), params.get("contactSubject"), params.get("userName"), params.get("userEmail"), params.get("userMessage"));
+        redirect("/feedback");
     }
 
 }

@@ -53,7 +53,19 @@ public class MapValueSort {
             String key = (String)iter.next();
             Company company = Company.find("orgName", key).first();
             list.add(company);
-            System.out.println("Value/key - toList:"+data.get(key)+"/"+key);
+//            System.out.println("Value/key - toList:"+data.get(key)+"/"+key);
+        }
+
+        return list;
+    }
+
+    public static List<CubeReview> toReviewList(Map data){
+        List<CubeReview> list = new ArrayList<CubeReview>();
+        for (Iterator iter = data.keySet().iterator(); iter.hasNext();) {
+            String key = (String)iter.next();
+            CubeReview cubeReview = CubeReview.find("company_id", key).first();
+            list.add(cubeReview);
+//            System.out.println("Value/key - toList:"+data.get(key)+"/"+key);
         }
 
         return list;

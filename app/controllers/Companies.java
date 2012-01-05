@@ -17,26 +17,24 @@ public class Companies extends Controller {
 
     public static void show(String orgName){
         Company company = Company.find("byOrgName", orgName.replace('-', ' ')).first();
-        System.out.println(company.orgName);
         render(company);
     }
 
     public static void index(){
         List<IndustryType> companyCategories = IndustryType.findAll();
         List<Company> companies = Company.find("order by OrgName asc").fetch();
-        List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
+        List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch(5);
         List<Article> topViewed = Application.getTopViewedArticles();
-        
-        List<IndustryType> industryTypeList = IndustryType.getTopReviewedIndustry();
+        List<Company> topReviewed= Company.getTopReviewed(companies);
 
-        render(companyCategories, companies, topViewed, cubeReviewsList);
+        render(topReviewed, companyCategories, companies, topViewed, cubeReviewsList);
     }
 
     public static void category(String category){
-
-        List<Company> categoryCompanies = Category.find("category like ?", category.replace('-', ' ')).fetch();
-        System.out.println(categoryCompanies.size());
-        render(categoryCompanies);
+        IndustryType industryType = IndustryType.find("industry_type like ?", category.replace('-', ' ')).first();
+        category = industryType.industry_type;
+        List<Company> categoryCompanies = Company.find("industry_type_id", industryType.id).fetch();
+        render(categoryCompanies, category);
     }
     
 }

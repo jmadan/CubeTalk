@@ -14,6 +14,7 @@
             #{/if}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
+                <br>
                 <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
                 <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/Experiences/postExperience/${company?.orgName}">${company.orgName}?</a></div>
             </div>
@@ -27,17 +28,16 @@
                 <div class="section-subheader">Reviews (${company.companyReviews.size()})</div>
                 #{list items:company.companyReviews, as:'reviews'}
                 <div class="review-header">
-                    ${reviews.review_heading} - <div class="review-subheader">by ${reviews.anonymousUser.job_title}</div>
+                    ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
+                    <div class="review-subheader">"${reviews.review_heading}"</div>
                 </div>
 
                 <div class="review">
                     <p>
-                        Pros: ${reviews.company_pro}
-                    </p>
-                    <p>
+                        My Say: ${reviews.company_advice}<br>
+                        Pros: ${reviews.company_pro}<br>
                         Cons: ${reviews.company_con}
                     </p>
-                    <p> My Say: ${reviews.company_advice}</p>
                 </div>
                 <hr>
                 #{/list}

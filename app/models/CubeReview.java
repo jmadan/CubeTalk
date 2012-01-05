@@ -45,4 +45,6 @@ public class CubeReview extends Model{
         this.created_on = new Date();
         this.approved = approved;
     }
+
+
 }

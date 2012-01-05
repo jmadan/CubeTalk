@@ -12,8 +12,10 @@
         </div>
          #{form @Users.registerUser(), id:"registerForm"}
         #{ifErrors}
-          <p class="error">
-            All fields are required!
+          <p class="error" align="center">
+            #{errors}
+              ${error}<br>
+            #{/errors}
           </p>
         #{/ifErrors}
         <table align="center">
@@ -22,28 +24,31 @@
                     User Alias:
                 </td>
                 <td align="left">
-                    <input type="text" id="user.Alias" name="userAlias" size="25"/>
+                    <input type="text" id="user.Alias" name="userAlias" size="25" class="inputField"/>
                 </td>
             </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
             <tr>
                 <td align="right">
                     Email:
                 </td>
                 <td align="left">
-                    <input type="text" id="userEmail" name="userEmail" size="25"/>
+                    <input type="text" id="userEmail" name="userEmail" size="25" class="inputField"/>
                 </td>
             </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
             <tr>
                 <td align="right">
                     Password:
                 </td>
                 <td align="left">
-                    <input type="password" id="userPassword" name="userPassword" size="25"/>
+                    <input type="password" id="userPassword" name="userPassword" size="25" class="inputField"/>
                 </td>
             </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="  Register  ">
                 </td>
             </tr>
         </table>

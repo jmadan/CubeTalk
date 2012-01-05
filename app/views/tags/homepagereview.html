@@ -5,16 +5,16 @@
         </div>
        #{list items:_homePageReview, as:'reviews'}
        <div class="text">
-           ${reviews.company.orgName} - ${reviews.review_heading}
+           ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
         </div>
         <div class="widget-metadata">
-            by ${reviews.anonymousUser.job_title}
+            "${reviews.review_heading}"
         </div>
         <br>
         <div class="widget-detail">
-           Good: ${reviews.company_pro}
+           Pros: ${reviews.company_pro}
             <br>
-           Bad: ${reviews.company_con}
+           Cons: ${reviews.company_con}
         </div>
         #{/list}
     </div>

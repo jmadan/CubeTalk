@@ -1,7 +1,7 @@
 #{list items:_article, as:'articleList'}
 <div class="article">
     <h2 class="article-title">
-        <a href="/articles/${articleList.title.slugify()}">${articleList.title}</a>
+        <a href="/articles/show/${articleList.title.slugify()}">${articleList.title}</a>
     </h2>
     <div class="article-metadata">
         <span class="article-author">by ${articleList.author.firstName}</span>,
@@ -26,7 +26,7 @@
         #{else}
         ${articleList.content}
         #{/else}<br/>
-        <a href="/articles/${articleList.title.slugify()}"><span class="pointer">Read More</span></a>
+        <a href="/articles/show/${articleList.title.slugify()}"><span class="pointer">Read More</span></a>
     </div>
     #{/if}
 </div>

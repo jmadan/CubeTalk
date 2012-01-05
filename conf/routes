@@ -7,11 +7,13 @@ GET     /                                       Application.index
 GET     /home                                   Application.index
 GET     /about                                  Application.about
 GET     /feedback                               Application.feedback
+POST    /sendEmail                              Application.sendEmail
+POST    /sendPasswordEmail                      Application.sendPasswordEmail
 
 # Article
 GET     /articles/{page}                        Articles.index
 GET     /articles/                              Articles.index
-GET     /articles/{title}                       Articles.show
+GET     /articles/show/{title}                       Articles.show
 POST    /articles/{id}                          Articles.postComment
 
 # Experience
@@ -23,6 +25,7 @@ POST    /experiences/saveReview                 Experiences.saveReview
 # Login
 POST    /authenticate/singIn                   Authenticate.signIn
 GET     /authenticate/index                    Authenticate.index
+
 # Company
 GET     /companies                             Companies.index
 GET     /companies/{orgName}                   Companies.show
@@ -30,7 +33,9 @@ GET     /companies/category/{category}         Companies.category
 
 # User
 GET    /Users/register                         Users.register
+GET    /Users/forgot                           Users.forgot
 POST   /Users/registerUser                     Users.registerUser
+POST   /Users/forgotPassword                           Users.forgotPassword
 
 # MyCube
 GET    /mycube                                 MyCube.index

@@ -5,7 +5,7 @@ import play.Play;
 import play.mvc.Before;
 import play.mvc.Controller;
 
-public class MyCube extends Controller{
+public class MyCubes extends Controller{
 
     @Before
     static void addDefaults(){
