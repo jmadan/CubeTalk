@@ -21,6 +21,7 @@ GET     /experiences/                           Experiences.index
 GET     /experiences/show                       Experiences.show
 GET     /Experiences/postExperience/{orgName}   Experiences.postExperience
 POST    /experiences/saveReview                 Experiences.saveReview
+GET    /experiences/saved                      Experiences.showpage
 
 # Login
 POST    /authenticate/singIn                   Authenticate.signIn
@@ -28,17 +29,17 @@ GET     /authenticate/index                    Authenticate.index
 
 # Company
 GET     /companies                             Companies.index
-GET     /companies/{orgName}                   Companies.show
+GET     /companies/show/{orgName}              Companies.show
 GET     /companies/category/{category}         Companies.category
 
 # User
 GET    /Users/register                         Users.register
 GET    /Users/forgot                           Users.forgot
 POST   /Users/registerUser                     Users.registerUser
-POST   /Users/forgotPassword                           Users.forgotPassword
+POST   /Users/forgotPassword                   Users.forgotPassword
 
 # MyCube
-GET    /mycube                                 MyCube.index
+GET    /mycubes                                 MyCubes.index
 
 # Ignore favicon requests
 GET    /favicon.ico                            404

@@ -8,7 +8,8 @@
        </div>
         <div class="section-overview">
             All new members automatically get access to everything posted on Cube-Talk.com – that's company reviews and more.
-            All posted anonymously by those on the inside.
+            All posted anonymously by those on the inside. A user account is required to post your reviews and rate the organizations.
+            <p align="center">Create a Cube-Talk.com account</p>
         </div>
          #{form @Users.registerUser(), id:"registerForm"}
         #{ifErrors}
@@ -18,6 +19,7 @@
             #{/errors}
           </p>
         #{/ifErrors}
+        <div class="section-text">
         <table align="center">
             <tr>
                 <td align="right">
@@ -47,11 +49,18 @@
             </tr>
             <tr><td colspan="2">&nbsp;</td></tr>
             <tr>
+                <td align="center" colspan="2">
+                    <input type="checkbox" class="inputField" name="TnC" value="1" id="TnC"> Agree to Terms & Conditions.
+                </td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="  Register  ">
                 </td>
             </tr>
         </table>
+        </div>
          #{/form}
         <div class="section-text">
             All posts are anonymous to other users.

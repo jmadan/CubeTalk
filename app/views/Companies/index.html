@@ -16,13 +16,13 @@
                     %{
                         for(j=0;j<5;j++){
                     %}
-                        #{if topReviewed.size() > z}
+                        #{if z < topReviewed.size()}
                         <td>
-                            <a href="/companies/${topReviewed.get(z).toString().slugify()}">${topReviewed.get(z)}</a>
+                            <a href="/companies/show/${topReviewed.get(z).toString().replace(' ', '-')}">${topReviewed.get(z)}</a>
                         </td>
+                        %{z++;}%
                         #{/if}
                     %{
-                        z++;
                     }
                         }%
                     </tr>

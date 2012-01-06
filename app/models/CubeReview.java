@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
@@ -30,6 +31,7 @@ public class CubeReview extends Model{
     @ManyToOne
     public AnonymousUser anonymousUser;
 
+    @Required
     public Boolean approved = false;
 
     public CubeReview(String review_type, Company company, String review_heading, String company_pro, String company_con,
@@ -45,6 +47,5 @@ public class CubeReview extends Model{
         this.created_on = new Date();
         this.approved = approved;
     }
-
 
 }

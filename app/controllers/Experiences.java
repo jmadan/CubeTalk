@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import play.Play;
+import play.data.validation.Required;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -82,12 +83,13 @@ public class Experiences extends Controller {
             session.put("anonymousUserId", anonymousUser.id);
         }
         else{
-            anonymousUser = AnonymousUser.find("id", session.get("anonymousUserId")).first();
+            System.out.println(session.get("anonymousUserId"));
+            anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
         }
 
-        CubeReview cubeReview = new CubeReview(Http.Request.current().params.get("reviewType"),company,Http.Request.current().params.get("headlineAnswer"),
-                Http.Request.current().params.get("proAnswer"),Http.Request.current().params.get("conAnswer"),
-                Http.Request.current().params.get("adviceAnswer"),anonymousUser,true).save();
+        CubeReview cubeReview = new CubeReview(Http.Request.current().params.get("reviewType"),company, Http.Request.current().params.get("headlineAnswer"),
+                Http.Request.current().params.get("proAnswer"), Http.Request.current().params.get("conAnswer"),
+                Http.Request.current().params.get("adviceAnswer"), anonymousUser, true).save();
 
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest1")), Integer.parseInt(Http.Request.current().params.get("a1"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest2")), Integer.parseInt(Http.Request.current().params.get("a2"))).save();
@@ -107,6 +109,11 @@ public class Experiences extends Controller {
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest16")), Integer.parseInt(Http.Request.current().params.get("a16"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest17")), Integer.parseInt(Http.Request.current().params.get("a17"))).save();
 
+        render("/Experiences/saved.html");
+
     }
 
+    public static void showpage(){
+        render("/Experiences/saved.html");
+    }
 }

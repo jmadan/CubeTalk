@@ -57,8 +57,9 @@ $(document).ready(function(){
 	</script>
 
 <div class="content">
-<h1 class='smaller'>
-    Review and Rate you company anonymously</h1>
+<div class="section-header">
+    Review and Rate you company anonymously
+</div>
 #{form @Experiences.saveReview(), id:'cubeReviewForm'}
 
 <div id="content_1" class="review_content">
@@ -320,22 +321,24 @@ $(document).ready(function(){
 
 <div id="content_3" class="review_content">
 <div id="demo">
-<table>
+<table class="tableData">
      #{list items:_reviewQuestions, as:'questions'}
         <tr>
-            <td>
+            <td width="75%">
                 <input type="hidden" name="quest${questions.id}"  id="quest${questions.id}" value="${questions.id}" />
                 <div class="row">
-                    <span id="q${questions.id}"> ${questions.question}</span>
+                    <span id="q${questions.id}"> ${questions.question.replace('%s',_companyReview?.orgName)}</span>
                 </div>
-                <br/>
-                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}a" value="1">Strongly Disapprove
-                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}b" value="2">Disapprove
-                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}c" value="3">No Opinion
-                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}d" value="4">Approve
-                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}e" value="5">Strongly Approve
+            </td>
+            <td>
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}a" value="1">Strongly Disapprove<br>
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}b" value="2">Disapprove<br>
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}c" value="3">No Opinion    <br>
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}d" value="4">Approve           <br>
+                    <input type="radio" group="a${questions.id}" name="a${questions.id}" id="a${questions.id}e" value="5">Strongly Approve      <br>
             </td>
         </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
  #{/list}
         <tr>
             <td align="center">

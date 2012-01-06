@@ -65,28 +65,28 @@ public class Company extends Model {
                 rating_sum += company.companyRatings.get(i).rating.intValue();
             ratingMap.put(company.orgName, rating_sum);
         }
+        Set set = MapUtil.sortByValue(ratingMap);
+        sortedCompanies = MapUtil.toList(set);
 
-        SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(ratingMap));
-
-        sortedData.putAll(ratingMap);
-
-        sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
+//        SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(ratingMap));
+//        sortedData.putAll(ratingMap);
+//        sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
         return sortedCompanies;
     }
 
     public static Company getHomeCompany() {
         Company company = homePageCompany();
-//        while (company.companyReviews.size() == 0)
-//        {
-//            company = homePageCompany();
-//        }
+        while (company.companyReviews.size() == 0)
+        {
+            company = homePageCompany();
+        }
 
         return company;
     }
 
     public static Company homePageCompany() {
-//        return Company.find("order by RAND()").first();
-        return Company.find("orgName", "Thoughtworks").first();
+        return Company.find("order by RAND()").first();
+//        return Company.find("orgName", "Thoughtworks").first();
     }
 
     public static String getRatingGraph(List<CubeRating> ratings){
@@ -104,20 +104,20 @@ public class Company extends Model {
     public static List<Company> getTopReviewed(List<Company> companies) {
         List<Company> sortedCompanies = new ArrayList<Company>();
         Map reviewMap = new HashMap();
-        for(Company company : companies){
-            System.out.println(company.orgName + "--"+ company.companyReviews.size());
+        for(Company company:companies){
+//            System.out.println(company.orgName + "--"+ company.companyReviews.size());
             if(company.companyReviews.size()>0){
                 reviewMap.put(company.orgName, company.companyReviews.size());
             }
         }
 
-        SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(reviewMap));
-
-
-        sortedData.putAll(reviewMap);
+        Set set = MapUtil.sortByValue(reviewMap);
+        sortedCompanies = MapUtil.toList(set);
+//        MapValueSort.printMap(reviewMap);
+//        SortedMap sortedData = new TreeMap(new MapValueSort.ValueComparer(reviewMap));
+//        sortedData.putAll(reviewMap);
 //        MapValueSort.printMap(sortedData);
-
-        sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
+//        sortedCompanies = (List<Company>) MapValueSort.toList(sortedData);
         return sortedCompanies;
     }
 }
