@@ -81,7 +81,11 @@ h3 span {
 
 .teaser-detail {
     position: relative;
-    font-size: 14px;
+    font-size: 12px;
+}
+
+.teaser-detail .highlight {
+    color: #9FA85D;
 }
 
 .detail {

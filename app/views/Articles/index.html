@@ -12,22 +12,5 @@
         #{/else}
 </div>
 <div id="right">
-        #{if topViewed}
-
-                #{toparticlelist articles:topViewed, as:'home' /}
-        #{/if}
-        #{else}
-                <div class="empty">
-                    No Top Read Article yet..
-                </div>
-        #{/else}
-        <br>
-        #{if cubeReviewsList}
-                #{homepagereview homePageReview:cubeReviewsList /}
-        #{/if}
-        #{else}
-                <div class="empty">
-                    No Company Reviewed yet.
-                </div>
-        #{/else}
+    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
 </div>

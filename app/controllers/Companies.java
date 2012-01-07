@@ -1,7 +1,10 @@
 package controllers;
 
 import models.*;
+import net.sf.oval.ConstraintViolation;
 import play.Play;
+import play.data.validation.Required;
+import play.data.validation.Validation;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -35,6 +38,25 @@ public class Companies extends Controller {
         category = industryType.industry_type;
         List<Company> categoryCompanies = Company.find("industry_type_id", industryType.id).fetch();
         render(categoryCompanies, category);
+    }
+    
+    public static void search(){
+        
+        String searchString = request.params.get("searchCompany");
+        validation.required(searchString);
+        
+        if(validation.hasErrors()){
+            render("/errors/error.html");
+        }
+        
+        Company company = Company.find("orgName like ?","%"+searchString+"%").first();
+        List<Company> similarCompanies = Company.find("orgName like ?","%"+searchString+"%").fetch();
+
+        validation.required(company);
+        if(validation.hasErrors()){
+            render("/errors/search.html");
+        }
+        renderTemplate("Companies/show.html", company, similarCompanies);
     }
     
 }

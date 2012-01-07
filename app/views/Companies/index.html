@@ -89,21 +89,5 @@
     </div>
 </div>
 <div id="right">
-        #{if topViewed}
-                #{toparticlelist articles:topViewed, as:'home' /}
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here2.
-                </div>
-        #{/else}
-        <br>
-        #{if cubeReviewsList}
-                #{homepagereview homePageReview:cubeReviewsList /}
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here4.
-                </div>
-        #{/else}
+    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
 </div>

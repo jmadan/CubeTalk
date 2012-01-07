@@ -19,25 +19,26 @@ POST    /articles/{id}                          Articles.postComment
 # Experience
 GET     /experiences/                           Experiences.index
 GET     /experiences/show                       Experiences.show
-GET     /Experiences/postExperience/{orgName}   Experiences.postExperience
+GET     /experiences/postExperience/{orgName}   Experiences.postExperience
 POST    /experiences/saveReview                 Experiences.saveReview
-GET    /experiences/saved                      Experiences.showpage
+GET     /experiences/saved                      Experiences.showpage
 
 # Login
 POST    /authenticate/singIn                   Authenticate.signIn
-GET    /authenticate/singOut                  Authenticate.signOut
+GET     /authenticate/singOut                  Authenticate.signOut
 GET     /authenticate/index                    Authenticate.index
 
 # Company
 GET     /companies                             Companies.index
 GET     /companies/show/{orgName}              Companies.show
 GET     /companies/category/{category}         Companies.category
+GET     /companies/search                      Companies.search
 
 # User
-GET    /Users/register                         Users.register
-GET    /Users/forgot                           Users.forgot
-POST   /Users/registerUser                     Users.registerUser
-POST   /Users/forgotPassword                   Users.forgotPassword
+GET    /users/register                         Users.register
+GET    /users/forgot                           Users.forgot
+POST   /users/registerUser                     Users.registerUser
+POST   /users/forgotPassword                   Users.forgotPassword
 
 # MyCube
 GET    /mycubes                                 MyCubes.index

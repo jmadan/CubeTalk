@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="section-header">
+        Search Company
+    </div>
+    <div class="section-overview">
+        #{form @Companies.search(), id:'searchForm'}
+        <table class="tableData">
+            <tr>
+                <td>
+                    <input type="text" class="inputField" id="searchCompany" name="searchCompany" size="20" value="Company Name" onfocus="javascript:searchCompany.value='';">&nbsp;<input type="submit" value="  Go  ">
+                </td>
+            </tr>
+        </table>
+        #{/form}
+    </div>
+</div>
+
+#{if _articles}
+<br>
+<div class="content">
+    <div class="widget-box">
+        <div class="header">
+            Popular Articles
+        </div>
+        #{list items:_articles, as:'article'}
+        <div class="text">
+            <div class="listBox">
+                <a href="/articles/${article.title.slugify()}">${article.title}</a>
+                <br>
+                <div class="widget-metadata">
+                    - by ${article.author.firstName}
+                </div>
+            </div>
+            <br><hr>
+        </div>
+        </br>
+        #{/list}
+    </div>
+</div>
+#{/if}
+#{if _homePageReview}
+<br>
+<div class="content">
+    <div class="widget-box">
+        <div class="header">
+            Latest Reviews
+        </div>
+        #{list items:_homePageReview, as:'reviews'}
+        <div class="text">
+            ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
+        </div>
+        <div class="widget-metadata">
+            "${reviews.review_heading}"
+        </div>
+        <br>
+        <div class="widget-detail">
+            Pros: ${reviews.company_pro}
+            <br>
+            Cons: ${reviews.company_con}
+        </div>
+        <hr>
+        #{/list}
+    </div>
+#{/if}
+</div>

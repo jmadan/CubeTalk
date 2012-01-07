@@ -5,18 +5,18 @@
     <div class="section-overview">
         <div class="company">
             <div class="company-header">
-                <a href="companies/${company.orgName.slugify()}">${company.orgName}</a>
+                <a href="/companies/show/${company.orgName.replace(' ','-')}">${company.orgName}</a>
             </div>
             <div class="company-intro">
         <span class="detail">${company.overview.nl2br()}
             #{if company.companyReviews.size() == 0}
-                <p>Be the first to review <a href="/Experiences/postExperience/${company?.orgName}">${company.orgName}</a></p>
+                <p>Be the first to review <a href="/experiences/postExperience/${company?.orgName}">${company.orgName}</a></p>
             #{/if}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
                 <br>
                 <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
-                <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/Experiences/postExperience/${company?.orgName}">${company.orgName}?</a></div>
+                <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/experiences/postExperience/${company?.orgName}">${company.orgName}?</a></div>
             </div>
                 ${company.getRatingGraph(company.companyRatings).raw()}
             #{/if}
@@ -45,4 +45,14 @@
             #{/if}
         </div>
     </div>
+    #{if similarCompanies}
+    <div>
+        Similar Companies<br>
+
+         #{list items:similarCompanies, as:'companies'}
+          ${companies.orgName}
+        #{/list}
+
+    </div>
+    #{/if}
 </div>

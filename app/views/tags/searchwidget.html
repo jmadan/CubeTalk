@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+    $(function() {
+    $( "input:submit, button").button();
+    });
+    });
+</script>
+<div class="content">
+
+    <div class="section-header">
+        Search Company
+    </div>
+    <div class="section-overview">
+        #{form @Experiences.saveReview(), id:'searchForm'}
+        <table class="tableData">
+            <tr>
+                <td>
+                    <input type="text" class="inputField" id="searchCompany" name="searchCompany" size="25" value="Company Name" onfocus="javascript:searchCompany.value='';">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <div class="demo">
+                        <input type="submit" value="Search">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        #{/form}
+    </div>
+
+</div>
