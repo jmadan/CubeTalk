@@ -25,22 +25,22 @@
 
     <div class="one-column">
         <div class="section-header">
-            <p align="center">SignIn</p>
+            <span align="center">SignIn</span>
         </div>
         <div class="section-overview">
             #{form @Authenticate.signIn(), id:'signInForm'}
             <table class="tableData">
+                #{ifErrors}
                   <tr>
                       <td colspan="2">
-                          #{ifErrors}
                               <div class="error-heading">
                                   <span>Errors</span><br>
                                   <span class="error">#{error 'userPassword' /}</span><br>
                                   <span class="error">#{error 'userEmail' /}</span>
                               </div>
-                          #{/ifErrors}
                       </td>
                   </tr>
+                #{/ifErrors}
                   <!--<tr><td colspan="2">&nbsp;</td> </tr>-->
                   <tr>
                       <td align="right" width="50%">

@@ -3,8 +3,8 @@ package controllers;
 import models.*;
 import net.sf.oval.ConstraintViolation;
 import play.Play;
-import play.data.validation.Required;
-import play.data.validation.Validation;
+import play.data.validation.*;
+import play.data.validation.Error;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -54,6 +54,9 @@ public class Companies extends Controller {
 
         validation.required(company);
         if(validation.hasErrors()){
+            for(Error error : validation.errors()) {
+                System.out.println(error.message());
+            }
             render("/errors/search.html");
         }
         renderTemplate("Companies/show.html", company, similarCompanies);

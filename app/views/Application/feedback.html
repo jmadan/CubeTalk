@@ -1,9 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'Feedback' /}
 
-<div class="content">
+<div class="one-column">
     <div class="section-header">
-        <p align="center">Whatever it's about, we're interested in hearing from you.</p>
+        <span align="center">Whatever it's about, we're interested in hearing from you.</span>
     </div>
     <div class="section-overview">
         <form id="ContactForm" action="@{Application.sendEmail()}" method="post">

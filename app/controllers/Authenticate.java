@@ -18,7 +18,6 @@ public class Authenticate extends Controller {
         validation.required(userEmail, "Please Enter a valid Email");
         validation.required(userPassword, "Please Enter a valid Password");
 
-        System.out.println(userEmail);
         User user = User.find("byUserEmailAndPassword", userEmail, userPassword).first();
         if(validation.hasErrors()){
             params.flash(); // add http parameters to the flash scope

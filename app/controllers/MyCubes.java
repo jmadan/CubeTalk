@@ -20,7 +20,6 @@ public class MyCubes extends Controller{
 
     public static void index() {
         if(session.get("userAlias") == null){
-            System.out.println("I am here");
             redirect("/authenticate/index");
         }
 
