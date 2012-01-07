@@ -32,8 +32,8 @@ public class Authenticate extends Controller {
         session.put("lastName", user.lastName);
         session.put("userEmail", user.userEmail);
         session.put("loggedIn", true);
-        System.out.println(user.userAlias);
-        redirect("mycube");
+//        System.out.println(user.userAlias);
+        redirect("/mycubes");
     }
 
     public static void signOut(){

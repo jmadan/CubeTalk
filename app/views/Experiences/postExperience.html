@@ -1,27 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Post your Experience Anonymously' /}
 
-	<div id="left">
+	<div id="one-column">
 
           #{review reviewQuestions:cubeQuestions, companyReview:company , as:'home' /}
-	</div>
-	<div id="right">
-         #{if topViewed}
-                #{toparticlelist articles:topViewed, as:'home' /}
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here2.
-                </div>
-        #{/else}
-        #{if homeCompany}
-
-                #{display2 featuredCompany:homeCompany , as:'home' /}
-
-        #{/if}
-        #{else}
-                <div class="empty">
-                    There is currently nothing to read here3.
-                </div>
-        #{/else}
 	</div>

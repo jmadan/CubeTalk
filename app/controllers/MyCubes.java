@@ -1,9 +1,14 @@
 package controllers;
 
+import models.AnonymousUser;
+import models.Article;
+import models.CubeReview;
 import models.User;
 import play.Play;
 import play.mvc.Before;
 import play.mvc.Controller;
+
+import java.util.List;
 
 public class MyCubes extends Controller{
 
@@ -14,11 +19,16 @@ public class MyCubes extends Controller{
     }
 
     public static void index() {
-        if(session.isEmpty() == false){
+        if(session.get("userAlias") == null){
             System.out.println("I am here");
             redirect("/authenticate/index");
         }
+
+        List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch(5);
+        List<Article> topViewed = Application.getTopViewedArticles();
         User user = User.find("byUserAliasAndUserEmail", session.get("userAlias"), session.get("userEmail")).first();
-        render(user);
+        AnonymousUser anonymousUser = AnonymousUser.find("userId", user.id).first();
+//        System.out.println("anonymousUser:"+ anonymousUse);
+        render(user, anonymousUser, cubeReviewsList, topViewed);
     }
 }

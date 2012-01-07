@@ -2,7 +2,7 @@
 
 html, body {
     background: #444 !important;
-    font-family: interstate,'Trebuchet MS', Helvetica, Arial, Sans !important;
+    font-family: 'Trebuchet MS', Helvetica, Arial, Sans !important;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 
 a {
     color: #fff;
-    font-family: interstate,'Trebuchet MS', Helvetica, Arial, Sans !important;
+    font-family: 'Trebuchet MS', Helvetica, Arial, Sans !important;
     text-decoration: none;
 }
 
@@ -28,7 +28,7 @@ a {
     color: #fff;
     font-size: 14px;
     font-weight: normal;
-    font-family: interstate, 'Trebuchet MS', Helvetica, Arial, Sans !important;
+    font-family: 'Trebuchet MS', Helvetica, Arial, Sans !important;
 }
 
 h1 {
@@ -47,10 +47,12 @@ h3 span {
     font-weight: normal;
 }
 
+/** Errors **/
+
 .error-heading {
     color: maroon;
     background: #fff !important;
-    font-family: interstate,'Trebuchet MS', Helvetica, Arial, Sans !important;
+    font-family: 'Trebuchet MS', Helvetica, Arial, Sans !important;
     -webkit-border-radius: 19px;
     -webkit-box-shadow: 0 2px 0 #fff;
     -moz-border-radius: 16px;
@@ -79,7 +81,7 @@ h3 span {
 
 .teaser-detail {
     position: relative;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .detail {
@@ -90,10 +92,6 @@ h3 span {
     text-decoration: underline;
 }
 
-.section-text {
-    font-size: 14px;
-    color: #fff;
-}
 /** Blog header **/
 
 #header {
@@ -178,13 +176,6 @@ h3 span {
 
 #title input {
     background-color: #999;
-}
-
-#userLabel {
-    float: right;
-    font-family: interstate, Helvetica, Arial, Sans !important;
-    font-size: 18px;
-    margin-top: 5px;
 }
 
 .clear { /* generic container (i.e. div) for floating buttons */
@@ -277,7 +268,7 @@ a.button:active span {
     background-color: #444;
     text-decoration: none;
     border: 1px solid #444;
-    font-family: interstate, Helvetica, Arial, Sans !important;
+    font-family: 'Trebuchet MS',interstate, Helvetica, Arial, Sans !important;
 }
 
 #navigation a:hover {
@@ -296,8 +287,8 @@ a.button:active span {
 }
 
 .one-column {
-    width: 90%;
-    padding: 0px 5px 10px 5px;
+    width: 95%;
+    padding: 0.5em;
     text-align: center;
     margin: auto;
 }
@@ -312,6 +303,12 @@ a.button:active span {
     float: right;
     width: 27%;
     padding: 0.25em;
+}
+
+.demo {
+    font-size: 10px;
+    font: 'Trebuchet MS';
+    display: inline;
 }
 
 .section-header {
@@ -333,6 +330,12 @@ a.button:active span {
     font-size: 16px;
 }
 
+.section-text {
+    font-size: 14px;
+    color: #fff;
+}
+
+
 #main {
     background: #444;
     background: -webkit-gradient(linear, left top, left 30%, from(#444), to(#444));
@@ -345,8 +348,8 @@ a.button:active span {
 
 .row {
     color: #869AB1;
-    font-size: 14px;
     margin-bottom: 15px;
+
 }
 
 /** Form **/
@@ -375,24 +378,13 @@ textarea {
     -moz-border-radius: 10px;
 }
 
-form p {
-    margin: 5px 0 0 0;
+.labelClass {
+    font-size: 10px;
 }
 
-form textarea {
-
-}
-
-form input, form textarea {
-    font-size: 14px;
-}
-
-form label {
-    display: block;
-    font-weight: bold;
-    font-size: 90%;
-    color: #aaa;
-    margin-bottom: 3px;
+input.radio {
+    display: inline;
+    margin-left: 0.5em;
 }
 
 #captcha{
@@ -462,118 +454,6 @@ form label {
     font-weight: bold;
 }
 
-/** Admin **/
-
-.tags-list .tag {
-    cursor: pointer;
-    color: red;
-}
-
-#adminMenu {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-}
-
-#adminMenu li {
-    display: inline;
-}
-
-#adminMenu li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 80%;
-    background: #591C64;
-    padding: 2px 10px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-}
-
-#adminMenu li.selected a {
-    background: #82A346;
-}
-
-#crudContent {
-    color: #8B98AD;
-}
-
-#crudContent h2 {
-    color: #EDC3CD !important;
-}
-
-#crudContent thead tr {
-    background: #512162 !important;
-}
-
-#crudContent table {
-    border: none !important;
-}
-
-#crudContent table td {
-    color: #444;
-}
-
-tr.odd {
-    background: #BECCE7 !important;
-}
-
-#crud #crudContent, #crudContent form, #crudListSearch, #crudListPagination, .crudButtons {
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-#crudListTable {
-    margin: 10px 0;
-}
-
-.crudField, .objectForm {
-    border: none;
-    padding-left: 0;
-}
-
-.crudField label {
-    color: #B8FA5C;
-}
-
-.crudHelp {
-    color: #fff !important;
-}
-
-.crudField .tag {
-    color: #111;
-    font-size: 80%;
-}
-
-.crudButtons input {
-    font-size: 110%;
-}
-
-.crudButtons {
-    margin-top: 20px;
-    border-top: 1px dotted #8B98AD;
-    padding-top: 10px;
-}
-
-.crudFlash {
-    border: 0;
-    -webkit-border-radius: 8px;
-    font-size: 80%;
-    padding: 2px 10px;
-}
-
-.crudField .tag.selected {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-}
-
-.crudField .error {
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: pink;
-    -webkit-box-shadow: none;
-}
 
 /** Login **/
 
@@ -597,49 +477,6 @@ tr.odd {
     display: none;
 }
 
-/** My articles **/
-
-#admin .article {
-    background: #fff;
-    padding: 4px;
-    margin: 0;
-    font-size: 90%;
-}
-
-#admin .article.odd {
-    background: #C0CBE5;
-}
-
-#admin .article a {
-    color: #444;
-}
-
-#newArticle {
-    border-top: 1px dotted #C0CBE5;
-    padding-top: 15px;
-}
-
-#newArticle a {
-    background: #C88116;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    padding: 5px 10px;
-    font-size: 80%;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
-}
-
-#newArticle a span {
-    background: #7D510E;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    padding: 0 5px 2px 5px;
-    position: relative;
-    top: -1px;
-}
-
 .hasError {
     background: pink;
 }
@@ -656,12 +493,6 @@ h1.smaller {
     color: #BAC36E;
 }
 
-.review_content {
-    font-size: 13px;
-    font-weight: normal;
-    margin: auto;
-}
-
 #content_2, #content_3 {
     display: none;
 }
@@ -675,6 +506,14 @@ h1.smaller {
     font-weight: bold;
     text-decoration: none;
 }
+
+.userLabel {
+    float: right;
+    margin-right: 0.5em;
+}
+
+
+/** Right Widgets **/
 
 .widget-box {
     color: #fff;

@@ -38,7 +38,7 @@ public class MapUtil {
 
         // And there's nothing more to do: the entries are sorted by value!
         for ( Map.Entry<String,Integer> entry : set ) {
-            System.out.println("Set entries: " + entry.getKey() + " -> " + entry.getValue());
+//            System.out.println("Set entries: " + entry.getKey() + " -> " + entry.getValue());
         }
 
 
@@ -46,19 +46,19 @@ public class MapUtil {
         Map<String,Integer> myMap = new HashMap<String,Integer>();
         // When iterating over the set the order is still good in the println...
         for ( Map.Entry<String,Integer> entry : set ) {
-            System.out.println("Added to result map entries: " + entry.getKey() + " " + entry.getValue());
+//            System.out.println("Added to result map entries: " + entry.getKey() + " " + entry.getValue());
             myMap.put(entry.getKey(), entry.getValue());
         }
 
         // But once they are in the hashmap, the order is not kept!
         for ( Integer value : myMap.values() ) {
-            System.out.println("Result map values: " + value);
+//            System.out.println("Result map values: " + value);
         }
         // Also this way doesn't work:
         // Logic because the entryset is a hashset for hashmaps and not a treeset
         // (and even if it was a treeset, it would be on the keys only)
         for ( Map.Entry<String,Integer> entry : myMap.entrySet() ) {
-            System.out.println("Result map entries: " + entry.getKey() + " -> " + entry.getValue());
+//            System.out.println("Result map entries: " + entry.getKey() + " -> " + entry.getValue());
         }
 
         
@@ -80,7 +80,7 @@ public class MapUtil {
         List<Company> list = new ArrayList<Company>();
 
         for ( Map.Entry<String,Integer> entry : set ) {
-            System.out.println("Set entries: " + entry.getKey() + " -> " + entry.getValue());
+//            System.out.println("Set entries: " + entry.getKey() + " -> " + entry.getValue());
             Company company = Company.find("orgName", entry.getKey()).first();
             list.add(company);
         }

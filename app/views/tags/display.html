@@ -59,9 +59,6 @@
 
             #{form @Application.postComment(_article.id)}
                 <p>
-                    ${session.get("userAlias")}
-                </p>
-                <p>
                     <label for="content">comment: </label>
                     <textarea name="content" id="content" rows="4" cols="20"></textarea>
                 </p>

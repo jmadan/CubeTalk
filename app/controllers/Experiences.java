@@ -76,15 +76,31 @@ public class Experiences extends Controller {
         Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
         AnonymousUser anonymousUser = null;
 
-        if(!session.contains("anonymousUserId")){
-            anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),Http.Request.current().params.get("jobEndingYear"),
-                Http.Request.current().params.get("job_title"), Http.Request.current().params.get("employerCountryName"),Http.Request.current().params.get("employerCityName")).save();
+        if(session.get("userAlias").isEmpty() && !session.contains("anonymousUserId")){
+            anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
+                    Http.Request.current().params.get("jobEndingYear"),
+                    Http.Request.current().params.get("job_title"),
+                    Http.Request.current().params.get("employerCountryName"),
+                    Http.Request.current().params.get("employerCityName"), null).save();
 
             session.put("anonymousUserId", anonymousUser.id);
         }
-        else{
+        else if(!session.get("userAlias").isEmpty()){
+            User user = User.find("userEmail", session.get("userEmail")).first();
+            anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
+                    Http.Request.current().params.get("jobEndingYear"),
+                    Http.Request.current().params.get("job_title"),
+                    Http.Request.current().params.get("employerCountryName"),
+                    Http.Request.current().params.get("employerCityName"), user.id).save();
+
+            session.put("anonymousUserId", anonymousUser.id);
+
             System.out.println(session.get("anonymousUserId"));
+            System.out.println(session.get("userAlias"));
             anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
+        }
+        else {
+            System.out.println(session.get("anonymousUserId"));
         }
 
         CubeReview cubeReview = new CubeReview(Http.Request.current().params.get("reviewType"),company, Http.Request.current().params.get("headlineAnswer"),

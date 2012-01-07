@@ -25,6 +25,7 @@ GET    /experiences/saved                      Experiences.showpage
 
 # Login
 POST    /authenticate/singIn                   Authenticate.signIn
+GET    /authenticate/singOut                  Authenticate.signOut
 GET     /authenticate/index                    Authenticate.index
 
 # Company

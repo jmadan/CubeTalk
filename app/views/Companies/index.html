@@ -46,6 +46,7 @@
                     <br>
                     "${reviews.review_heading}" - <a href="/companies/${reviews.company.toString()}">Full Review</a>
                 </div>
+                <hr width="300px" align="left">
             </td>
         </tr>
         #{/list}
@@ -57,20 +58,22 @@
     </div>
     <div class="section-overview">
      <table class="tableData">
-        %{  maxrows = (int) Math.ceil((double)companyCategories.size()/4);
+        %{  maxrows = (int) Math.ceil((double)companyCategories.size()/2);
             cat=0
             for(ii=0;ii<maxrows;ii++){
         %}
         <tr>
             %{    for(jj=0;jj<2;jj++){
             %}
+                #{if cat < companyCategories.size()}
                 <td>
                     <div class="category-text">
                         <a href="/companies/category/${companyCategories.get(cat).toString().replace(' ', '-')}">${companyCategories.get(cat)}</a>
                     </div>
                 </td>
+                %{cat++;}%
+                #{/if}
             %{
-                cat++;
                 }
             }%
         </tr>
