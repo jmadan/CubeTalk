@@ -5,7 +5,13 @@
         <p align="center">No Results for your search</p>
     </div>
     <div class="section-overview">
-
+        #{ifErrors}
+        <p class="error" align="center">
+            #{errors}
+            ${error.message("search")}<br>
+            #{/errors}
+        </p>
+        #{/ifErrors}
         <p>Try another keyword in the search box.</p>
         <p>Did we miss your company? Email us at admin@cube-talk.com</p>
 

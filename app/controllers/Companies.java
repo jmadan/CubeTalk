@@ -43,16 +43,19 @@ public class Companies extends Controller {
     public static void search(){
         
         String searchString = request.params.get("searchCompany");
+
         validation.required(searchString);
-        
         if(validation.hasErrors()){
-            render("/errors/error.html");
+//            for(Error error : validation.errors()) {
+//                System.out.println(error.message());
+//            }
+            render("/errors/search.html");
         }
         
         Company company = Company.find("orgName like ?","%"+searchString+"%").first();
         List<Company> similarCompanies = Company.find("orgName like ?","%"+searchString+"%").fetch();
 
-        validation.required(company);
+        
         if(validation.hasErrors()){
             for(Error error : validation.errors()) {
                 System.out.println(error.message());

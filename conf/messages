@@ -2,7 +2,7 @@
 # For example, for French create a messages.fr file
 #
 
-validation.required = *%s is required.
-userEmail = Email
-userPassword = Password
-userAlias = Alias
+userEmail = Please enter a valid Email address
+userPassword = Please enter a valid Password.
+userAlias = Please enter a valid Alias.
+search = More than 2 characters are required.

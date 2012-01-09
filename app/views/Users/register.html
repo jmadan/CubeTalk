@@ -1,6 +1,16 @@
 #{extends 'main.html' /}
 #{set title:'Register' /}
 
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#registerForm').submit(function(){
+    if($('#userAlias').attr('value').length<5){$('#formError').text('Alias should be minimum of 5 characters');return false;}
+    if($('#userEmail').attr('value').length==0){$('#formError').text('Please enter a valid email address');return false;}
+    if($('#userPassword').attr('value').length<8){$('#formError').text('Password should be minimum of 8 characters');return false;}
+    });
+    });
+</script>
+
 <div class="one-column">
        <div class="section-header">
            <span align="center">Join Cube-Talk community...It's Free</span>
@@ -10,14 +20,15 @@
             All posted anonymously by those on the inside. A user account is required to post your reviews and rate the organizations.
             <p align="center">Create a Cube-Talk.com account</p>
         </div>
-         #{form @Users.registerUser(), id:"registerForm"}
-        #{ifErrors}
-          <p class="error" align="center">
-            #{errors}
-              ${error}<br>
-            #{/errors}
-          </p>
-        #{/ifErrors}
+         #{form @Users.registerUser(), id:'registerForm'}
+        <div id="formError" class="error"></div>
+        <!--#{ifErrors}-->
+          <!--<p class="error" align="center">-->
+            <!--#{errors}-->
+              <!--${error}<br>-->
+            <!--#{/errors}-->
+          <!--</p>-->
+        <!--#{/ifErrors}-->
         <div class="section-text">
         <table align="center">
             <tr>
@@ -25,7 +36,7 @@
                     User Alias:
                 </td>
                 <td align="left">
-                    <input type="text" id="user.Alias" name="userAlias" size="25" class="inputField"/>
+                    <input type="text" id="userAlias" name="userAlias" size="25" class="inputField"/>
                 </td>
             </tr>
             <tr><td colspan="2">&nbsp;</td></tr>

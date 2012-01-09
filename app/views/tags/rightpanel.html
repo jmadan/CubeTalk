@@ -1,9 +1,15 @@
+<script type="text/javascript">
+function defvalue(){if(document.getElementById('searchCompany').value.length==0){document.getElementById('searchCompany').value='Company Name';}}
+    $(document).ready(function(){$('#searchForm').submit(function(){if($('#searchCompany').attr('value').length<2){$('#searchError').text('Please enter more than 2 characters');return false;}})});
+
+</script>
 <div class="content">
     <div class="section-header">
         Search Company
     </div>
     <div class="section-overview">
         #{form @Companies.search(), id:'searchForm'}
+        <div id="searchError" class="error"></div>
         <table class="tableData">
             <tr>
                 <td>

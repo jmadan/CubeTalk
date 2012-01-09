@@ -19,11 +19,17 @@ public class Users extends Controller{
         render();
     }
 
-    public static void registerUser(@Required String userAlias,@Required String userEmail,@Required String password) {
+    public static void registerUser() {
+        String userAlias = request.params.get("userAlias");
+        String userEmail = request.params.get("userEmail");
+        String userpass = request.params.get("userPassword");
+        Boolean tnc = Boolean.valueOf(request.params.get("tnc"));
+        String profile = "member" ;
         if(validation.hasErrors()){
             render("Users/register.html");
         }
-        User newUser = new User(userAlias, userEmail, password).save();
+        User newUser = new User(userAlias, userEmail, userpass, profile, false, tnc).save();
+        render("/Users/registered.html");
     }
 
     public static void forgot(){

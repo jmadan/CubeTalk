@@ -17,8 +17,10 @@ public class Authenticate extends Controller {
     public static void signIn(@Required String userEmail, @Required String userPassword){
         validation.required(userEmail, "Please Enter a valid Email");
         validation.required(userPassword, "Please Enter a valid Password");
+        
+        String encryptPassword = User.getPassword(userPassword);
 
-        User user = User.find("byUserEmailAndPassword", userEmail, userPassword).first();
+        User user = User.find("byUserEmailAndPassword", userEmail, encryptPassword).first();
         if(validation.hasErrors()){
             params.flash(); // add http parameters to the flash scope
             validation.keep();
