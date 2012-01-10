@@ -17,15 +17,21 @@ public class Authenticate extends Controller {
     public static void signIn(@Required String userEmail, @Required String userPassword){
         validation.required(userEmail, "Please Enter a valid Email");
         validation.required(userPassword, "Please Enter a valid Password");
-        
-        String encryptPassword = User.getPassword(userPassword);
 
-        User user = User.find("byUserEmailAndPassword", userEmail, encryptPassword).first();
+
         if(validation.hasErrors()){
             params.flash(); // add http parameters to the flash scope
             validation.keep();
             System.out.println("Something Wrong!");
             index();
+        }
+
+        String encryptPassword = User.getPassword(userPassword);
+        User user = User.find("byUserEmailAndPassword", userEmail, encryptPassword).first();
+        if(user == null){
+            params.flash();
+            flash.error("Login failed. Please check your email/password combination and try again.");
+            render("/authenticate/index.html");
         }
 
         session.put("userAlias", user.userAlias);

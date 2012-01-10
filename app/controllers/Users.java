@@ -28,8 +28,16 @@ public class Users extends Controller{
         if(validation.hasErrors()){
             render("Users/register.html");
         }
-        User newUser = new User(userAlias, userEmail, userpass, profile, false, tnc).save();
-        render("/Users/registered.html");
+        User existingUser = User.find("userAlias", userAlias).first();
+        if (existingUser == null){
+            User newUser = new User(userAlias, userEmail, userpass, profile, false, tnc).save();
+            render("/Users/registered.html");
+        }
+        else{
+            params.flash();
+            flash.error("User Alias already exists. Please choose another one.");
+            render("/users/register.html");
+        }
     }
 
     public static void forgot(){

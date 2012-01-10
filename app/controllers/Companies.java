@@ -54,7 +54,11 @@ public class Companies extends Controller {
         
         Company company = Company.find("orgName like ?","%"+searchString+"%").first();
         List<Company> similarCompanies = Company.find("orgName like ?","%"+searchString+"%").fetch();
-
+        if(company==null){
+            params.flash();
+            flash.error("Sorry we could not find the searched Company in our Database. Please email us at admin@cube-talk.com with company details.");
+            render("/errors/error.html");
+        }
         
         if(validation.hasErrors()){
             for(Error error : validation.errors()) {

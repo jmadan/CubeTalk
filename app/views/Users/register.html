@@ -21,7 +21,7 @@
             <p align="center">Create a Cube-Talk.com account</p>
         </div>
          #{form @Users.registerUser(), id:'registerForm'}
-        <div id="formError" class="error"></div>
+        <div id="formError" class="error">${flash.error}</div>
         <!--#{ifErrors}-->
           <!--<p class="error" align="center">-->
             <!--#{errors}-->
@@ -36,7 +36,7 @@
                     User Alias:
                 </td>
                 <td align="left">
-                    <input type="text" id="userAlias" name="userAlias" size="25" class="inputField"/>
+                    <input type="text" id="userAlias" name="userAlias" size="25" class="inputField" value="${flash.userAlias}"/>
                 </td>
             </tr>
             <tr><td colspan="2">&nbsp;</td></tr>
@@ -45,7 +45,7 @@
                     Email:
                 </td>
                 <td align="left">
-                    <input type="text" id="userEmail" name="userEmail" size="25" class="inputField"/>
+                    <input type="text" id="userEmail" name="userEmail" size="25" class="inputField" value="${flash.userEmail}"/>
                 </td>
             </tr>
             <tr><td colspan="2">&nbsp;</td></tr>

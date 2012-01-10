@@ -1,6 +1,8 @@
 <script type="text/javascript">
 function defvalue(){if(document.getElementById('searchCompany').value.length==0){document.getElementById('searchCompany').value='Company Name';}}
-    $(document).ready(function(){$('#searchForm').submit(function(){if($('#searchCompany').attr('value').length<2){$('#searchError').text('Please enter more than 2 characters');return false;}})});
+    $(document).ready(function(){$('#searchForm').submit(function(){if($('#searchCompany').attr('value').length<2){$('#searchError').text('Please enter more than 2 characters');return false;}
+    if($('#searchCompany').attr('value')=='Company Name'){$('#searchError').text('Please enter valid company name.');return false;}
+    })});
 
 </script>
 <div class="content">
