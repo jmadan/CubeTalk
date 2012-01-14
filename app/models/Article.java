@@ -41,8 +41,10 @@ public class  Article extends Model {
     public List<Comment> comments;
 
     public Date submit_date;
+    
+    public String tags;
 
-    public Article(String title, String content, User author, Category category, boolean approved, Blob articleImage){
+    public Article(String title, String content, User author, Category category, boolean approved, Blob articleImage, String tags){
         this.title = title;
         this.content = sanitizeContent(content);
         this.author = author;
@@ -52,6 +54,7 @@ public class  Article extends Model {
         this.comments = new ArrayList<Comment>();
         this.article_view = 0;
 		this.articleImage = articleImage;
+        this.tags = tags;
     }
 
     private String sanitizeContent(String content) {
@@ -63,9 +66,9 @@ public class  Article extends Model {
         return content;
     }
 
-    public Article addComment(Long articleId, User author, String content) {
+    public Article addComment(Long articleId, String content, String userName, String userEmail) {
         Article article = Article.findById(articleId);
-        Comment newComment = new Comment(article, content, author.userAlias, author.userEmail).save();
+        Comment newComment = new Comment(article, content, userName, userEmail, false).save();
         this.comments.add(newComment);
         this.save();
         return this;

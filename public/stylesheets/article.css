@@ -1,3 +1,4 @@
+/** ${_as == 'teaser' ? 'teaser' : ''}**/
 /** Display Article **/
 .article {
 	margin: 0;
@@ -71,7 +72,7 @@
 /** Comments **/
 
 .comments {
-    margin-bottom: 30px;
+    margin: 0;
 }
 
 .comment {
@@ -79,23 +80,22 @@
     clear: both;
 }
 
-.comment .comment-metadata {
+.comment-metadata {
     color: #869AB1;
     display: block;
-    font-size: 50%;
-    display: block;
+    font-size: 14px;
+    display: inline-block;
     float: left;
-    width: 80px;
     text-align: right;
 }
 
-.comment .comment-author {
-    font-size: 150%;
+.comment-author {
+    font-size: 13px;
     font-weight: bold;
     display: block;
 }
 
-.comment .comment-content {
+.comment-content {
     position: relative;
     background: #E4EAFF;
     color: #242C58;
@@ -108,7 +108,7 @@
     -moz-border-radius: 10px;
 }
 
-.comment .about {
+.about {
     text-indent: -999em;
     display: block;
     width: 0;

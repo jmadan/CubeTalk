@@ -16,7 +16,7 @@ public class Articles extends Controller {
     }
 
     public static void show(String title) {
-        Article article = Article.find("title", title.replace('-', ' ')).first();
+        Article article = Article.find("title = ? and approved=true", title.replace('-', ' ')).first();
         article.article_view += 1;
         article.save();
 
@@ -32,18 +32,22 @@ public class Articles extends Controller {
         if(page == 0){
             page = 1;
         }
-        List<Article> articlesSize = Article.find("order by submit_date desc").fetch();
+        List<Article> articlesSize = Article.find("approved = true order by submit_date desc").fetch();
         int noOfPages = (int) Math.ceil((double)articlesSize.size()/10);
-        List<Article> articles = Article.find("order by submit_date desc").fetch(page, 10);
+        List<Article> articles = Article.find("approved = true order by submit_date desc").fetch(page, 10);
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
         List<Article> topViewed = Application.getTopViewedArticles();
         render(articles, page, noOfPages, topViewed, cubeReviewsList);
     }
 
-    public static void postComment(Long id, String content, String userAlias){
+    public static void postComment(Long id){
         Article article = Article.findById(id);
-        User user = User.find("byUserEmailAndUserAlias", session.get("userEmail"),session.get("userAlias")).first();
-        article.addComment(article.id,user,content);
+//        User user = User.find("byUserEmailAndUserAlias", session.get("userEmail"),session.get("userAlias")).first();
+        String content = request.params.get("content");
+        String userName = request.params.get("userName");
+        String userEmail = request.params.get("userEmail");
+        article.addComment(article.id,content, userName, userEmail);
+        show(article.title.replace(" ","-"));
     }
 
     public Article previous() {
@@ -52,6 +56,12 @@ public class Articles extends Controller {
 
     public Article next() {
         return Article.find("submit_date > ? order by submit_date asc").first();
+    }
+    
+    public static int getCommentsSize(int id){
+        System.out.println("id------"+id);
+        List<Comment> comments = Comment.find("article_id =? and approved=1", id).fetch();
+        return comments.size();
     }
 
 }

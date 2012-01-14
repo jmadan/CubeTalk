@@ -13,8 +13,9 @@ POST    /sendPasswordEmail                      Application.sendPasswordEmail
 # Article
 GET     /articles/{page}                        Articles.index
 GET     /articles/                              Articles.index
-GET     /articles/show/{title}                       Articles.show
+GET     /articles/show/{title}                  Articles.show
 POST    /articles/{id}                          Articles.postComment
+GET     /articles/getCommentsSize/{id}          Articles.getCommentsSize
 
 # Experience
 GET     /experiences/                           Experiences.index

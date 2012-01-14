@@ -15,7 +15,7 @@ public class Application extends Controller {
     }
 
     public static void index() {
-        List<Article> homePagePost = Article.find("order by submit_date desc").fetch(1);
+        List<Article> homePagePost = Article.find("approved = true order by submit_date desc").fetch(1);
 
         Company homeCompany = Company.getHomeCompany();
         List<Article> topViewed = getTopViewedArticles();
@@ -25,16 +25,11 @@ public class Application extends Controller {
     }
 
     public static List<Article> getTopViewedArticles() {
-        return Article.find("order by article_view desc").fetch();
+        return Article.find("approved = true order by article_view desc").fetch();
     }
 
     public static void show(Long id) {
         Article article = Article.findById(id);
-        render(article);
-    }
-
-    public static void showArticle(String title) {
-        Article article = Article.find("byTitle", title).first();
         render(article);
     }
 

@@ -6,7 +6,7 @@
             #{list items:_articles, as:'article'}
                  <div class="text">
                      <div class="listBox">
-                         <a href="/articles/${article.title.slugify()}">${article.title}</a>
+                         <a href="/articles/show/${article.title.replace(' ','-')}">${article.title}</a>
                          <br>
                          <div class="widget-metadata">
                              - by ${article.author.firstName}

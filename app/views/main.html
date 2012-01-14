@@ -41,9 +41,8 @@
                 </li>
             </ul>
             <div id="title">
-                <span class="about">About this blog</span>
-                <h2>${blogBaseline}
-                </h2>
+
+                <h2>${blogBaseline}</h2>
                 #{if session.contains("loggedIn")}
                 <div class="userLabel">
                     <h2>hello ${session.get("userAlias")}</h2>

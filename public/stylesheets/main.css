@@ -43,7 +43,7 @@ h3 {
 }
 
 h3 span {
-    font-size: 70%;
+    font-size: 18px;
     font-weight: normal;
 }
 
@@ -383,27 +383,6 @@ form {
     border: solid 2px #DFDFDF;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-}
-
-textarea {
-    color: #000000;
-    border: solid 2px #DFDFDF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-}
-
-.labelClass {
-    font-size: 10px;
-}
-
-input.radio {
-    display: inline;
-    margin-left: 0.5em;
-}
-
-#captcha{
-    display: block;
-    height: 50px;
 }
 
 .success {
