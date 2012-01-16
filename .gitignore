@@ -6,6 +6,7 @@ logs/
 test-result/
 lib/
 tmp/
+module/
 out
 .idea
 .settings
