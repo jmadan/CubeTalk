@@ -18,13 +18,13 @@ public class ArticleTest extends UnitTest {
     @Test
     public void createPost() {
         // Create a new user and save it
-        User bob = new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","password").save();
+        User bob = new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","password", "member", true, true).save();
 
         //Create a new Category and save it
         Category category = new Category("Tech", "Some Description").save();
 
         // Create a new post
-        new Article("My first post", "Hello world", bob, category, true).save();
+        new Article("My first post", "Hello world", bob, category, true, null, null).save();
 
         // Test that the post has been created
         assertEquals(1, Article.count());

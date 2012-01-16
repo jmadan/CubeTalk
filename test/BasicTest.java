@@ -15,7 +15,8 @@ public class BasicTest extends UnitTest {
 
     @Test
     public void createAndRetrieveUser(){
-        new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","password").save();
+
+        new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","password", "member", true, true).save();
 
         User jd = User.find("byUserEmail","jasdeepm@gmail.com").first();
 
@@ -25,7 +26,7 @@ public class BasicTest extends UnitTest {
 
     @Test
     public void tryConnectAsUser(){
-        new User("Ramnik","Kaur","RK","ramneek25@gmail.com","password").save();
+        new User("Ramnik","Kaur","RK","ramneek25@gmail.com","password","member", true, true).save();
 
         assertNotNull(User.connect("ramneek25@gmail.com","password"));
         assertNull(User.connect("ramneek251@gmail.com", "password"));
@@ -45,7 +46,7 @@ public class BasicTest extends UnitTest {
     public void createAndRetrieveCompany(){
         IndustryType industryType = new IndustryType("IT","Information Technology").save();
 
-        new Company("TW", "www.thoughtworks.com", "decent company", industryType, true).save();
+        new Company("TW", "www.thoughtworks.com", "decent company", industryType, true, null).save();
 
         Company company = Company.find("byOrgName", "TW").first();
 
@@ -57,7 +58,7 @@ public class BasicTest extends UnitTest {
     public void createCompany(){
         IndustryType industryType = new IndustryType("IT","Information Technology").save();
 
-        Company tw = new Company("TW", "www.thoughtworks.com", "decent company", industryType, true).save();
+        Company tw = new Company("TW", "www.thoughtworks.com", "decent company", industryType, true, null).save();
 
         new CompanyAddress("some Address","India","HQ", tw).save();
 
@@ -72,8 +73,8 @@ public class BasicTest extends UnitTest {
     public void companyRating(){
         IndustryType industryType = new IndustryType("IT","Information Technology").save();
 
-        Company tw = new Company("TW", "www.thoughtworks.com", "decent company", industryType, true).save();
-        User jd = new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","password").save();
+        Company tw = new Company("TW", "www.thoughtworks.com", "decent company", industryType, true, null).save();
+        User jd = new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","password", "member", true, true).save();
 
 //        CubeRating companyRating = new CubeRating(tw, jd, "Equality & Fairness", 3, true).save();
 

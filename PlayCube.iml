@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/modules" />
+      <excludeFolder url="file://$MODULE_DIR$/test-result" />
     </content>
     <content url="file://$USER_HOME$/SoftwareLibs/play/modules/crud">
       <sourceFolder url="file://$USER_HOME$/SoftwareLibs/play/modules/crud/app" isTestSource="false" />
