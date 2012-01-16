@@ -1,1 +1,1 @@
-web:    play run --http.port=8000 $PLAY_OPTS
+web:    play run --http.port=$PORT $PLAY_OPTS
