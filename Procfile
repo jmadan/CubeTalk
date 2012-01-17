@@ -1,1 +1,1 @@
-web: play run --http.port=$PORT $PLAY_OPTS jpda.port=$PORT
+web: play run --http.port=$PORT $PLAY_OPTS
