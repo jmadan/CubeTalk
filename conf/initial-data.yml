@@ -1,0 +1,185 @@
+
+IndustryType(Aerospace&DefenseCompanies):
+             industry_type: Aerospace & Defense Companies
+             description: Aerospace & Defense Companies
+             created_on: 2012-01-01
+
+IndustryType(AgricultureCompanies):
+             industry_type: Agriculture Companies
+             description: Agriculture Companies
+             created_on: 2012-01-01
+
+IndustryType(Automotive&TransportCompanies):
+             industry_type: Automotive & Transport Companies
+             description: Automotive & Transport Companies
+             created_on: 2012-01-01
+
+IndustryType(BankingCompanies):
+             industry_type: Banking Companies
+             description: Banking Companies
+             created_on: 2012-01-01
+
+IndustryType(BeveragesCompanies):
+             industry_type: Beverages Companies
+             description: Beverages Companies
+             created_on: 2012-01-01
+
+IndustryType(BusinessServicesCompanies):
+             industry_type: Business Services Companies
+             description: Business Services Companies
+             created_on: 2012-01-01
+
+IndustryType(CharitableOrganizationsCompanies):
+             industry_type: Charitable Organizations Companies
+             description: Charitable Organizations Companies
+             created_on: 2012-01-01
+
+IndustryType(ChemicalsCompanies):
+             industry_type: Chemicals Companies
+             description: Chemicals Companies
+             created_on: 2012-01-01
+
+IndustryType(ComputerHardwareCompanies):
+             industry_type: Computer Hardware Companies
+             description: Computer Hardware Companies
+             created_on: 2012-01-01
+
+IndustryType(ComputerServicesCompanies):
+             industry_type: Computer Services Companies
+             description: Computer Services Companies
+             created_on: 2012-01-01
+
+IndustryType(ComputerSoftwareCompanies):
+             industry_type: Computer Software Companies
+             description: Computer Software Companies
+             created_on: 2012-01-01
+
+IndustryType(ConstructionCompanies):
+             industry_type: Construction Companies
+             description: Construction Companies
+             created_on: 2012-01-01
+
+IndustryType(ConsumerProductsCompanies):
+             industry_type: Consumer Products Companies
+             description: Consumer Products Companies
+             created_on: 2012-01-01
+
+IndustryType(ConsumerServicesCompanies):
+             industry_type: Consumer Services Companies
+             description: Consumer Services Companies
+             created_on: 2012-01-01
+
+IndustryType(CulturalInstitutionsCompanies):
+             industry_type: Cultural Institutions Companies
+             description: Cultural Institutions Companies
+             created_on: 2012-01-01
+
+IndustryType(EducationCompanies):
+             industry_type: Education Companies
+             description: Education Companies
+             created_on: 2012-01-01
+
+IndustryType(ElectronicsCompanies):
+             industry_type: Electronics Companies
+             description: Electronics Companies
+             created_on: 2012-01-01
+
+IndustryType(Energy&UtilitiesCompanies):
+             industry_type: Energy & Utilities Companies
+             description: Energy & Utilities Companies
+             created_on: 2012-01-01
+
+IndustryType(EnvironmentalServices&EquipmentCompanies):
+             industry_type: Environmental Services & Equipment Companies
+             description: Environmental Services & Equipment Companies
+             created_on: 2012-01-01
+
+IndustryType(FinancialServicesCompanies):
+             industry_type: Financial Services Companies
+             description: Financial Services Companies
+             created_on: 2012-01-01
+
+IndustryType(FoodCompanies):
+             industry_type: Food Companies
+             description: Food Companies
+             created_on: 2012-01-01
+
+IndustryType(FoundationsCompanies):
+             industry_type: Foundations Companies
+             description: Foundations Companies
+             created_on: 2012-01-01
+
+IndustryType(GovernmentCompanies):
+             industry_type: Government Companies
+             description: Government Companies
+             created_on: 2012-01-01
+
+IndustryType(HealthCareCompanies):
+             industry_type: Health Care Companies
+             description: Health Care Companies
+             created_on: 2012-01-01
+
+IndustryType(IndustrialManufacturingCompanies):
+             industry_type: Industrial Manufacturing Companies
+             description: Industrial Manufacturing Companies
+             created_on: 2012-01-01
+
+IndustryType(InsuranceCompanies):
+             industry_type: Insurance Companies
+             description: Insurance Companies
+             created_on: 2012-01-01
+
+IndustryType(LeisureCompanies):
+             industry_type: Leisure Companies
+             description: Leisure Companies
+             created_on: 2012-01-01
+
+IndustryType(MediaCompanies):
+             industry_type: Media Companies
+             description: Media Companies
+             created_on: 2012-01-01
+
+IndustryType(MembershipOrganizationsCompanies):
+             industry_type: Membership Organizations Companies
+             description: Membership Organizations Companies
+             created_on: 2012-01-01
+
+IndustryType(Metals&MiningCompanies):
+             industry_type: Metals & Mining Companies
+             description: Metals & Mining Companies
+             created_on: 2012-01-01
+
+IndustryType(PharmaceuticalsCompanies):
+             industry_type: Pharmaceuticals Companies
+             description: Pharmaceuticals Companies
+             created_on: 2012-01-01
+
+IndustryType(RealEstateCompanies):
+             industry_type: Real Estate Companies
+             description: Real Estate Companies
+             created_on: 2012-01-01
+
+IndustryType(RetailCompanies):
+             industry_type: Retail Companies
+             description: Retail Companies
+             created_on: 2012-01-01
+
+IndustryType(SecurityProducts&ServicesCompanies):
+             industry_type: Security Products & Services Companies
+             description: Security Products & Services Companies
+             created_on: 2012-01-01
+
+IndustryType(TelecommunicationsEquipmentCompanies):
+             industry_type: Telecommunications Equipment Companies
+             description: Telecommunications Equipment Companies
+             created_on: 2012-01-01
+
+IndustryType(TelecommunicationsServicesCompanies):
+             industry_type: Telecommunications Services Companies
+             description: Telecommunications Services Companies
+             created_on: 2012-01-01
+
+IndustryType(TransportationServicesCompanies):
+             industry_type: Transportation Services Companies
+             description: Transportation Services Companies
+             created_on: 2012-01-01

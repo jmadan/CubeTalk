@@ -76,9 +76,11 @@ public class Company extends Model {
 
     public static Company getHomeCompany() {
         Company company = homePageCompany();
-        while (company.companyReviews.size() == 0)
-        {
-            company = homePageCompany();
+        if(company != null){
+            while (company.companyReviews.size() == 0)
+            {
+                company = homePageCompany();
+            }
         }
 
         return company;
