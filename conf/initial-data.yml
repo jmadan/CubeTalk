@@ -183,3 +183,62 @@ IndustryType(TransportationServicesCompanies):
              industry_type: Transportation Services Companies
              description: Transportation Services Companies
              created_on: 2012-01-01
+
+Company(Thoughtworks):
+            orgName = ThoughtWorks
+            website = www.thoughtworks.com
+            overview = ThoughtWorks is not your typical company. Talented, driven and principled people who are passionate about software, brought together because they want to do something amazing.<br>ThoughtWorks was founded by Roy Singham in a Chicago basement in 1993. Roy's formula for success from the start was "Attitude, Aptitude, and Integrity" – he built ThoughtWorks upon the firm belief that communities of talented, driven, and principled people could move mountains.<br>Today Thoughtworks employ over 1700 people across the globe. With a reputation as leaders and experts in the industry. <br>Software development with ThoughtWorks feels and looks different: it is fast, evolutionary, even fun. There are no secrets – you can walk into a ThoughtWorks project room and see exactly where we are at a single glance.
+            created_on = 2012-01-01
+            approved = true
+
+CubeQuestion(Professional Growth):
+            created_on: 2012-01-01
+            description: Professional Growth
+            question: Your opportunities for professional growth at %s?
+
+CubeQuestion(Compensation):
+            created_on: 2012-01-01
+            description: Compensation
+            question: Your compensation compared with similar jobs elsewhere?
+
+CubeQuestion(Benefits):
+            created_on: 2012-01-01
+            description: Benefits
+            question: Your benefits package compared with similar employers?
+
+CubeQuestion(Management Communication):
+            created_on: 2012-01-01
+            description: Management Communication
+            question: Communications from management about important issues and changes?
+
+CubeQuestion(Recommendation):
+            created_on: 2012-01-01
+            description: Recommendation
+            question: Would you recommend ThoughtWorks to your friends?
+
+CubeQuestion(Feedback):
+            created_on: 2012-01-01
+            description: Feedback
+            question: Feedback on your performance?
+
+CubeQuestion(Leadership):
+            created_on: 2012-01-01
+            description: Leadership
+            question: Leadership abilities of Management?
+
+CubeQuestion(Work Life Balance):
+            created_on: 2012-01-01
+            description: Leadership
+            question: Work Life balance at %s?
+
+CubeQuestion(Knowledge Sharing):
+            created_on: 2012-01-01
+            description: Leadership
+            question: Information and knowledge sharing within %s?
+
+CubeQuestion(Satisfied):
+            created_on: 2012-01-01
+            description: Satisfied
+            question: How satisfied are you at %s?
+
+

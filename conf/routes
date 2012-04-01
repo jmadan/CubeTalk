@@ -15,18 +15,18 @@ GET     /articles/{page}                        Articles.index
 GET     /articles/                              Articles.index
 GET     /articles/show/{title}                  Articles.show
 POST    /articles/{id}                          Articles.postComment
-GET     /articles/getCommentsSize/{id}          Articles.getCommentsSize
+GET     /articles/getcommentssize/{id}          Articles.getCommentsSize
 
 # Experience
 GET     /experiences/                           Experiences.index
 GET     /experiences/show                       Experiences.show
-GET     /experiences/postExperience/{orgName}   Experiences.postExperience
-POST    /experiences/saveReview                 Experiences.saveReview
+GET     /experiences/postexperience/{orgName}   Experiences.postExperience
+POST    /experiences/savereview                 Experiences.saveReview
 GET     /experiences/saved                      Experiences.showpage
 
 # Login
-POST    /authenticate/singIn                   Authenticate.signIn
-GET     /authenticate/singOut                  Authenticate.signOut
+POST    /authenticate/singin                   Authenticate.signIn
+GET     /authenticate/singout                  Authenticate.signOut
 GET     /authenticate/index                    Authenticate.index
 
 # Company
@@ -38,8 +38,8 @@ GET     /companies/search                      Companies.search
 # User
 GET    /users/register                         Users.register
 GET    /users/forgot                           Users.forgot
-POST   /users/registerUser                     Users.registerUser
-POST   /users/forgotPassword                   Users.forgotPassword
+POST   /users/registeruser                     Users.registerUser
+POST   /users/forgotpassword                   Users.forgotPassword
 
 # MyCube
 GET    /mycubes                                 MyCubes.index

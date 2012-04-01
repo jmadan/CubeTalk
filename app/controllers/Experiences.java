@@ -2,7 +2,6 @@ package controllers;
 
 import models.*;
 import play.Play;
-import play.data.validation.Required;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -76,7 +75,7 @@ public class Experiences extends Controller {
         Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
         AnonymousUser anonymousUser = null;
 
-        if(session.get("userAlias").isEmpty() && !session.contains("anonymousUserId")){
+        if(!session.contains("loggedIn") && !session.contains("anonymousUserId")){
             anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
                     Http.Request.current().params.get("jobEndingYear"),
                     Http.Request.current().params.get("job_title"),
@@ -85,7 +84,7 @@ public class Experiences extends Controller {
 
             session.put("anonymousUserId", anonymousUser.id);
         }
-        else if(!session.get("userAlias").isEmpty()){
+        else if(session.contains("loggedIn")){
             User user = User.find("userEmail", session.get("userEmail")).first();
             anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
                     Http.Request.current().params.get("jobEndingYear"),

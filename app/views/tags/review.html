@@ -1,7 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(function() {
-		$( "input:submit, input:radio, button").button();
+        $('#content_2').hide();
+        $('#content_3').hide();
 	});
 
     $("form#cubeReviewForm").submit(function(){
@@ -50,28 +51,20 @@ $(document).ready(function(){
         });
 });
 </script>
-<script>
-	$(function() {
-		$( "#radio" ).buttonset();
-	});
-	</script>
-
-<div class="one-column">
+<div class="tab-content">
 <div class="section-header">
     Review and Rate your company anonymously
 </div>
-#{form @Experiences.saveReview(), id:'cubeReviewForm'}
+#{form @Experiences.saveReview(), id:'cubeReviewForm', class:'form-horizontal'}
 
-<div id="content_1" class="section-text">
+<div id="content_1" class="tab-pane">
  <table class="tableData">
      <tr>
-        <td width="40%">
+        <td width="40%" colspan="2">
            <p> Review anonymously...</br>
             <small>(You don't even have to tell us your job title or city)</small>
             </p>
-        </td>
-        <td align="left">
-           <input id='reviewType' name="reviewType" type='radio' checked='checked' value="companyReview" />Company Review
+           <input id="reviewType" name="reviewType" type="radio" checked="checked" value="companyReview" />Company Review
          </td>
      </tr>
 	 <tr>
@@ -79,8 +72,8 @@ $(document).ready(function(){
 		   Job Status:
         </td>
         <td align="left">
-           <input id='job_current' type='radio' name='job_status' value='true' checked='checked' />Current Employer
-		   <input id='job_former' type='radio' name='job_status' value='false' />Former Employer
+           <input id="job_current" type="radio" name="job_status" value="true" checked="checked"> Current Employer
+		   <input id='job_former' type='radio' name='job_status' value='false' /> Former Employer
 		</td>
 	</tr>
 	<tr>
@@ -90,7 +83,8 @@ $(document).ready(function(){
 		<td align="left">
             <select class="inputField" name="jobEndingYear" id="jobEndingYear">
                 <option value="1">-- Please Select --</option>
-                <option value="2011" selected="selected">2011</option>
+                <option value="2012" selected="selected">2012</option>
+                <option value="2011">2011</option>
                 <option value="2010">2010</option>
                 <option value="2009">2009</option>
                 <option value="2008">2008</option>
@@ -240,15 +234,14 @@ $(document).ready(function(){
 		<td colspan="2" align="center">
             <br>
             <div class="demo">
-                <input type="submit" value="Review ${_companyReview?.orgName}" id="showReview" >
+                <button class="btn" id="showReview">Review ${_companyReview?.orgName}</button>
             </div>
-		    <!--<a class="button" href='#' id="showReview"><span>Review ${_companyReview?.orgName}</span></a>-->
 		</td>
 	</tr>
 </table>
 </div>
 
-<div id="content_2" class="section-text">
+<div id="content_2" class="tab-pane ">
     <h3>
         <strong>Review a Company</strong>
     </h3>
@@ -312,7 +305,7 @@ $(document).ready(function(){
 
         </div>
 
-<div id="content_3" class="section-text">
+<div id="content_3" class="tab-pane">
 <table class="tableData">
      #{list items:_reviewQuestions, as:'questions'}
         <tr>

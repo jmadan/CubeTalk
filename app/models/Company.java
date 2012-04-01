@@ -77,18 +77,20 @@ public class Company extends Model {
     public static Company getHomeCompany() {
         Company company = homePageCompany();
         if(company != null){
-            while (company.companyReviews.size() == 0)
-            {
-                company = homePageCompany();
-            }
+//            while (company.companyReviews.size() == 0)
+//            {
+//                company = homePageCompany();
+//            }
         }
 
         return company;
     }
 
     public static Company homePageCompany() {
+        if(Company.count() <= 1){
+            return Company.find("order by id desc").first();
+        }
         return Company.find("order by RAND()").first();
-//        return Company.find("orgName", "Thoughtworks").first();
     }
 
     public static String getRatingGraph(List<CubeRating> ratings){

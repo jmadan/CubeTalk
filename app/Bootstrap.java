@@ -17,6 +17,7 @@ public class Bootstrap extends Job{
             new User("Jasdeep","Madan","JD","jasdeepm@gmail.com","98036054","theboss",true,true).save();
             Fixtures.loadModels("initial-data.yml");
         }
+        
     }
 
 

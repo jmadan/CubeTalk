@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/article.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/company.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/ui-lightness/jquery-ui-1.8.16.custom.css'}">
+        <!--<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>-->
+        <script type="text/javascript" src="@{'/public/javascripts/RGraph/RGraph.common.core.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/RGraph/RGraph.common.tooltips.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/RGraph/RGraph.common.effects.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/RGraph/RGraph.pie.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/RGraph/RGraph.common.key.js'}"></script>
+          <!--[if lt IE 9]><script src="@{'/public/javascripts/RGraph/excanvas.original.js'}"></script><![endif]-->
+
+        #{get 'moreScripts' /}
+
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="@{Application.index()}">Cube - Talk.com</a></h1>
+            </div>
+            <ul id="tools">
+                <li>
+                    #{if !session.contains("loggedIn")}
+                        <a href="@{Authenticate.index()}">Sign In</a> |
+                    #{/if}
+                    #{else}
+                        <a href="@{Authenticate.signOut()}">Sign out</a> |
+                    #{/else}
+                    <a href="@{Application.about()}">About Us</a> |
+                    <a href="@{Application.feedback()}">Feedback</a>
+                </li>
+            </ul>
+            <div id="title">
+
+                <h2>${blogBaseline}</h2>
+                #{if session.contains("loggedIn")}
+                <div class="userLabel">
+                    <h2>hello ${session.get("userAlias")}</h2>
+                </div>
+                #{/if}
+            </div>
+            <div id="navigation">
+                <ul>
+                    <li><a href="@{Articles.index(0)}">Posts</a></li>
+                    <!--<li><a href="@{Experiences.index()}">Experience</a></li>-->
+                    <li><a href="@{Companies.index()}">Company</a></li>
+                    <li><a href="@{MyCubes.index()}">My Cube</a></li>
+                    <li><a href="@{Users.register()}">SignUp</a></li>
+                 </ul>
+            </div>
+        </div>
+
+        <div id="main">
+            #{doLayout /}
+        </div>
+
+        <div id="footer">
+            Cube-Talk is your place to rate your professional experience and organization to make informed decision for your next switch.<br>
+            Copyright © 2008-2012, Cube-Talk. All Rights Reserved. Your use of this service is subject to our Terms of Use and Privacy Policy.
+         </div>
+
+    </body>
+</html>
