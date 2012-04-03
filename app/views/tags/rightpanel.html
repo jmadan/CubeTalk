@@ -5,70 +5,75 @@ function defvalue(){if(document.getElementById('searchCompany').value.length==0)
     })});
 
 </script>
-<div class="row">
-    <!--<div class="section-header">-->
+<div class="container">
+    <div class="span">
+        <div class="well">
         <h4><strong>Search Company</strong></h4>
-    <!--</div>-->
-    <div class="section-overview">
-        #{form @Companies.search(), id:'searchForm', class:'well form-search'}
-        <div id="searchError" class="error"></div>
-        <table class="tableData">
-            <tr>
-                <td>
+            #{form @Companies.search(), id:'searchForm', class:'form-inline'}
+            <fieldset>
+            <div id="searchError" class="error"></div>
+            <div class="control-group">
+                <div class="controls">
                     <input type="text" class="input-medium search-query" id="searchCompany" name="searchCompany" value="Company Name" onfocus="javascript:searchCompany.value='';">
-                    <button type="submit" class="btn"><i class=""></i> Search</button>
-                </td>
-            </tr>
-        </table>
-        #{/form}
-    </div>
-
-    #{if _articles}
-    <br>
-    <div class="content">
-        <div class="widget-box">
-            <div class="header">
-                Popular Articles
-            </div>
-            #{list items:_articles, as:'article'}
-            <div class="text">
-                <div class="listBox">
-                    <a href="/articles/${article.title.slugify()}">${article.title}</a>
-                    <br>
-                    <div class="widget-metadata">
-                        - by ${article.author.firstName}
-                    </div>
+                    <button type="submit" class="btn-small">Search</button>
                 </div>
-                <br><hr>
             </div>
-            </br>
-            #{/list}
+            </fieldset>
+            #{/form}
         </div>
-    </div>
-    #{/if}
-    #{if _homePageReview}
-    <br>
-    <div class="content">
-        <div class="widget-box">
-            <div class="header">
-                Latest Reviews
-            </div>
-            #{list items:_homePageReview, as:'reviews'}
-            <div class="text">
-                ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
-            </div>
-            <div class="widget-metadata">
-                "${reviews.review_heading}"
-            </div>
+        <div class="well">
+            #{if _articles}
+            <h4><strong>Popular Articles</strong></h4>
             <br>
-            <div class="widget-detail">
-                Pros: ${reviews.company_pro}
-                <br>
-                Cons: ${reviews.company_con}
+            <div class="content">
+                <div class="widget-box">
+                    <div class="header">
+                        Popular Articles
+                    </div>
+                    #{list items:_articles, as:'article'}
+                    <div class="text">
+                        <div class="listBox">
+                            <a href="/articles/${article.title.slugify()}">${article.title}</a>
+                            <br>
+                            <div class="widget-metadata">
+                                - by ${article.author.firstName}
+                            </div>
+                        </div>
+                        <br><hr>
+                    </div>
+                    </br>
+                    #{/list}
+                </div>
             </div>
-            <hr>
-            #{/list}
+            #{/if}
         </div>
-    #{/if}
+        <div class="well">
+            #{if _homePageReview}
+            <h4><strong>Latest Reviews</strong></h4>
+            <br>
+            <div class="content">
+                <div class="widget-box">
+                    <div class="header">
+                        Latest Reviews
+                    </div>
+                    #{list items:_homePageReview, as:'reviews'}
+                    <div class="text">
+                        ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
+                    </div>
+                    <div class="widget-metadata">
+                        "${reviews.review_heading}"
+                    </div>
+                    <br>
+                    <div class="widget-detail">
+                        Pros: ${reviews.company_pro}
+                        <br>
+                        Cons: ${reviews.company_con}
+                    </div>
+                    <hr>
+                    #{/list}
+                </div>
+            #{/if}
+            </div>
+        </div>
     </div>
 </div>

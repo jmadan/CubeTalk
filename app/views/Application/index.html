@@ -1,28 +1,22 @@
 #{extends 'main.html' /}
 #{set title:'Cube-Talk Home' /}
-    <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span9">
+            <div class="span8">
                 #{if homePagePost.size()>0}
                 #{display article:homePagePost, as:'home' /}
                 #{/if}
                 #{else}
-                <div class="empty">
-                    There is currently nothing to read here.
-                </div>
+                There is currently nothing to read here.
                 #{/else}
-                <br>
+                <hr/>
                 #{ if homeCompany}
                 #{companyDisplay homeCompany:homeCompany /}
                 #{/if}
                 #{else}
-                <div class="empty">
-                    There is currently nothing to read here.
-                </div>
+                There is currently nothing to read here.
                 #{/else}
             </div>
-            <div class="span3">
+            <div class="span4 pull-right">
                 #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
             </div>
         </div>
-    </div>

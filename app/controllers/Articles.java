@@ -21,7 +21,8 @@ public class Articles extends Controller {
         article.save();
 
         List<Article> topViewed = Application.getTopViewedArticles();
-        Company homeCompany = Company.find("orgName", "ThoughtWorks").first();
+//        Company homeCompany = Company.find("orgName", "ThoughtWorks").first();
+        Company homeCompany = Company.getHomeCompany();
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
         List<CubeRating> cubeRatings = homeCompany.getCompanyRatings();
 

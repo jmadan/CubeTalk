@@ -1,9 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'Cube-Talk.com article.title' /}
 
-<div id="left">
-    #{article article:article, as:'full' /}
-</div>
-<div id="right">
-    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+<div class="row-fluid">
+    <div class="span8">
+        #{article article:article, as:'full' /}
+    </div>
+    <div class="span4 pull-right">
+        #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
 	</div>
+</div>

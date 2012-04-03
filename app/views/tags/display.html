@@ -1,69 +1,87 @@
 *{ Display a article in one of these modes: 'full', 'home' or 'teaser' }*
 
-#{list items:_article, as:'articleList'}
-<div class="article">
-    <h2 class="article-title">
-        <a href="/articles/show/${articleList.title.replace(' ','-')}">${articleList.title}</a>
-    </h2>
-    <div class="article-metadata">
-        <span class="article-author">by ${articleList.author.firstName}</span>,
-        <span class="article-date">${articleList.submit_date.format('dd MMM yyyy')}</span>
-        <span class="article-comments">
-            %{vcomments = 0}%
-            #{list items:articleList.comments, as:'validComments'}
-             #{if validComments.approved}
+<div class="row-fluid">
+    <div class="span">
+        #{list items:_article, as:'articleList'}
+            <div class="brand">
+                <h2 class="article-title">
+                    <a href="/articles/show/${articleList.title.replace(' ','-')}">${articleList.title}</a>
+                </h2>
+            </div>
+            <h5>by ${articleList.author.firstName} on ${articleList.submit_date.format('dd MMM yyyy')}, %{vcomments = 0}%
+                #{list items:articleList.comments, as:'validComments'}
+                #{if validComments.approved}
                 %{ vcomments++}%
-             #{/if}
-            #{/list}
-            ${vcomments ?: 'no'} comment${vcomments.pluralize()} , latest by ${articleList.comments[0].userAlias}</span>
-    </div>
-    #{if _as != 'teaser'}
-        <div class="article-content">
+                #{/if}
+                #{/list}
+                ${vcomments ?: 'no'} comment${vcomments.pluralize()}</h5>
 
-            <img src="/Users/Jasdeep/jasdeep.png" style="float:left; margin-right: 5px;"/>
-            #{if articleList.content.length() > 350}
-                ${articleList.content.substring(0,350).nl2br()}
+            #{if _as != 'teaser'}
+                <p>
+                    <div class="thumbnails"><img src="${articleList.articleImage}" style="float:left; margin-right: 5px;"/></div>
+                    #{if articleList.content.length() > 350}
+                    ${articleList.content.substring(0,350).nl2br()}
+                    #{/if}
+                    #{else}
+                    ${articleList.content}
+                    #{/else}<br/>
+                    <a href="/articles/show/${articleList.title.replace(' ','-')}"><span class="pointer">Read More</span></a>
+                </p>
+
             #{/if}
-            #{else}
-            ${articleList.content}
-            #{/else}<br/>
-            <a href="/articles/show/${articleList.title.replace(' ','-')}"><span class="pointer">Read More</span></a>
-        </div>
-    #{/if}
+
+            #{if _as == 'full'}
+                <div class="well">
+                    <table class="table">
+                        <tbody>
+                            #{list items:_article.comments, as:'comment'}
+                            #{if comment.approved}
+                            <tr>
+                                <td>
+                                    <h5>
+                                        by ${comment.userAlias}, ${comment.created_on.format('dd MMM yy')}
+                                    </h5>
+                                    <p>
+                                        ${comment.comment.escape().nl2br()}
+                                    </p>
+                                </td>
+                            </tr>
+                            #{/if}
+                            #{/list}
+                        </tbody>
+                    </table>
+
+                    <div class="well">
+                        <p>Have your say</p>
+                        <div class="section-overview">
+                            #{form @articles.postComment(_article.id), class:'form-vertical'}
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="userName">Name</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-medium" id="userName" name="userName">
+                                    </div>
+                                    <label class="control-label" for="userEmail">Email</label>
+                                    <div class="controls">
+                                        <input type="text" class="input-medium" id="userEmail" name="userEmail">
+                                    </div>
+                                    <label class="control-label" for="content">Your Comment</label>
+                                    <div class="controls">
+                                        <textarea name="content" id="content" rows="4" cols="50" class="input-medium"></textarea>
+                                    </div>
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Post Comment</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                                <tr><td colspan="2"></td></tr>
+                            </table>
+                            #{/form}
+                        </div>
+
+                    </div>
+                </div>
+            #{/if}
+        #{/list}
+    </div>
 </div>
-
-#{if _as == 'full'}
-<div class="comments">
-    #{list items:_article.comments, as:'comment'}
-    #{if comment.approved}
-    <div class="comment-metadata">
-        <span class="comment-author">by ${comment.userAlias},</span>
-                    <span class="comment-date">
-                        ${comment.created_on.format('dd MMM yy')}
-                    </span>
-    </div>
-    <div class="comment-content">
-        <div class="about">Detail: </div>
-        ${comment.comment.escape().nl2br()}
-    </div>
-    #{/if}
-    #{/list}
-
-    <div class="section-header">
-        Have your say
-        <div class="section-overview">
-            #{form @articles.postComment(_article.id)}
-            <table class="tableData">
-                <tr><td align="right">Name:</td><td align="left"><input type="text" class="inputField" id="userName" name="userName"></td></tr>
-                <tr><td align="right">Email:</td><td align="left"><input type="text" class="inputField" id="userEmail" name="userEmail"></td></tr>
-                <tr><td align="right">your comment:</td><td><textarea name="content" id="content" rows="4" cols="50" class="inputField"></textarea></td></tr>
-                <tr><td colspan="2">&nbsp;</td></tr>
-                <tr><td colspan="2"><input type="submit" value="Post Comment" /></td></tr>
-            </table>
-            #{/form}
-        </div>
-
-    </div>
-</div>
-#{/if}
-#{/list}
