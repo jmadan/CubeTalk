@@ -1,16 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Cube-talk.com' /}
 
-<div id="left">
-    #{if articles.size()>0}
-                #{postlist article:articles, page:page, noOfPages:pages, as:'home' /}
+<div class="row-fluid">
+    <div class="span8">
+        #{if articles.size()>0}
+        #{postlist article:articles, page:page, noOfPages:pages, as:'home' /}
         #{/if}
         #{else}
-                <div class="empty">
-                    There is currently nothing to read here.
-                </div>
+        <div class="empty">
+            There is currently nothing to read here.
+        </div>
         #{/else}
-</div>
-<div id="right">
-    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+    </div>
+    <div class="span4">
+        #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+    </div>
 </div>

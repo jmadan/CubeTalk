@@ -23,55 +23,44 @@
 });
 </script>
 
-    <div class="one-column">
-        <div class="section-header">
-            <span align="center">SignIn</span>
-        </div>
-        <div class="section-overview">
+<div class="row-fluid">
+    <div class="page-header">
+        <h1>SignIn</h1>
+    </div>
+    <div class="span8">
+        <div class="well">
             #{form @Authenticate.signIn(), id:'signInForm'}
-            <table class="tableData">
                 #{ifErrors}
-                  <tr>
-                      <td colspan="2">
-                              <div class="error-heading">
-                                  <span>Errors</span><br>
-                                  <span class="error">#{error 'userPassword' /}</span><br>
-                                  <span class="error">#{error 'userEmail' /}</span>
-                                  <span class="error">${flash.error}</span>
-                              </div>
-                      </td>
-                  </tr>
+                    <div class="alert alert-error">
+                        <!--#{error 'userPassword' /}-->
+                        <!--#{error 'userEmail' /}-->
+                        ${flash.error}
+                    </div>
                 #{/ifErrors}
-                  <!--<tr><td colspan="2">&nbsp;</td> </tr>-->
-                  <tr>
-                      <td align="right" width="50%">
-                          <span>User Email :</span>
-                      </td>
-                      <td align="left" width="50%">
-                          <input type="text" id="userEmail" name="userEmail" value="${flash.userEmail}" size="25" class="inputField">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td colspan="2">&nbsp;</td>
-                  </tr>
-                  <tr>
-                      <td align="right">
-                          <span>Password :</span></td>
-                      <td align="left">
-                          <input type="password" id="userPassword" name="userPassword" value="${flash.userPassword}" size="25" class="inputField">
-                    </td>
-                  </tr>
-                  <tr>
-                      <td colspan="2">&nbsp;</td>
-                  </tr>
-                  <tr>
-                      <td colspan="2" align="center">
-                          <span><input type="submit" value="  SignIn  "></span><br>
-                          <span class="text">Forgot your password <a href="/Users/forgot"><span class="pointer">click here</span></a></span>
-                      </td>
-                  </tr>
-                  <tr><td colspan="2"><p align="center"><span class="text">Not a cubetalker yet! <a href="/users/register"><span class="pointer">Join Now.</span></a> </span></p></td> </tr>
-            </table>
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="userEmail">User Email</label>
+                        <div class="controls">
+                            <input type="text" id="userEmail" name="userEmail" value="${flash.userEmail}" size="25" class="input-medium">
+                        </div>
+                        <label class="control-label" for="userPassword">Password</label>
+                        <div class="controls">
+                            <input type="password" id="userPassword" name="userPassword" value="${flash.userPassword}" size="25" class="input-medium">
+                        </div>
+                        <div class="controls">
+                            <button type="submit" class="btn">Sign In</button>
+                        </div>
+                        <br>
+                        <p>Forgot your password <a href="/Users/forgot">click here</a></p>
+                        <br>
+                        <p>Not a cubetalker yet! <a href="/users/register"><span class="pointer">Join Now.</span></a></p>
+                    </div>
+                </fieldset>
             #{/form}
         </div>
     </div>
+    <div class="span4">
+
+    </div>
+
+</div>

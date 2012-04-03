@@ -1,93 +1,80 @@
 #{extends 'main.html' /}
 #{set title:'Cube-talk.com Companies' /}
 
-<div id="left">
-    #{if topReviewed.size() > 0}
-    <div class="section-header">
-        Top Reviewed Companies
-    </div>
-    <div class="section-overview">
-        <table class="tableData">
-            %{  maxrows = (int) Math.ceil((double)topReviewed.size()/2);
+<div class="row-fluid">
+    <div class="span8">
+        #{if topReviewed.size() > 0}
+            <div class="page-header">
+                <h1>Top Reviewed Companies</h1>
+            </div>
+            <table class="table">
+                %{  maxrows = (int) Math.ceil((double)topReviewed.size()/2);
                 z=0
                 for(i=0;i<maxrows;i++){
-            %}
-                    <tr>
+                %}
+                <tr>
                     %{
-                        for(j=0;j<5;j++){
+                    for(j=0;j<5;j++){
                     %}
-                        #{if z < topReviewed.size()}
-                        <td>
-                            <a href="/companies/show/${topReviewed.get(z).toString().replace(' ', '-')}">${topReviewed.get(z)}</a>
-                        </td>
-                        %{z++;}%
-                        #{/if}
+                    #{if z < topReviewed.size()}
+                    <td>
+                        <p><a href="/companies/show/${topReviewed.get(z).toString().replace(' ', '-')}">${topReviewed.get(z)}</a></p>
+                    </td>
+                    %{z++;}%
+                    #{/if}
                     %{
                     }
-                        }%
-                    </tr>
-            %{
+                    }%
+                </tr>
+                %{
                 }
-            }%
-        </table>
-    </div>
-    #{/if}
-    <br>
-    #{if cubeReviewsList}
-        <div class="section-header">
-            Latest Reviews
-        </div>
-    <table class="tableData">
-        #{list items:cubeReviewsList, as:'reviews'}
-        <tr>
-            <td>
-                <div class="review-header">
-                    ${reviews.anonymousUser.job_title} at ${reviews.company.orgName} on ${reviews.created_on.format('dd MMM yyyy')}
-                    <br>
-                    "${reviews.review_heading}" - <a href="/companies/${reviews.company.toString()}">Full Review</a>
-                </div>
-                <hr width="300px" align="left">
-            </td>
-        </tr>
-        #{/list}
-    </table>
-    #{/if}
-    <br>
-    <div class="section-header">
-         By Industry
-    </div>
-    <div class="section-overview">
-     <table class="tableData">
-        %{  maxrows = (int) Math.ceil((double)companyCategories.size()/2);
-            cat=0
-            for(ii=0;ii<maxrows;ii++){
-        %}
-        <tr>
-            %{    for(jj=0;jj<2;jj++){
-            %}
-                #{if cat < companyCategories.size()}
-                <td>
-                    <div class="category-text">
-                        <a href="/companies/category/${companyCategories.get(cat).toString().replace(' ', '-')}">${companyCategories.get(cat)}</a>
-                    </div>
-                </td>
-                %{cat++;}%
-                #{/if}
-            %{
-                }
-            }%
-        </tr>
-        %{
-        }
-        }%
-     </table>
-    </div>
-
-    <div class="note">
+                }%
+            </table>
+        #{/if}
         <br>
-        To add your organization, please email us at admin@cube-talk.com.
+        #{if cubeReviewsList}
+            <h2>Latest Reviews</h2>
+                <table class="table table-striped">
+                    #{list items:cubeReviewsList, as:'reviews'}
+                        <tr>
+                            <td>
+                                <p>
+                                    ${reviews.anonymousUser.job_title} at ${reviews.company.orgName} on ${reviews.created_on.format('dd MMM yyyy')}
+                                    <br>
+                                    "${reviews.review_heading}" - <a href="/companies/${reviews.company.toString()}">Full Review</a>
+                                </p>
+                            </td>
+                        </tr>
+                    #{/list}
+                </table>
+        #{/if}
+        <br>
+        <h2>By Industry</h2>
+            <table class="table">
+                %{  maxrows = (int) Math.ceil((double)companyCategories.size()/2);
+                cat=0
+                for(ii=0;ii<maxrows;ii++){
+                %}
+                <tr>
+                    %{    for(jj=0;jj<2;jj++){
+                    %}
+                    #{if cat < companyCategories.size()}
+                    <td>
+                       <p><a href="/companies/category/${companyCategories.get(cat).toString().replace(' ', '-')}">${companyCategories.get(cat)}</a></p>
+                    </td>
+                    %{cat++;}%
+                    #{/if}
+                    %{
+                    }
+                    }%
+                </tr>
+                %{
+                }
+                }%
+            </table>
+        <p><br>To add your organization, please email us at admin@cube-talk.com.</p>
     </div>
-</div>
-<div id="right">
-    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+    <div class="span4">
+        #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+    </div>
 </div>
