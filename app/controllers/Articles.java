@@ -65,7 +65,7 @@ public class Articles extends Controller {
         return comments.size();
     }
 
-    public static void getPicture(int id){
+    public static void getPicture(Long id){
         final Article article = Article.findById(id);
         notFoundIfNull(article);
         response.setContentTypeIfNotSet(article.articleImage.type());

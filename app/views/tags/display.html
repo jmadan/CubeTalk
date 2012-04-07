@@ -18,7 +18,7 @@
 
             #{if _as != 'teaser'}
                 <p>
-                    <div class="pics">#{if articleList.articleImage}<img src="@{Articles.getPicture(articleList.id)}" />#{/if}</div>
+                    <div class="pics">#{if articleList.articleImage.length() > 0}<img src="@{Articles.getPicture(articleList.id)}" />#{/if}</div>
                     #{if articleList.content.length() > 350}
                     ${articleList.content.substring(0,350).nl2br()}
                     #{/if}
