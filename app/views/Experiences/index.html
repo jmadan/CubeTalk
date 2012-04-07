@@ -1,19 +1,23 @@
 #{extends 'main.html' /}
 #{set title:'Express your Experience' /}
-<div id="left">
-     <div class="section-header">
-        Post your Experience Anonymously.
-     </div>
-	 <div class="section-overview">
-	      <ul>
-	      #{list items:companies, as:'companyList'}
-	          <li>
-	            <a href="/Experiences/postexperience/${companyList?.orgName}">${companyList.orgName}</a>
-	          </li>
-	      #{/list}
-	      </ul>
-	  </div>
-</div>
-<div id="right">
-    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+#{set meta:'Articles, Mobile, Tech, Testing, Agile, Company salaries, reviews, and more - all posted anonymously by employees and job seekers' /}
+
+<div id="row-fluid">
+    <div class="span8">
+         <div class="page-header">
+            Post your Experience Anonymously.
+         </div>
+         <div class="section-overview">
+              <ul>
+              #{list items:companies, as:'companyList'}
+                  <li>
+                    <a href="/Experiences/postexperience/${companyList?.orgName}">${companyList.orgName}</a>
+                  </li>
+              #{/list}
+              </ul>
+          </div>
+    </div>
+    <div class="span4">
+        #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
+    </div>
 </div>

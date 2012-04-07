@@ -65,4 +65,11 @@ public class Articles extends Controller {
         return comments.size();
     }
 
+    public static void getPicture(int id){
+        final Article article = Article.findById(id);
+        notFoundIfNull(article);
+        response.setContentTypeIfNotSet(article.articleImage.type());
+        renderBinary(article.articleImage.get());
+    }
+
 }

@@ -4,7 +4,7 @@
     <div class="span">
         #{list items:_article, as:'articleList'}
             <div class="brand">
-                <h2 class="article-title">
+                <h2>
                     <a href="/articles/show/${articleList.title.replace(' ','-')}">${articleList.title}</a>
                 </h2>
             </div>
@@ -18,7 +18,7 @@
 
             #{if _as != 'teaser'}
                 <p>
-                    <div class="thumbnails"><img src="${articleList.articleImage}" style="float:left; margin-right: 5px;"/></div>
+                    <div class="pics"><img src="@{Articles.getPicture(articleList.id)}" /></div>
                     #{if articleList.content.length() > 350}
                     ${articleList.content.substring(0,350).nl2br()}
                     #{/if}
