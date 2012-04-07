@@ -1,28 +1,25 @@
 #{extends 'main.html' /}
 #{set title:'Cube-talk.com Companies' /}
 
-<div id="content">
-    <div class="section-header">
-        Companies listed in ${category}
+<div id="row-fluid">
+    <div class="page-header">
+        <h2>Companies listed in ${category}</h2>
     </div>
         #{  if categoryCompanies.size()>0 }
-        <div class="section-overview">
-            <table class="tableData">
-                %{  z=0
+        <div class="span8">
+            <table>
+                %{  z=0;
                 maxrows = (categoryCompanies.size()/3);
                 for(i=0;i<maxrows;i++){
                 %}
                 <tr>
-                    %{  for(j=0;j<3;j++){
-
-                    %}
+                    %{  for(j=0;j<3;j++){ %}
+                    #{if j < categoryCompanies.size()}
                     <td>
                         <a href="/companies/show/${categoryCompanies.get(z).toString().slugify()}">${categoryCompanies.get(z)}</a>
                     </td>
-                    %{
-                    z++;
-                    }
-                    }%
+                    #{/if}
+                    %{ z++; } }%
                 </tr>
                 %{
                 }
@@ -31,9 +28,12 @@
         </div>
         #{/if}
         #{else}
-        <div class="section-overview">
+        <div class="span8">
             No Companies registered yet.<br>
             If you would like to get your organization listed here, please drop us a email at admin@cube-talk.com with details.
         </div>
         #{/else}
+    <div class="span4">
+
+    </div>
 </div>

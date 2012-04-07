@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
 function defvalue(){if(document.getElementById('searchCompany').value.length==0){document.getElementById('searchCompany').value='Company Name';}}
     $(document).ready(function(){$('#searchForm').submit(function(){if($('#searchCompany').attr('value').length<2){$('#searchError').text('Please enter more than 2 characters');return false;}
     if($('#searchCompany').attr('value')=='Company Name'){$('#searchError').text('Please enter valid company name.');return false;}
@@ -6,74 +6,64 @@ function defvalue(){if(document.getElementById('searchCompany').value.length==0)
 
 </script>
 <div class="row-fluid">
-    <div class="span">
-        <div class="well">
-        <h2><strong>Search Company</strong></h2>
-            #{form @Companies.search(), id:'searchForm', class:'form-inline'}
-            <fieldset>
-            <div id="searchError" class="error"></div>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="text" class="input-medium search-query" id="searchCompany" name="searchCompany" value="Company Name" onfocus="javascript:searchCompany.value='';">
-                    <button type="submit" class="btn-small">Search</button>
-                </div>
-            </div>
-            </fieldset>
-            #{/form}
-        </div>
-        <div class="well">
-            #{if _articles}
-            <h2><strong>Popular Articles</strong></h2>
-            <br>
-            <div class="content">
-                <div class="widget-box">
-                    <div class="header">
-                        Popular Articles
-                    </div>
-                    #{list items:_articles, as:'article'}
-                    <div class="text">
-                        <div class="listBox">
-                            <a href="/articles/${article.title.slugify()}">${article.title}</a>
-                            <br>
-                            <div class="widget-metadata">
-                                - by ${article.author.firstName}
+    <div class="well">
+        <table class="table">
+            <thead><tr><th><h2><strong>Search Company</strong></h2></th></tr></thead>
+            <tbody>
+            <tr>
+                <td>
+                    #{form @Companies.search(), id:'searchForm', class:'form-inline'}
+                    <fieldset>
+                        <div id="searchError" class="error"></div>
+                            <div class="control-group">
+                                <div class="controls">
+                                <input type="text" class="input-medium search-query" id="searchCompany" name="searchCompany" value="Company Name" onfocus="javascript:searchCompany.value='';">
+                                <button type="submit" class="btn-small">Search</button>
                             </div>
                         </div>
-                        <br><hr>
-                    </div>
-                    </br>
-                    #{/list}
-                </div>
-            </div>
-            #{/if}
-        </div>
-        <div class="well">
-            #{if _homePageReview}
-            <h2><strong>Latest Reviews</strong></h2>
-            <br>
-            <div class="content">
-                <div class="widget-box">
-                    <div class="header">
-                        Latest Reviews
-                    </div>
-                    #{list items:_homePageReview, as:'reviews'}
-                    <div class="text">
-                        ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
-                    </div>
-                    <div class="widget-metadata">
-                        "${reviews.review_heading}"
-                    </div>
-                    <br>
-                    <div class="widget-detail">
-                        Pros: ${reviews.company_pro}
-                        <br>
-                        Cons: ${reviews.company_con}
-                    </div>
-                    <hr>
-                    #{/list}
-                </div>
-            #{/if}
-            </div>
-        </div>
+                    </fieldset>
+                    #{/form}
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
+    #{if _articles}
+    <div class="well">
+        <table class="table table-striped">
+            <thead><tr><th><h2><strong>Popular Articles</strong></h2></th></tr></thead>
+            <tbody>
+                    #{list items:_articles, as:'article'}
+                    <tr>
+                        <td>
+                            <h4><a href="/articles/${article.title.slugify()}">${article.title}</a></h4>
+                            <h5>- by ${article.author.firstName}</h5>
+                        </td>
+                    </tr>
+                    #{/list}
+            </tbody>
+            </table>
+    </div>
+    #{/if}
+
+    #{if _homePageReview}
+    <div class="well">
+        <table class="table table-striped">
+            <thead><tr><th><h2><strong>Latest Reviews</strong></h2></th></tr></thead>
+            <tbody>
+                    #{list items:_homePageReview, as:'reviews'}
+                    <tr>
+                        <td>
+                            <h5>${reviews.anonymousUser.job_title} at ${reviews.company.orgName}</h5>
+                            <strong>"${reviews.review_heading}"</strong>
+                            <em>Pros: ${reviews.company_pro}</em>
+                            <em>Cons: ${reviews.company_con}</em>
+                        </td>
+                    </tr>
+                    #{/list}
+            </tbody>
+            </table>
+        </div>
+    #{/if}
 </div>

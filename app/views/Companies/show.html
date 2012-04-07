@@ -1,16 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Cube-talk.com Companies' /}
 
-<div id="one-column">
-    <div class="section-overview">
-        <div class="company">
-            <div class="company-header">
-                <a href="/companies/show/${company.orgName.replace(' ','-')}">${company.orgName}</a>
-            </div>
-            <div class="company-intro">
-        <span class="detail">${company.overview.nl2br()}
+<div class="row-fluid" xmlns="http://www.w3.org/1999/html">
+    <div class="span">
+        <div class="page-header">
+            <h2><a href="/companies/show/${company.orgName.replace(' ','-')}">${company.orgName}</a></h2>
+        </div>
+        <div class="well">
+            ${company.overview.nl2br()}
             #{if company.companyReviews.size() == 0}
-                <p>Be the first to review <a href="/experiences/postexperience/${company?.orgName}">${company.orgName}</a></p>
+            <p>Be the first to review <a href="/experiences/postexperience/${company?.orgName}">${company.orgName}</a></p>
             #{/if}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
@@ -18,41 +17,38 @@
                 <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
                 <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/experiences/postexperience/${company?.orgName}">${company.orgName}?</a></div>
             </div>
-                ${company.getRatingGraph(company.companyRatings).raw()}
+            ${company.getRatingGraph(company.companyRatings).raw()}
             #{/if}
-        </span>
-            </div>
-
             #{if company.companyReviews.size() > 0}
-            <div class="company-teaser">
-                <div class="section-subheader">Reviews (${company.companyReviews.size()})</div>
-                #{list items:company.companyReviews, as:'reviews'}
-                <div class="review-header">
-                    ${reviews.anonymousUser.job_title} at ${reviews.company.orgName}
-                    <div class="review-subheader">"${reviews.review_heading}"</div>
-                </div>
-
-                <div class="review">
-                    <p>
-                        My Say: ${reviews.company_advice}<br>
-                        Pros: ${reviews.company_pro}<br>
-                        Cons: ${reviews.company_con}
-                    </p>
-                    <hr width="300px" align="left">
-                </div>
-                #{/list}
-            </div>
+                <p><h4>Reviews (${company.companyReviews.size()})</h4></p>
+                <table>
+                    #{list items:company.companyReviews, as:'reviews'}
+                    <tr>
+                        <td>
+                            <p><h5>${reviews.anonymousUser.job_title} at ${reviews.company.orgName}</h5></p>
+                            "${reviews.review_heading}"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                My Say: ${reviews.company_advice}<br>
+                                Pros: ${reviews.company_pro}<br>
+                                Cons: ${reviews.company_con}
+                            </p>
+                        </td>
+                    </tr>
+                    #{/list}
+                </table>
             #{/if}
         </div>
-    </div>
-    #{if similarCompanies}
-    <div>
+        #{if similarCompanies}
         Similar Companies<br>
 
-         #{list items:similarCompanies, as:'companies'}
-          ${companies.orgName}
+        #{list items:similarCompanies, as:'companies'}
+        ${companies.orgName}
         #{/list}
 
+        #{/if}
     </div>
-    #{/if}
 </div>

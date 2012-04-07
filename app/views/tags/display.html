@@ -18,14 +18,14 @@
 
             #{if _as != 'teaser'}
                 <p>
-                    <div class="pics"><img src="@{Articles.getPicture(articleList.id)}" /></div>
+                    <div class="pics">#{if articleList.articleImage}<img src="@{Articles.getPicture(articleList.id)}" />#{/if}</div>
                     #{if articleList.content.length() > 350}
                     ${articleList.content.substring(0,350).nl2br()}
                     #{/if}
                     #{else}
                     ${articleList.content}
                     #{/else}<br/>
-                    <a href="/articles/show/${articleList.title.replace(' ','-')}"><span class="pointer">Read More</span></a>
+                    <a href="/articles/show/${articleList.title.replace(' ','-')}">Read More</a>
                 </p>
 
             #{/if}
