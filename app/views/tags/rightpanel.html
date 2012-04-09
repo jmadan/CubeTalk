@@ -1,31 +1,56 @@
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
-function defvalue(){if(document.getElementById('searchCompany').value.length==0){document.getElementById('searchCompany').value='Company Name';}}
-    $(document).ready(function(){$('#searchForm').submit(function(){if($('#searchCompany').attr('value').length<2){$('#searchError').text('Please enter more than 2 characters');return false;}
-    if($('#searchCompany').attr('value')=='Company Name'){$('#searchError').text('Please enter valid company name.');return false;}
-    })});
-
+    $.validator.methods.defaultValue = function(value, element, param){
+        return value != param;
+    }
+    $(document).ready(function() {
+    // validate signup form on keyup and submit
+    var validator = $("#searchForm").validate({
+    rules: {
+    searchCompany: {
+    required: true,
+    minlength: 3,
+    defaultValue: 'Company Name'
+    }
+    },
+    messages: {
+    searchCompany: {
+        required: "Please enter a valid Company Name",
+        minlength: "Please enter more than 3 characters",
+        defaultValue: "Please enter a valid Company Name"
+        }
+    },
+    // the errorPlacement has to take the table layout into account
+    errorPlacement: function(error, element) {
+    $("div.error").html(error);
+    $("span.help-inline").html(error);
+    $("div.control-group").addClass("error");
+    },
+    // specifying a submitHandler prevents the default submit, good for the demo
+    submitHandler: function() {
+    form.submit();
+    },
+    });
+    });
 </script>
 <div class="row-fluid">
     <div class="well">
         <table class="table">
             <thead><tr><th><h2><strong>Search Company</strong></h2></th></tr></thead>
-            <tbody>
             <tr>
                 <td>
                     #{form @Companies.search(), id:'searchForm', class:'form-inline'}
                     <fieldset>
-                        <div id="searchError" class="error"></div>
+                        <div id="error" class="error"></div>
                             <div class="control-group">
                                 <div class="controls">
-                                <input type="text" class="input-medium search-query" id="searchCompany" name="searchCompany" value="Company Name" onfocus="javascript:searchCompany.value='';">
-                                <button type="submit" class="btn-small">Search</button>
+                                <input type="text" class="input-medium search-query required" id="searchCompany" name="searchCompany" value="Company Name" onfocus="javascript:searchCompany.value='';">
+                                <button type="submit" class="btn btn-primary">Search</button>
                             </div>
                         </div>
                     </fieldset>
                     #{/form}
                 </td>
             </tr>
-            </tbody>
         </table>
     </div>
 

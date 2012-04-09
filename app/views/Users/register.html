@@ -7,13 +7,14 @@
     if($('#userAlias').attr('value').length<5){$('#formError').text('Alias should be minimum of 5 characters');return false;}
     if($('#userEmail').attr('value').length==0){$('#formError').text('Please enter a valid email address');return false;}
     if($('#userPassword').attr('value').length<8){$('#formError').text('Password should be minimum of 8 characters');return false;}
+    if($('#TnC').attr('checked')){return true;}else{$('#formError').text('Please read & agree to Cube-Talk Terms and Conditions');return false;}
     });
     });
 </script>
 
 <div class="row-fluid">
     <div class="page-header">
-        <h1>Join Cube-Talk...It's interesting</h1>
+        <h1>Join Cube-Talk...It's informative</h1>
     </div>
     <div class="well span">
         <p>All new members automatically get access to everything posted on Cube-Talk.com – that's company reviews and more.
@@ -40,11 +41,11 @@
                                 </div>
                                 <br>
                                 <label class="checkbox">
-                                    <input type="checkbox" name="TnC" value="1" id="TnC"> Agree to Terms & Conditions.
+                                    <input class="checkbox inline" type="checkbox" name="TnC" value="1" id="TnC"> Agree to Terms & Conditions.
                                 </label>
                                 <br>
                                 <div class="controls">
-                                    <button type="submit" class="btn">Register Me</button>
+                                    <button type="submit" class="btn btn-primary">Register Me</button>
                                 </div>
                             </div>
                         </fieldset>
