@@ -9,7 +9,8 @@
         <div class="well">
             ${company.overview.nl2br()}
             #{if company.companyReviews.size() == 0}
-            <p>Be the first to review <a href="/experiences/postexperience/${company?.orgName}">${company.orgName}</a></p>
+            <br>
+            <p><h4>Be the first to review <a href="/experiences/postexperience/${company?.orgName}">${company.orgName}</a></h4></p>
             #{/if}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
