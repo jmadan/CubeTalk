@@ -1,39 +1,39 @@
 #{extends 'main.html' /}
 #{set title:'Cube-talk.com Companies' /}
 
-<div id="row-fluid">
-    <div class="page-header">
-        <h2>Companies listed in ${category}</h2>
-    </div>
-        #{  if categoryCompanies.size()>0 }
-        <div class="span8">
-            <table>
+<div class="row-fluid">
+    <div class="span8">
+        #{if categoryCompanies.size()>0 }
+            <div class="page-header">
+                <h2>Companies listed in ${category}</h2>
+            </div>
+            <table class="well table">
                 %{  z=0;
-                maxrows = (categoryCompanies.size()/3);
+                maxrows = (int) Math.ceil((double)categoryCompanies.size()/3);
                 for(i=0;i<maxrows;i++){
                 %}
                 <tr>
                     %{  for(j=0;j<3;j++){ %}
-                    #{if j < categoryCompanies.size()}
-                    <td>
-                        <a href="/companies/show/${categoryCompanies.get(z).toString().slugify()}">${categoryCompanies.get(z)}</a>
+                    #{if z < categoryCompanies.size()}
+                    <td class="well">
+                        <h5><a href="/companies/show/${categoryCompanies.get(z).toString().slugify()}">${categoryCompanies.get(z)}</a></h5>
                     </td>
+                    %{z++;}%
                     #{/if}
-                    %{ z++; } }%
+                    %{
+                    }
+                    }%
                 </tr>
                 %{
                 }
                 }%
             </table>
-        </div>
         #{/if}
         #{else}
-        <div class="span8">
-            No Companies registered yet.<br>
-            If you would like to get your organization listed here, please drop us a email at admin@cube-talk.com with details.
-        </div>
+            No Companies registered yet.<br> If you would like to get your organization listed here, please drop us a email at admin@cube-talk.com with details.
         #{/else}
+    </div>
     <div class="span4">
-
+        #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
     </div>
 </div>
