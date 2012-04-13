@@ -15,7 +15,7 @@ public class Application extends Controller {
     }
 
     public static void index() {
-        List<Article> homePagePost = Article.find("approved = true order by submit_date desc").fetch(1);
+        List<Article> homePagePost = Article.find("approved = true order by submit_date desc").fetch(5);
 
         Company homeCompany = Company.getHomeCompany();
         List<Article> topViewed = getTopViewedArticles();

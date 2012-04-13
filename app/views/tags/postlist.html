@@ -3,7 +3,7 @@
     #{list items:_article, as:'articleList'}
         <tr>
             <td>
-                <h2><a href="/articles/show/${articleList.title.replace(' ','-')}">${articleList.title}</a></h2>
+                <h2><a href="/articles/show/${articleList.titleLink}">${articleList.title}</a></h2>
                 <h5>by ${articleList.author.firstName}, ${articleList.submit_date.format('dd MMM yyyy')}&nbsp;&nbsp;
                     ${articleList.comments.size() ?: 'no'}
                     comment${articleList.comments.size().pluralize()}
@@ -11,14 +11,14 @@
                     , latest by ${articleList.comments[0].userAlias}
                     #{/if}
                 </h5>
-               <p><img src="/Users/Jasdeep/jasdeep.png" style="float:left; margin-right: 5px;"/>
+               <p><div class="pics">#{if articleList.articleImage.length() > 0}<img src="@{Articles.getPicture(articleList.id)}" />#{/if}</div>
                    #{if articleList.content.length() > 350}
                    ${articleList.content.substring(0,350).nl2br()}...
                    #{/if}
                    #{else}
                    ${articleList.content}
                    #{/else}<br/>
-                   <a href="/articles/show/${articleList.title.replace(' ','-')}">Read More</a></p>
+                   <a href="/articles/show/${articleList.titleLink}">Read More</a></p>
 
             </td>
         </tr>

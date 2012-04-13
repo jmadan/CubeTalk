@@ -5,7 +5,7 @@
         #{list items:_article, as:'articleList'}
             <div class="brand">
                 <h2>
-                    <a href="/articles/show/${articleList.title.replace(' ','-')}">${articleList.title}</a>
+                    <a href="/articles/show/${articleList.titleLink}">${articleList.title}</a>
                 </h2>
             </div>
             <h5>by ${articleList.author.firstName} on ${articleList.submit_date.format('dd MMM yyyy')}, %{vcomments = 0}%
@@ -25,7 +25,7 @@
                     #{else}
                     ${articleList.content}
                     #{/else}<br/>
-                    <a href="/articles/show/${articleList.title.replace(' ','-')}">Read More</a>
+                    <a href="/articles/show/${articleList.titleLink}">Read More</a>
                 </p>
 
             #{/if}

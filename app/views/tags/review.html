@@ -29,8 +29,24 @@ $(document).ready(function(){
         });
 
     $('#showRating').click(function() {
-        $('#content_2').hide();
-        $('#content_3').show();
+        var jobtitle=$('#job_title').attr('value');
+        var headlineAnswer=$('#headlineAnswer').attr('value');
+        var proAnswer=$('#proAnswer').attr('value');
+        var conAnswer=$('#conAnswer').attr('value');
+        var adviceAnswer=$('#adviceAnswer').attr('value');
+        if(jobtitle.length == 0){
+            $("div.error").html("Please enter your Job Title");alert("I am here");}
+        else if(headlineAnswer == 0){
+            $("div.error").html("Please enter your Experience");alert("i am here1");}
+        else if(proAnswer.length == 0){
+            $("div.error").html("Please enter your positive Experience");alert("i am here2");}
+        else if(conAnswer.length == 0){
+            $("div.error").html("Please enter your negative Experience");alert("i am here3");}
+        else if(adviceAnswer.length == 0){
+            $("div.error").html("Please enter your Advice");alert("i am here4");}
+        else{
+            $('#content_2').hide();$('#content_3').show();
+        }
         return false;
         });
 
@@ -259,6 +275,7 @@ $(document).ready(function(){
                 identifiable information in your review.
             </p>
             <fieldset>
+                <div id="error" class="error"></div>
                 <div class="control-group">
                     <label class="control-label" for="job_title">Your Job Title</label>
                     <div class="controls">
@@ -275,21 +292,21 @@ $(document).ready(function(){
                     <label class="control-label" for="proAnswer">Describe some of the best reasons to work at ${_companyReview?.orgName}</label>
                     <div class="controls">
                         <textarea name="proAnswer" cols="50" rows="5" id="proAnswer" class="input-xxlarge"></textarea>
-                        <div class="help-block">20 word minimum (to make it on the site)</div>
+                        <div class="help-block">20 word minimum (To make it on the site)</div>
                     </div>
                     <br>
                     <div class="brand"><h4>Cons</h4></div>
                     <label class="control-label" for="conAnswer">Describe some of the downsides of working at ${_companyReview?.orgName}</label>
                     <div class="controls">
                         <textarea name="conAnswer" cols="50" rows="5" id="conAnswer"  class="input-xxlarge"></textarea>
-                        <div class="help-block">20 word minimum (to make it on the site)</div>
+                        <div class="help-block">20 word minimum (To make it on the site)</div>
                     </div>
                     <br>
                     <div class="brand"><h4>Advice to Management</h4></div>
                     <label class="control-label" for="adviceAnswer">Offer some advice or feedback to the leadership at ${_companyReview?.orgName}</label>
                     <div class="controls">
                         <textarea name="adviceAnswer" cols="50" rows="3" id="adviceAnswer" class="input-xxlarge"></textarea>
-                        <div class="help-block">20 word minimum (to make it on the site)</div>
+                        <div class="help-block">20 word minimum (To make it on the site)</div>
                     </div>
                     <br>
                     <div class="controls">

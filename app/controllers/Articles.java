@@ -16,12 +16,11 @@ public class Articles extends Controller {
     }
 
     public static void show(String title) {
-        Article article = Article.find("title = ? and approved=true", title.replace('-', ' ')).first();
+        Article article = Article.find("titleLink like ? and approved=true", title).first();
         article.article_view += 1;
         article.save();
 
         List<Article> topViewed = Application.getTopViewedArticles();
-//        Company homeCompany = Company.find("orgName", "ThoughtWorks").first();
         Company homeCompany = Company.getHomeCompany();
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
         List<CubeRating> cubeRatings = homeCompany.getCompanyRatings();

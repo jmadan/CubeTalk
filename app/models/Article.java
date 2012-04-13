@@ -18,6 +18,10 @@ public class  Article extends Model {
     public String title;
 
     @Required
+    @MaxSize(250)
+    public String titleLink;
+
+    @Required
     public boolean approved = true;
 
     public int article_view;
@@ -44,8 +48,9 @@ public class  Article extends Model {
     
     public String tags;
 
-    public Article(String title, String content, User author, Category category, boolean approved, Blob articleImage, String tags){
+    public Article(String title, String titleLink, String content, User author, Category category, boolean approved, Blob articleImage, String tags){
         this.title = title;
+        this.titleLink = titleLink;
         this.content = sanitizeContent(content);
         this.author = author;
         this.category = category;

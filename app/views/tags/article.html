@@ -2,82 +2,81 @@
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher:'c2c155e6-717b-410b-8a0b-7565ad5d972b'});</script>
 
-<div class="article">
-
-    <h2 class="article-title">
-        <a href="/articles/show/${_article.title.replace(' ','-')}">${_article.title}</a>
-    </h2>
-    <div class="article-metadata">
-        <span class="article-author">&nbsp;&nbsp;by ${_article.author.firstName}</span>,
-        <span class="article-date">${_article.submit_date.format('dd MMM yyyy')}</span>,
-        <span class="article-comments">
-            %{vcomments = 0}%
+<div class="row-fluid">
+    <div class="span">
+        <div class="brand">
+            <h2>
+                <a href="/articles/show/${_article.titleLink}">${_article.title}</a>
+            </h2>
+        </div>
+        <h5>by ${_article.author.firstName} on ${_article.submit_date.format('dd MMM yyyy')}, %{vcomments = 0}%
             #{list items:_article.comments, as:'validComments'}
-            %{vcomments = 0}%
-             #{if validComments.approved}
-                %{ vcomments++}%
-             #{/if}
+            #{if validComments.approved}
+            %{ vcomments++}%
+            #{/if}
             #{/list}
-            ${vcomments ?: 'no'} comment${vcomments.pluralize()}
-        </span>
+            ${vcomments ?: 'no'} comment${vcomments.pluralize()}</h5>
         <span  class='st_twitter_hcount' displayText='Tweet'></span><span  class='st_facebook_hcount' displayText='Facebook'></span><span  class='st_fblike_hcount' ></span><span  class='st_plusone_hcount' ></span>
-    </div>
-    #{if _as != 'teaser'}
-        <div class="article-content">
-            <img src="/public/images/articles/${_article.id}.png" style="float:left; margin-right: 5px;"/>
-                ${_article.content.nl2br()}
-            <br><br>
-            Tags: ${_article.tags?: 'Not Tagged'}
-        </div>
-    #{/if}
+        <p>
+        <div class="pics">#{if _article.articleImage.length() > 0}<img src="@{Articles.getPicture(_article.id)}" />#{/if}</div>
+        ${_article.content.nl2br()}
+        <br/>
+        <h4>Tags:</h4> ${_article.tags?: 'Not Tagged'}
+        </p>
 
-</div>
+        #{if _as == 'full'}
+        <div class="span">
+            <table class="table table-striped">
+                <thead><tr><td><h4 class="pull-left">Comments</h4><a href="#" class="pull-right">Add a comment</a></td></tr></thead>
+                <tbody>
+                #{list items:_article.comments, as:'comment'}
+                #{if comment.approved}
+                <tr>
+                    <td>
+                        <h5>
+                            by ${comment.userAlias}, ${comment.created_on.format('dd MMM yy')}
+                        </h5>
+                        <p>
+                            ${comment.comment.escape().nl2br()}
+                        </p>
+                    </td>
+                </tr>
+                #{/if}
+                #{/list}
+                </tbody>
+            </table>
 
-#{if _as == 'full'}
-<div class="comments">
-    #{list items:_article.comments, as:'comment'}
-        #{if comment.approved}
-        <div class="comment-metadata">
-            <span class="comment-author">by ${comment.userAlias},</span>
-                    <span class="comment-date">
-                        ${comment.created_on.format('dd MMM yy')}
-                    </span>
-        </div>
-        <div class="comment-content">
-            <div class="about">Detail: </div>
-            ${comment.comment.escape().nl2br()}
+            <div class="well">
+                <p>Have your say</p>
+                <div class="section-overview">
+                    #{form @articles.postComment(_article.id), class:'form-vertical'}
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="userName">Name</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="userName" name="userName">
+                            </div>
+                            <label class="control-label" for="userEmail">Email</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="userEmail" name="userEmail">
+                            </div>
+                            <label class="control-label" for="content">Your Comment</label>
+                            <div class="controls">
+                                <textarea name="content" id="content" rows="4" cols="100" class="input-xxlarge"></textarea>
+                            </div>
+                            <div class="controls">
+                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <tr><td colspan="2"></td></tr>
+                    </table>
+                    #{/form}
+                </div>
+
+            </div>
         </div>
         #{/if}
-    #{/list}
-
-    <div class="well">
-        <p>Have your say</p>
-        <div class="section-overview">
-            #{form @articles.postComment(_article.id), class:'form-vertical'}
-            <fieldset>
-                <div class="control-group">
-                    <label class="control-label" for="userName">Name</label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="userName" name="userName">
-                    </div>
-                    <label class="control-label" for="userEmail">Email</label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" id="userEmail" name="userEmail">
-                    </div>
-                    <label class="control-label" for="content">Your Comment</label>
-                    <div class="controls">
-                        <textarea name="content" id="content" rows="4" cols="100" class="input-xxlarge"></textarea>
-                    </div>
-                    <div class="controls">
-                        <button type="submit" class="btn btn-primary">Post Comment</button>
-                    </div>
-                </div>
-            </fieldset>
-            <tr><td colspan="2"></td></tr>
-            </table>
-            #{/form}
-        </div>
 
     </div>
 </div>
-#{/if}
