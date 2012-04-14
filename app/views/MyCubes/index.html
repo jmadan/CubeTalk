@@ -2,22 +2,46 @@
 #{set title:'My Cube - Cube-Talk.com' /}
 #{set meta:'Articles, Mobile, Tech, Testing, Agile, Company salaries, reviews, and more - all posted anonymously by employees and job seekers' /}
 
-<div id="left">
-    <div class="section-header">
-        ${user.userAlias} Cubicle
+<div class="row-fluid">
+    <div class="span">
+        <div class="brand">
+            <h2>${user.userAlias} Cubicle</h2>
+        </div>
+        <div class="span5">
+            <div class="well">
+                #{if _anonymousUser}
+                    ${session.get("userAlias")}'s Reviews<br>
+                    #{list items:_anonymousUser.cubeReviews, as:'reviews'}
+                        Anony
+                        ${reviews.review_heading}
+                    #{/list}
+                #{/if}
+                #{elseif _user}
+                    #{list items:_user.cubeReviews, as:'reviews'}
+                        user
+                        ${reviews.review_heading}
+                    #{/list}
+                #{/elseif}
+                #{else}
+                    You have not posted any Reviews yet.
+                #{/else}
+            </div>
+
+        </div>
+<div class="span5">
+            <div class="well">
+                #{if _user}
+                    ${session.get("userAlias")}'s Articles<br>
+                    #{list items:_user.articles, as:'articles'}
+                        ${articles.title}
+                    #{/list}
+                #{/if}
+                #{else}
+                    You have not posted any articles yet.
+                #{/else}
+            </div>
+
+        </div>
+
     </div>
-    <div class="section-overview">
-        #{if anonymousUser}
-        ${user.userAlias}'s Reviews<br>
-        #{list items:anonymousUser.cubeReviews, as:'reviews'}
-          ${reviews.review_heading}
-        #{/list}
-        #{/if}
-        #{else}
-            You have not posted any Reviews yet.
-        #{/else}
-    </div>
-</div>
-<div id="right">
-    #{rightpanel articles:topViewed,  homePageReview:cubeReviewsList, as:'home' /}
 </div>

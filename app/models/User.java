@@ -3,13 +3,15 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.security.MessageDigest;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class User extends Model {
 
-//    @Id public int id;
     public String firstName;
     public String lastName;
     public String userAlias;
@@ -20,8 +22,11 @@ public class User extends Model {
     public boolean approved;
     public Boolean terms_condition;
 
-//    @OneToMany(mappedBy="User")
-//    public List<Articles> articles;
+    @OneToMany(mappedBy="author", fetch = FetchType.LAZY)
+    public List<Article> articles;
+
+    @OneToMany(mappedBy = "anonymousUser", fetch = FetchType.LAZY)
+    public  List<CubeReview> cubeReviews;
 
     public User(String firstName, String lastName, String userAlias, String userEmail, String password, String profile, boolean approved, boolean terms_condition){
         this.firstName = firstName;
@@ -33,7 +38,6 @@ public class User extends Model {
         this.approved = false;
         this.profile = profile;
         this.terms_condition = terms_condition;
-//        this.articles = new ArrayList<Articles>();
     }
 
     public User(String userAlias, String userEmail, String password, String profile, boolean approved, boolean terms_condition){

@@ -2,7 +2,6 @@ package controllers;
 
 import models.AnonymousUser;
 import models.Article;
-import models.CubeReview;
 import models.User;
 import play.Play;
 import play.mvc.Before;
@@ -23,11 +22,10 @@ public class MyCubes extends Controller{
             redirect("/authenticate/index");
         }
 
-        List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch(5);
-        List<Article> topViewed = Application.getTopViewedArticles();
+        List<Article> myArticles = Application.getMyArticles();
         User user = User.find("byUserAliasAndUserEmail", session.get("userAlias"), session.get("userEmail")).first();
         AnonymousUser anonymousUser = AnonymousUser.find("userId", user.id).first();
 //        System.out.println("anonymousUser:"+ anonymousUse);
-        render(user, anonymousUser, cubeReviewsList, topViewed);
+        render(user, anonymousUser, myArticles);
     }
 }

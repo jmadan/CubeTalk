@@ -1,6 +1,9 @@
 package controllers;
 
-import models.*;
+import models.Article;
+import models.Company;
+import models.CubeMail;
+import models.CubeReview;
 import play.Play;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -16,7 +19,6 @@ public class Application extends Controller {
 
     public static void index() {
         List<Article> homePagePost = Article.find("approved = true order by submit_date desc").fetch(5);
-
         Company homeCompany = Company.getHomeCompany();
         List<Article> topViewed = getTopViewedArticles();
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
@@ -47,4 +49,7 @@ public class Application extends Controller {
         redirect("/feedback");
     }
 
+    public static List<Article> getMyArticles() {
+        return Article.find("author_id = ? order by article_view desc", session.get("userId")).fetch();
+    }
 }

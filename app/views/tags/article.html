@@ -27,7 +27,7 @@
         #{if _as == 'full'}
         <div class="span">
             <table class="table table-striped">
-                <thead><tr><td><h4 class="pull-left">Comments</h4><a href="#" class="pull-right">Add a comment</a></td></tr></thead>
+                <thead><tr><td class="well">#{if _article.comments.size() > 0}<h4 class="pull-left">Comments</h4>#{/if}<a href="#" class="pull-right">Add a comment</a></td></tr></thead>
                 <tbody>
                 #{list items:_article.comments, as:'comment'}
                 #{if comment.approved}

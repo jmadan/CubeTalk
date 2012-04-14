@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class  Article extends Model {
+public class Article extends Model {
 
     @Required
     @MaxSize(250)
@@ -48,11 +48,11 @@ public class  Article extends Model {
     
     public String tags;
 
-    public Article(String title, String titleLink, String content, User author, Category category, boolean approved, Blob articleImage, String tags){
+    public Article(String title, String titleLink, String content, User user, Category category, boolean approved, Blob articleImage, String tags){
         this.title = title;
         this.titleLink = titleLink;
+        this.author = user;
         this.content = sanitizeContent(content);
-        this.author = author;
         this.category = category;
         this.submit_date = new Date();
         this.approved = approved;

@@ -38,25 +38,22 @@
                     <div class="container">
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <li class=""><a href="@{Articles.index(0)}">Posts</a></li>
+                                <li><a href="@{Articles.index(0)}">Posts</a></li>
                                 <!--<li><a href="@{Experiences.index()}">Experience</a></li>-->
-                                <li class=""><a href="@{Companies.index()}">Company</a></li>
-                                <li class=""><a href="@{MyCubes.index()}">My Cube</a></li>
-                                <li class=""><a href="@{Users.register()}">SignUp</a></li>
-                                <li class=""><a href="@{Application.about()}">About Us</a></li>
-                                <li class=""><a href="@{Application.feedback()}">Feedback</a></li>
-                                <li class="">
-                                    #{if session.contains("loggedIn")}
-                                        <div class="userLabel">
-                                            <h2>hello ${session.get("userAlias")}</h2>
-                                            <a href="@{Authenticate.signOut()}">Sign out</a>
-                                        </div>
-                                    #{/if}
-                                    #{else}
-                                        <a href="@{Authenticate.index()}">Sign In</a>
-                                    #{/else}
-                                </li>
+                                <li><a href="@{Companies.index()}">Company</a></li>
+                                <li><a href="@{MyCubes.index()}">My Cube</a></li>
+                                <li><a href="@{Users.register()}">SignUp</a></li>
+                                <li><a href="@{Application.about()}">About Us</a></li>
+                                <li><a href="@{Application.feedback()}">Feedback</a></li>
+                                #{if session.contains("loggedIn")}
+                                    <li><a href="@{Authenticate.signOut()}">Sign out</a></li>
+
+                                #{/if}
+                                #{else}
+                                    <li><a href="@{Authenticate.index()}">Sign In</a></li>
+                                #{/else}
                             </ul>
+                            <ul class="nav pull-right"><li><a href="#"><h4>Hello ${session.get("userAlias")}</h4></a></li></ul>
                         </div>
                     </div>
                 </div>

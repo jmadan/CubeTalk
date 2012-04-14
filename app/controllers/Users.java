@@ -26,6 +26,7 @@ public class Users extends Controller{
         Boolean tnc = Boolean.valueOf(request.params.get("tnc"));
         String profile = "member" ;
         if(validation.hasErrors()){
+            System.out.println("Errors");
             render("Users/register.html");
         }
         User existingUser = User.find("userAlias", userAlias).first();

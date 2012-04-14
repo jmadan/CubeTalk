@@ -31,16 +31,21 @@ public class Authenticate extends Controller {
         if(user == null){
             params.flash();
             flash.error("Login failed. Please check your email/password combination and try again.");
-            render("/authenticate/index.html");
+            System.out.println("No User found.");
+            index();
+//            render("/authenticate/index.html");
+        }
+        else{
+            session.put("userId", user.id);
+            session.put("userAlias", user.userAlias);
+            session.put("firstName", user.firstName);
+            session.put("lastName", user.lastName);
+            session.put("userEmail", user.userEmail);
+            session.put("loggedIn", true);
+//        System.out.println(user.userAlias);
+            redirect("/mycubes");
         }
 
-        session.put("userAlias", user.userAlias);
-        session.put("firstName", user.firstName);
-        session.put("lastName", user.lastName);
-        session.put("userEmail", user.userEmail);
-        session.put("loggedIn", true);
-//        System.out.println(user.userAlias);
-        redirect("/mycubes");
     }
 
     public static void signOut(){
