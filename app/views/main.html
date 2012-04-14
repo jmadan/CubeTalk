@@ -53,7 +53,9 @@
                                     <li><a href="@{Authenticate.index()}">Sign In</a></li>
                                 #{/else}
                             </ul>
-                            <ul class="nav pull-right"><li><a href="#"><h4>Hello ${session.get("userAlias")}</h4></a></li></ul>
+                            #{if session.contains("loggedIn")}
+                                <ul class="nav pull-right"><li><a href="#"><h4>Hello ${session.get("userAlias")}</h4></a></li></ul>
+                            #{/if}
                         </div>
                     </div>
                 </div>
