@@ -20,7 +20,7 @@ public class CubeMail extends Mail{
             email.setMsg(emailBody);
             Mail.send(email);
         } catch (EmailException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
     }

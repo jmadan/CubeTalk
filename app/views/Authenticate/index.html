@@ -29,7 +29,7 @@
     </div>
     <div class="span8">
         <div class="well">
-            #{form @Authenticate.signIn(), id:'signInForm'}
+            #{form @Authenticate.signIn(), id:'signInForm', class:'form-horizontal'}
                 #{ifErrors}
                     hello
                     <div class="alert alert-error">
@@ -44,15 +44,17 @@
                         <div class="controls inline">
                             <input type="text" id="userEmail" name="userEmail" value="${flash.userEmail}" size="25" class="input-medium">
                         </div>
+                        <br>
                         <label class="control-label" for="userPassword">Password</label>
                         <div class="controls inline">
                             <input type="password" id="userPassword" name="userPassword" value="${flash.userPassword}" size="25" class="input-medium">
                         </div>
+                        <br>
                         <div class="controls">
                             <button type="submit" class="btn btn-primary">Sign In</button>
                         </div>
                         <br>
-                        <p>Forgot your password <a href="/Users/forgot">click here</a></p>
+                        <p>Forgot your password <a href="/users/forgot">click here</a></p>
                         <br>
                         <p>Not a cubetalker yet! <a href="/users/register"><span class="pointer">Join Now.</span></a></p>
                     </div>
