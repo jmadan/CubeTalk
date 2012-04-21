@@ -17,19 +17,19 @@ public class AnonymousUser extends Model {
     public String company_country;
     public String company_city;
 
-    public Long userId;
+    public User user;
 
     @OneToMany(mappedBy = "anonymousUser")
     public List<CubeReview> cubeReviews;
 
 
-    public AnonymousUser(String job_status, String job_year, String job_title, String company_country, String company_city, Long userId) {
+    public AnonymousUser(String job_status, String job_year, String job_title, String company_country, String company_city, User user) {
         this.job_status = job_status;
         this.job_title = job_title;
         this.job_year = job_year;
         this.company_country = company_country;
         this.company_city = company_city;
-        this.userId = userId;
+        this.user = user;
         this.cubeReviews = new ArrayList<CubeReview>();
     }
 

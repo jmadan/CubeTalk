@@ -83,6 +83,7 @@ public class Experiences extends Controller {
                     Http.Request.current().params.get("employerCityName"), null).save();
 
             session.put("anonymousUserId", anonymousUser.id);
+            System.out.println("I am here");
         }
         else if(session.contains("loggedIn")){
             User user = User.find("userEmail", session.get("userEmail")).first();
@@ -90,7 +91,7 @@ public class Experiences extends Controller {
                     Http.Request.current().params.get("jobEndingYear"),
                     Http.Request.current().params.get("job_title"),
                     Http.Request.current().params.get("employerCountryName"),
-                    Http.Request.current().params.get("employerCityName"), user.id).save();
+                    Http.Request.current().params.get("employerCityName"), user).save();
 
             session.put("anonymousUserId", anonymousUser.id);
 
@@ -99,9 +100,12 @@ public class Experiences extends Controller {
             anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
         }
         else {
+            anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
             System.out.println(session.get("anonymousUserId"));
+            System.out.println("Nothing happened");
         }
 
+        System.out.println("AnonymousUserID : "+ session.get("anonymousUserId"));
         CubeReview cubeReview = new CubeReview(Http.Request.current().params.get("reviewType"),company, Http.Request.current().params.get("headlineAnswer"),
                 Http.Request.current().params.get("proAnswer"), Http.Request.current().params.get("conAnswer"),
                 Http.Request.current().params.get("adviceAnswer"), anonymousUser, true).save();
@@ -116,19 +120,19 @@ public class Experiences extends Controller {
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest8")), Integer.parseInt(Http.Request.current().params.get("a8"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest9")), Integer.parseInt(Http.Request.current().params.get("a9"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest10")), Integer.parseInt(Http.Request.current().params.get("a10"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest11")), Integer.parseInt(Http.Request.current().params.get("a11"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest12")), Integer.parseInt(Http.Request.current().params.get("a12"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest13")), Integer.parseInt(Http.Request.current().params.get("a13"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest14")), Integer.parseInt(Http.Request.current().params.get("a14"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest15")), Integer.parseInt(Http.Request.current().params.get("a15"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest16")), Integer.parseInt(Http.Request.current().params.get("a16"))).save();
-        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest17")), Integer.parseInt(Http.Request.current().params.get("a17"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest11")), Integer.parseInt(Http.Request.current().params.get("a11"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest12")), Integer.parseInt(Http.Request.current().params.get("a12"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest13")), Integer.parseInt(Http.Request.current().params.get("a13"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest14")), Integer.parseInt(Http.Request.current().params.get("a14"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest15")), Integer.parseInt(Http.Request.current().params.get("a15"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest16")), Integer.parseInt(Http.Request.current().params.get("a16"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest17")), Integer.parseInt(Http.Request.current().params.get("a17"))).save();
 
-        render("/Experiences/saved.html");
+        render("/experiences/saved.html");
 
     }
 
     public static void showpage(){
-        render("/Experiences/saved.html");
+        render("/experiences/saved.html");
     }
 }

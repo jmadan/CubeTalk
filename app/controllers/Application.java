@@ -15,6 +15,7 @@ public class Application extends Controller {
     @Before
     static void addDefaults(){
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
+        renderArgs.put("meta", "something goes here");
     }
 
     public static void index() {
