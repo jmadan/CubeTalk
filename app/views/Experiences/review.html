@@ -1,0 +1,94 @@
+#{extends 'main.html' /}
+#{set title:'Post your Experience Anonymously' /}
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    $.validator.methods.defaultValue = function(value, element, param){
+    return value != param;
+    }
+    $(document).ready(function() {
+    $("div.alert-message").hide();
+    // validate signup form on keyup and submit
+    var validator = $("#userForm").validate({
+    rules: {
+    jobTitle: {
+    required: true,
+    minlength: 3
+    }
+    },
+    messages: {
+    jobTitle: {
+    required: "Please enter your Job Title",
+    minlength: "Please enter more than 3 characters"
+    }
+    },
+    // the errorPlacement has to take the table layout into account
+    errorPlacement: function(error, element) {
+    $("div.alert-message").show();
+    $("div.alert-message").html(error);
+    <!--$("span.help-inline").html(error);-->
+    $("div.job").addClass("error");
+    },
+    // specifying a submitHandler prevents the default submit, good for the demo
+    submitHandler: function() {
+    form.submit();
+    },
+    });
+    });
+</script>
+
+
+<div class="row-fluid">
+    <div class="span">
+        <div class="page-header">
+            <h2><strong>Review and Rate your company anonymously</strong></h2>
+        </div>
+        #{form @Experiences.saveReview(), id:'reviewForm', class:'form-horizontal'}
+            <h3>
+                <strong>Review a Company</strong>
+            </h3>
+            <div class="well">
+                <p>Your review will be posted anonymously for everyone's viewing.<br>
+                    To further protect your anonymity, we encourage you not to include any personally
+                    identifiable information in your review.
+                </p>
+                <fieldset>
+                    <input type="hidden" id="employerId" name="employerId" value="${company.id}">
+                    <div id="error" class="error"></div>
+                    <div class="job control-group">
+
+                        <div class="brand"><h4>Review Headline</h4></div>
+                        <label class="control-label" for="headlineAnswer">In one sentence, how would you describe your experience at ${_companyReview?.orgName}?</label>
+                        <div class="controls">
+                            <textarea name="headlineAnswer" class="input-xxlarge required" cols="45" rows="5" id="headlineAnswer" maxlength="150"></textarea>
+                        </div>
+                        <br>
+                        <div class="brand"><h4>Pros</h4></div>
+                        <label class="control-label" for="proAnswer">Describe some of the best reasons to work at ${_companyReview?.orgName}</label>
+                        <div class="controls">
+                            <textarea name="proAnswer" cols="50" rows="5" id="proAnswer" class="input-xxlarge required"></textarea>
+                            <div class="help-block">20 word minimum (To make it on the site)</div>
+                        </div>
+                        <br>
+                        <div class="brand"><h4>Cons</h4></div>
+                        <label class="control-label" for="conAnswer">Describe some of the downsides of working at ${_companyReview?.orgName}</label>
+                        <div class="controls">
+                            <textarea name="conAnswer" cols="50" rows="5" id="conAnswer"  class="input-xxlarge required"></textarea>
+                            <div class="help-block">20 word minimum (To make it on the site)</div>
+                        </div>
+                        <br>
+                        <div class="brand"><h4>Advice to Management</h4></div>
+                        <label class="control-label" for="adviceAnswer">Offer some advice or feedback to the leadership at ${_companyReview?.orgName}</label>
+                        <div class="controls">
+                            <textarea name="adviceAnswer" cols="50" rows="3" id="adviceAnswer" class="input-xxlarge required"></textarea>
+                            <div class="help-block">20 word minimum (To make it on the site)</div>
+                        </div>
+                        <br>
+                        <div class="controls">
+                            <button type="submit" class="btn" id="goBack">Back</button>
+                            <button type="submit"class="btn btn-primary" id="showRating">Rate ${_companyReview?.orgName}</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        #{/form}
+    </div>
+</div>

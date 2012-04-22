@@ -21,9 +21,14 @@ GET     /articles/getPicture/{id}               Articles.getPicture
 # Experience
 GET     /experiences/                           Experiences.index
 GET     /experiences/show                       Experiences.show
-GET     /experiences/postexperience/{orgName}   Experiences.postExperience
-POST    /experiences/savereview                 Experiences.saveReview
+#GET     /experiences/postexperience/{orgName}   Experiences.postExperience
+#POST    /experiences/savereview                 Experiences.saveReview
 GET     /experiences/saved                      Experiences.showpage
+GET     /experiences/yoursay/{orgName}          Experiences.yourSay
+POST    /experiences/saveuserinfo               Experiences.saveUserInfo
+POST    /experiences/savereview                 Experiences.saveReview
+POST    /experiences/saverating                 Experiences.saveRating
+GET     /experiences/review                     Experiences.review
 
 # Login
 POST    /authenticate/singin                   Authenticate.signIn

@@ -1,0 +1,95 @@
+#{extends 'main.html' /}
+#{set title:'Post your Experience Anonymously' /}
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    $.validator.methods.defaultValue = function(value, element, param){
+    return value != param;
+    }
+    $(document).ready(function() {
+    $("div.alert-message").hide();
+    // validate signup form on keyup and submit
+    var validator = $("#userForm").validate({
+    rules: {
+    jobTitle: {
+    required: true,
+    minlength: 3
+    }
+    },
+    messages: {
+    jobTitle: {
+    required: "Please enter your Job Title",
+    minlength: "Please enter more than 3 characters"
+    }
+    },
+    // the errorPlacement has to take the table layout into account
+    errorPlacement: function(error, element) {
+    $("div.alert-message").show();
+    $("div.alert-message").html(error);
+    <!--$("span.help-inline").html(error);-->
+    $("div.job").addClass("error");
+    },
+    // specifying a submitHandler prevents the default submit, good for the demo
+    submitHandler: function() {
+    form.submit();
+    },
+    });
+    });
+</script>
+
+<div class="row-fluid">
+    <div class="span">
+        <div class="page-header">
+            <h2><strong>Review and Rate your company anonymously</strong></h2>
+        </div>
+        #{form @Experiences.saveRating(), id:'reviewForm', class:'form-horizontal'}
+        <input type="hidden" id="anonymousUserId" value="${anonymousUser.id}">
+        <input type="hidden" id="companyId" value="${company.id}">
+        <h3>Rate your Company</h3>
+        <div class="well">
+            <table>
+                <tbody>
+                <fieldset>
+                    <div class="control-group">
+                        #{list items:cubeQuestions, as:'questions'}
+                        <tr>
+                            <td>
+                                <div class="controls">
+                                    <input type="hidden" name="quest${questions.id}"  id="quest${questions.id}" value="${questions.id}" />
+                                </div>
+                                <label class="control-label">${questions.question.replace('%s',company?.orgName)}</label>
+                                <div class="controls">
+                                    <label class="inline radio">
+                                        <input class="radio inline" type="radio" name="a${questions.id}" id="a${questions.id}a" value="1">Strongly Disapprove</input>
+                                    </label>
+                                    <label class="inline radio">
+                                        <input class="radio inline" type="radio" name="a${questions.id}" id="a${questions.id}b" value="2">Disapprove</input>
+                                    </label>
+                                    <label class="inline radio">
+                                        <input class="radio inline" type="radio" name="a${questions.id}" id="a${questions.id}c" value="3">No Opinion</input>
+                                    </label>
+                                    <label class="inline radio">
+                                        <input class="radio inline" type="radio" name="a${questions.id}" id="a${questions.id}d" value="4">Approve</input>
+                                    </label>
+                                    <label class="inline radio">
+                                        <input class="radio inline" type="radio" name="a${questions.id}" id="a${questions.id}e" value="5">Strongly Approve</input>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        #{/list}
+                        <tr>
+                            <td>
+                                <div class="controls">
+                                    <button type="submit" class="btn" id="tab_3back">Back</button>
+                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </div>
+                </fieldset>
+                </tbody>
+            </table>
+        </div>
+        #{/form}
+    </div>
+</div>

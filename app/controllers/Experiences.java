@@ -70,46 +70,87 @@ public class Experiences extends Controller {
         render(cubeQuestions, company, topRated, topViewed);
     }
 
-    public static void saveReview(){
+    public static void yourSay(String orgName){
+        Company company = Company.find("byOrgName", orgName).first();
+        render(company);
+    }
 
-        Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
+    public static void saveUserInfo(){
+        System.out.println(Http.Request.current().params.get("jobStatus"));
+        System.out.println(Http.Request.current().params.get("jobTitle"));
+//        Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
+//        getUser();
+//        render("/experiences/review.html",company,session.get("anonymousUserId"));
+    }
+
+    private static void review() {
+    }
+
+    private static void getUser() {
         AnonymousUser anonymousUser = null;
+        System.out.println("In GetUser");
+//        if(!session.contains("loggedIn") || !session.contains("anonymousUserId")){
+        if(!session.contains("loggedIn")){
+//        if(!session.contains("anonymousUserId")){
+            System.out.println("checking for session");
+            System.out.println(session.get("loggedIn"));
+            System.out.println(session.get("anonymousUserId"));
+            if(!session.contains("anonymoususerId")){
+                anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
+                        Http.Request.current().params.get("jobTitle"),
+                        Http.Request.current().params.get("jobEndingYear"),
+                        Http.Request.current().params.get("employerCountryName"),
+                        Http.Request.current().params.get("employerCityName"), null).save();
 
-        if(!session.contains("loggedIn") && !session.contains("anonymousUserId")){
-            anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
-                    Http.Request.current().params.get("jobEndingYear"),
-                    Http.Request.current().params.get("job_title"),
-                    Http.Request.current().params.get("employerCountryName"),
-                    Http.Request.current().params.get("employerCityName"), null).save();
+                session.put("anonymousUserId", anonymousUser.id);
+            }
 
-            session.put("anonymousUserId", anonymousUser.id);
-            System.out.println("I am here");
         }
         else if(session.contains("loggedIn")){
+            System.out.println("Checking for already loggedIn User");
+            System.out.println(session.get("loggedIn"));
             User user = User.find("userEmail", session.get("userEmail")).first();
             anonymousUser = new AnonymousUser(Http.Request.current().params.get("job_status"),
+                    Http.Request.current().params.get("jobTitle"),
                     Http.Request.current().params.get("jobEndingYear"),
-                    Http.Request.current().params.get("job_title"),
                     Http.Request.current().params.get("employerCountryName"),
                     Http.Request.current().params.get("employerCityName"), user).save();
 
             session.put("anonymousUserId", anonymousUser.id);
-
-            System.out.println(session.get("anonymousUserId"));
-            System.out.println(session.get("userAlias"));
-            anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
         }
-        else {
-            anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
-            System.out.println(session.get("anonymousUserId"));
-            System.out.println("Nothing happened");
-        }
+//        else if(session.contains("anonymousUserId")){
+//            System.out.println("Here I am");
+//            System.out.println(session.get("anonymousUserId"));
+//            System.out.println(session.get("loggedIn"));
+//        }
+    }
 
-        System.out.println("AnonymousUserID : "+ session.get("anonymousUserId"));
+    public static void saveReview(){
+        Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
+        AnonymousUser anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
+        List<CubeQuestion> cubeQuestions = CubeQuestion.find("order by id asc").fetch();
         CubeReview cubeReview = new CubeReview(Http.Request.current().params.get("reviewType"),company, Http.Request.current().params.get("headlineAnswer"),
                 Http.Request.current().params.get("proAnswer"), Http.Request.current().params.get("conAnswer"),
                 Http.Request.current().params.get("adviceAnswer"), anonymousUser, true).save();
 
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest1")), Integer.parseInt(Http.Request.current().params.get("a1"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest2")), Integer.parseInt(Http.Request.current().params.get("a2"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest3")), Integer.parseInt(Http.Request.current().params.get("a3"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest4")), Integer.parseInt(Http.Request.current().params.get("a4"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest5")), Integer.parseInt(Http.Request.current().params.get("a5"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest6")), Integer.parseInt(Http.Request.current().params.get("a6"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest7")), Integer.parseInt(Http.Request.current().params.get("a7"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest8")), Integer.parseInt(Http.Request.current().params.get("a8"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest9")), Integer.parseInt(Http.Request.current().params.get("a9"))).save();
+//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest10")), Integer.parseInt(Http.Request.current().params.get("a10"))).save();
+
+        render("/experiences/rating.html",company, anonymousUser, cubeQuestions);
+
+    }
+
+    public static void saveRating(){
+        Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("companyId")));
+        AnonymousUser anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest1")), Integer.parseInt(Http.Request.current().params.get("a1"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest2")), Integer.parseInt(Http.Request.current().params.get("a2"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest3")), Integer.parseInt(Http.Request.current().params.get("a3"))).save();
@@ -120,13 +161,8 @@ public class Experiences extends Controller {
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest8")), Integer.parseInt(Http.Request.current().params.get("a8"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest9")), Integer.parseInt(Http.Request.current().params.get("a9"))).save();
         new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest10")), Integer.parseInt(Http.Request.current().params.get("a10"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest11")), Integer.parseInt(Http.Request.current().params.get("a11"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest12")), Integer.parseInt(Http.Request.current().params.get("a12"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest13")), Integer.parseInt(Http.Request.current().params.get("a13"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest14")), Integer.parseInt(Http.Request.current().params.get("a14"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest15")), Integer.parseInt(Http.Request.current().params.get("a15"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest16")), Integer.parseInt(Http.Request.current().params.get("a16"))).save();
-//        new CubeRating(anonymousUser, company, Integer.parseInt(Http.Request.current().params.get("quest17")), Integer.parseInt(Http.Request.current().params.get("a17"))).save();
+
+        flash.put("reviewStatus","Success");
 
         render("/experiences/saved.html");
 

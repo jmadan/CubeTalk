@@ -75,7 +75,7 @@ public class CubeRating extends Model {
                 "        pie.Set('chart.text.font', 'Trebuchet MS');\n" +
                 "        pie.Set('chart.text.color', 'white');\n" +
 //                "        pie.Set('chart.stroke', 'white');\n" +
-                "        pie.Set('chart.key', ['I Wanna Leave now', 'I am Looking', 'I am Used to this', 'Like It', 'This is Great']);\n" +
+                "        pie.Set('chart.key', ['I Wanna Leave now', 'I am Looking', 'I am Used to this', 'I Like It', 'This is Great']);\n" +
                 "        pie.Set('chart.key.halign', 'right');\n" +
                 "        pie.Set('chart.exploded', [10,10,10,10,10]);\n" +
                 "        pie.Set('chart.linewidth', '2');\n" +

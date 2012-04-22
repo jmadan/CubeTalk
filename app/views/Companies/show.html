@@ -10,13 +10,13 @@
             ${company.overview.nl2br()}
             #{if company.companyReviews.size() == 0}
             <br>
-            <p><h4>Be the first to review <a href="/experiences/postexperience/${company?.orgName}">${company.orgName}</a></h4></p>
+            <p><h4>Be the first to review <a href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
             #{/if}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
                 <br>
                 <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
-                <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/experiences/postexperience/${company?.orgName}">${company.orgName}?</a></div>
+                <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}?</a></div>
             </div>
             ${company.getRatingGraph(company.companyRatings).raw()}
             #{/if}
