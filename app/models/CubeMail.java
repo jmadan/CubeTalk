@@ -11,7 +11,7 @@ public class CubeMail extends Mail{
     public static void feedback(String about, String subject, String userName, String userEmail, String message) {
         
         String emailSubject = "Reg. " + about;
-        String emailBody = subject + ", --- " + message + "\nRegards,\n" + userName;
+        String emailBody = subject + ",\n\n" + message + "\n\nRegards,\n" + userName;
         SimpleEmail email = new SimpleEmail();
         try {
             email.setFrom(userEmail, userName);
@@ -27,7 +27,7 @@ public class CubeMail extends Mail{
 
     public static void forgotPassword(User user) {
         String emailSubject = "your request for your Password ";
-        String emailBody = " Your Password is as follows \n Password: "+ user.password;
+        String emailBody = " Your Password is as follows \n Password: "+ user.password + "\n\nRegards,\nCube-Talk.com";
         SimpleEmail email = new SimpleEmail();
         try {
             email.setFrom("admin@cube-talk.com");
