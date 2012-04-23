@@ -2,7 +2,7 @@
 #{set title:'Cube-talk.com Companies' /}
 
 <div class="row-fluid" xmlns="http://www.w3.org/1999/html">
-    <div class="span">
+    <div class="span10">
         <div class="page-header">
             <h2><a href="/companies/show/${company.orgName.replace(' ','-')}">${company.orgName}</a></h2>
         </div>
@@ -12,11 +12,15 @@
             <br>
             <p><h4>Be the first to review <a href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
             #{/if}
+            #{else}
+            <br>
+            <p><h4>Whats your say on <a href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
+            #{/else}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
                 <br>
                 <canvas id="myPie" width="500" height="250">[No canvas support]</canvas>
-                <div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}?</a></div>
+                <!--<div style="float: right; margin-right: 100px; margin-top: 50px;">Whats your say on <a title="Review ${company.orgName}" href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}?</a></div>-->
             </div>
             ${company.getRatingGraph(company.companyRatings).raw()}
             #{/if}

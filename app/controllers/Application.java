@@ -24,7 +24,6 @@ public class Application extends Controller {
         List<Article> topViewed = getTopViewedArticles();
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
         Company.findTopRated();
-        session.clear();
         render(homePagePost, homeCompany, topViewed, cubeReviewsList);
     }
 
@@ -46,7 +45,7 @@ public class Application extends Controller {
     }
     
     public static void sendEmail(){
-        CubeMail.feedback(params.get("writingAbout"), params.get("contactSubject"), params.get("userName"), params.get("userEmail"), params.get("userMessage"));
+        CubeMail.feedback(params.get("writingAbout"), params.get("subject"), params.get("userName"), params.get("userEmail"), params.get("userMessage"));
         redirect("/feedback");
     }
 

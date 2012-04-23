@@ -12,7 +12,7 @@
             #{else}
             ${_homeCompany.overview}
             #{/else}
-            <a href="companies/show/${_homeCompany.orgName.replace(' ','-')}">Read more</a>
+            <a href="companies/show/${_homeCompany.orgName.replace(' ','-')}">Read more...</a>
           <!--<img src="http://chart.apis.google.com/chart?chf=bg,lg,0,EFEFEF,0,BBBBBB,1&chs=400x225&cht=p&chco=700000|800000|FFFFFF|009900|007000&chds=0,95&chd=t:${_homeCompany.getRatingGraph(_homeCompany.companyRatings)}&chl=Very+Dissatisfied|Dissatisfied|Neutral|Satisfied|Very+Satisfied&chtt=Company+Name" />-->
             #{if _homeCompany.companyRatings.size() > 0}
                 <div class="thumbnails">

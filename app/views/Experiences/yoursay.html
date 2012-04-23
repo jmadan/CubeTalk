@@ -6,10 +6,9 @@
     return value != param;
     }
     $(document).ready(function() {
-    $("div.alert-message").hide();
     // validate signup form on keyup and submit
     var validator = $("#userForm").validate({
-    onKeyUp: false,
+    onChange: false,
     rules: {
     jobTitle: {
     required: true,
@@ -24,8 +23,7 @@
     },
     // the errorPlacement has to take the table layout into account
     errorPlacement: function(error, element) {
-    $("div.alert-message").show();
-    $("div.alert-message").html(error);
+    $("div.error-message").html(error);
     $("div.job").addClass("error");
     },
 
@@ -50,7 +48,7 @@
             <table class="table">
                 <tr>
                     <td>
-                        <div class="alert-message error" style="display:none;"></div>
+                        <div class="error-message"></div>
                         <fieldset>
                             <div class="control-group">
                                 <label class="control-label" for="reviewType">Company Review</label>

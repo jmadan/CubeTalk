@@ -41,14 +41,14 @@
             <h2><strong>Review and Rate your company anonymously</strong></h2>
         </div>
         #{form @Experiences.saveRating(), id:'reviewForm', class:'form-horizontal'}
-        <input type="hidden" id="anonymousUserId" value="${anonymousUser.id}">
-        <input type="hidden" id="companyId" value="${company.id}">
         <h3>Rate your Company</h3>
         <div class="well">
             <table>
                 <tbody>
                 <fieldset>
                     <div class="control-group">
+                        <input type="hidden" name="anonymousUserId" id="anonymousUserId" value="${anonymousUser.id}">
+                        <input type="hidden" name="companyId" id="companyId" value="${company.id}">
                         #{list items:cubeQuestions, as:'questions'}
                         <tr>
                             <td>

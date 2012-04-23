@@ -1,52 +1,44 @@
-<script type="text/javascript" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-        xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-        xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    $.validator.methods.defaultValue = function(value, element, param){
+    return value != param;
+    }
 $(document).ready(function(){
+    // validate signup form on keyup and submit
+    var validator = $("#cubeReviewForm").validate({
+    rules: {
+        job_title: {required: true, defaultValue: 'Job Title'},
+        headlineAnswer: {required: true, minlength: 20},
+        proAnswer: {required: true, minlength: 20},
+        conAnswer: {required: true, minlength: 20},
+        adviceAnswer: {required: true, minlength: 20}
+    },
+    messages: {
+        job_title: {required: "Please enter your Job Title", minlength: "Please enter more than 20 characters"},
+        headlineAnswer: {required: "Please enter your Experience Headline", minlength: "Please enter more than 20 characters"},
+        proAnswer: {required: "Please enter your Positive Experience", minlength: "Please enter more than 20 characters"},
+        conAnswer: {required: "Please enter your Not so Good Experience", minlength: "Please enter more than 20 characters"},
+        adviceAnswer: {required: "Please enter your Advice to Management", minlength: "Please enter more than 20 characters"}
+    },
+    // the errorPlacement has to take the table layout into account
+    errorPlacement: function(error, element) {
+        $("div.error").html(error);
+        $("span.help-inline").html(error);
+        $("div.control-group").addClass("error");
+    },
+    // specifying a submitHandler prevents the default submit, good for the demo
+    submitHandler: function() {
+        form.submit();
+        },
+    });
+
     $(function() {
         $('#content_2').hide();
         $('#content_3').hide();
 	});
 
-    $("form#cubeReviewForm").submit(function(){
-        var q1 = $('#q1').attr('value');
-        var a1 = $('#a1:checked').val();
-        var form_data = "reviewType="+reviewType.value +"&job_status="+job_status.value+"&jobEndingYear="+jobEndingYear.value+"&employerId="+employerId.value+"&employerCountryName="+employerCountryName.value+"&employerCityName="+employerCityName.value+"&job_title="+job_title.value+"&headlineAnswer="+headlineAnswer.value+"&proAnswer="+proAnswer.value+"&conAnswer="+conAnswer.value+"&adviceAnswer="+adviceAnswer.value;
-        $.ajax({
-                type: "POST",
-                url: "saveReview1",
-                data: form_data,
-                success: function(){
-                    $('form#cubeReviewForm').hide(function(){$('div.success').fadeIn();});
-                }
-            });
-        return false;
-    });
-
     $('#showReview').click(function() {
         $('#content_1').hide();
         $('#content_2').show();
-        return false;
-        });
-
-    $('#showRating').click(function() {
-        var jobtitle=$('#job_title').attr('value');
-        var headlineAnswer=$('#headlineAnswer').attr('value');
-        var proAnswer=$('#proAnswer').attr('value');
-        var conAnswer=$('#conAnswer').attr('value');
-        var adviceAnswer=$('#adviceAnswer').attr('value');
-        if(jobtitle.length == 0){
-            $("div.error").html("Please enter your Job Title");alert("I am here");}
-        else if(headlineAnswer == 0){
-            $("div.error").html("Please enter your Experience");alert("i am here1");}
-        else if(proAnswer.length == 0){
-            $("div.error").html("Please enter your positive Experience");alert("i am here2");}
-        else if(conAnswer.length == 0){
-            $("div.error").html("Please enter your negative Experience");alert("i am here3");}
-        else if(adviceAnswer.length == 0){
-            $("div.error").html("Please enter your Advice");alert("i am here4");}
-        else{
-            $('#content_2').hide();$('#content_3').show();
-        }
         return false;
         });
 
@@ -276,36 +268,38 @@ $(document).ready(function(){
             </p>
             <fieldset>
                 <div id="error" class="error"></div>
-                <div class="control-group">
+                <div class="job control-group">
                     <label class="control-label" for="job_title">Your Job Title</label>
                     <div class="controls">
-                        <input type="text" class="input-medium" maxlength="140" id="job_title" name="job_title"><div class="help-block">(optional)</div>
+                        <input type="text" class="input-medium required" maxlength="140" id="job_title" name="job_title"><div class="help-block">(Required)</div>
                     </div>
+                </div>
+                <div class="control-group">
                     <br>
                     <div class="brand"><h4>Review Headline</h4></div>
                     <label class="control-label" for="headlineAnswer">In one sentence, how would you describe your experience at ${_companyReview?.orgName}?</label>
                     <div class="controls">
-                        <textarea name="headlineAnswer" class="input-xxlarge" cols="45" rows="5" id="headlineAnswer" maxlength="150"></textarea>
+                        <textarea name="headlineAnswer" class="input-xxlarge required" cols="45" rows="5" id="headlineAnswer" maxlength="150"></textarea>
                     </div>
                     <br>
                     <div class="brand"><h4>Pros</h4></div>
                     <label class="control-label" for="proAnswer">Describe some of the best reasons to work at ${_companyReview?.orgName}</label>
                     <div class="controls">
-                        <textarea name="proAnswer" cols="50" rows="5" id="proAnswer" class="input-xxlarge"></textarea>
+                        <textarea name="proAnswer" cols="50" rows="5" id="proAnswer" class="input-xxlarge required"></textarea>
                         <div class="help-block">20 word minimum (To make it on the site)</div>
                     </div>
                     <br>
                     <div class="brand"><h4>Cons</h4></div>
                     <label class="control-label" for="conAnswer">Describe some of the downsides of working at ${_companyReview?.orgName}</label>
                     <div class="controls">
-                        <textarea name="conAnswer" cols="50" rows="5" id="conAnswer"  class="input-xxlarge"></textarea>
+                        <textarea name="conAnswer" cols="50" rows="5" id="conAnswer"  class="input-xxlarge required"></textarea>
                         <div class="help-block">20 word minimum (To make it on the site)</div>
                     </div>
                     <br>
                     <div class="brand"><h4>Advice to Management</h4></div>
                     <label class="control-label" for="adviceAnswer">Offer some advice or feedback to the leadership at ${_companyReview?.orgName}</label>
                     <div class="controls">
-                        <textarea name="adviceAnswer" cols="50" rows="3" id="adviceAnswer" class="input-xxlarge"></textarea>
+                        <textarea name="adviceAnswer" cols="50" rows="3" id="adviceAnswer" class="input-xxlarge required"></textarea>
                         <div class="help-block">20 word minimum (To make it on the site)</div>
                     </div>
                     <br>

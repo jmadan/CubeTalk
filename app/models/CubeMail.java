@@ -11,7 +11,7 @@ public class CubeMail extends Mail{
     public static void feedback(String about, String subject, String userName, String userEmail, String message) {
         
         String emailSubject = "Reg. " + about;
-        String emailBody = subject + ", --- " + message;
+        String emailBody = subject + ", --- " + message + "\nRegards,\n" + userName;
         SimpleEmail email = new SimpleEmail();
         try {
             email.setFrom(userEmail, userName);
