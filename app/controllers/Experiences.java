@@ -72,7 +72,7 @@ public class Experiences extends Controller {
 
     public static void yourSay(String orgName){
         Company company = Company.find("byOrgName", orgName).first();
-        render("/experiences/yoursay.html",company);
+        render("/Experiences/yoursay.html",company);
     }
 
     public static void saveUserInfo(){
