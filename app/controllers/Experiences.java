@@ -80,7 +80,7 @@ public class Experiences extends Controller {
         System.out.println(Http.Request.current().params.get("jobTitle"));
         Company company = Company.findById(Long.parseLong(Http.Request.current().params.get("employerId")));
         getUser();
-        render("/experiences/review.html",company,session.get("anonymousUserId"));
+        render("/Experiences/review.html",company,session.get("anonymousUserId"));
     }
 
     private static void review() {
@@ -156,11 +156,11 @@ public class Experiences extends Controller {
 
         flash.put("reviewStatus","Success");
 
-        render("/experiences/saved.html");
+        render("/Experiences/saved.html");
 
     }
 
     public static void showpage(){
-        render("/experiences/saved.html");
+        render("/Experiences/saved.html");
     }
 }

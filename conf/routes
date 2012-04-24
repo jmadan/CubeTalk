@@ -23,10 +23,10 @@ GET     /experiences/                           Experiences.index
 GET     /experiences/show                       Experiences.show
 GET     /experiences/saved                      Experiences.showpage
 GET     /Experiences/yoursay/{orgName}          Experiences.yourSay
-POST    /experiences/saveuserinfo               Experiences.saveUserInfo
-POST    /experiences/savereview                 Experiences.saveReview
-POST    /experiences/saverating                 Experiences.saveRating
-GET     /experiences/review                     Experiences.review
+POST    /Experiences/saveuserinfo               Experiences.saveUserInfo
+POST    /Experiences/savereview                 Experiences.saveReview
+POST    /Experiences/saverating                 Experiences.saveRating
+GET     /Experiences/review                     Experiences.review
 
 # Login
 POST    /authenticate/singin                   Authenticate.signIn
