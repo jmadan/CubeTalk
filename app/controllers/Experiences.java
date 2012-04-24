@@ -141,7 +141,7 @@ public class Experiences extends Controller {
                 Http.Request.current().params.get("proAnswer"), Http.Request.current().params.get("conAnswer"),
                 Http.Request.current().params.get("adviceAnswer"), anonymousUser, true).save();
 
-        render("/experiences/rating.html",company, anonymousUser, cubeQuestions);
+        render("/Experiences/rating.html",company, anonymousUser, cubeQuestions);
 
     }
 
