@@ -10,11 +10,11 @@
             ${company.overview.nl2br()}
             #{if company.companyReviews.size() == 0}
             <br>
-            <p><h4>Be the first to review <a href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
+            <p><h4>Be the first to review <a href="/Experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
             #{/if}
             #{else}
             <br>
-            <p><h4>Whats your say on <a href="/experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
+            <p><h4>Whats your say on <a href="/Experiences/yoursay/${company?.orgName.toLowerCase()}">${company.orgName}</a></h4></p>
             #{/else}
             #{if company.companyRatings.size() > 0}
             <div class="company-graph">
@@ -37,9 +37,9 @@
                     <tr>
                         <td>
                             <p>
-                                My Say: ${reviews.company_advice}<br>
-                                Pros: ${reviews.company_pro}<br>
-                                Cons: ${reviews.company_con}
+                                <h5>My Say:</h5> ${reviews.company_advice}<br>
+                                <h5>Pros:</h5> ${reviews.company_pro}<br>
+                                <h5>Cons:</h5> ${reviews.company_con}
                             </p>
                         </td>
                     </tr>

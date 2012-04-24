@@ -16,6 +16,7 @@ public class AnonymousUser extends Model {
     public String job_title;
     public String company_country;
     public String company_city;
+    public String ipAddress;
 
     public User user;
 
@@ -23,12 +24,13 @@ public class AnonymousUser extends Model {
     public List<CubeReview> cubeReviews;
 
 
-    public AnonymousUser(String company_city, String company_country, String job_status, String job_title, String job_year, User user) {
+    public AnonymousUser(String company_city, String company_country, String job_status, String job_title, String job_year, String ipAddress, User user) {
         this.company_city = company_city;
         this.company_country = company_country;
         this.job_status = job_status;
         this.job_title = job_title;
         this.job_year = job_year;
+        this.ipAddress = ipAddress;
         this.user = user;
         this.cubeReviews = new ArrayList<CubeReview>();
     }

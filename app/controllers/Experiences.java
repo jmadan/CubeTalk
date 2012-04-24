@@ -72,6 +72,9 @@ public class Experiences extends Controller {
 
     public static void yourSay(String orgName){
         Company company = Company.find("byOrgName", orgName).first();
+        if(session.contains("loggedIn") || session.contains("anonymousUserId")){
+            render("/Experiences/review.html",company,session.get("anonymousUserId"));
+        }
         render("/Experiences/yoursay.html",company);
     }
 
@@ -88,49 +91,27 @@ public class Experiences extends Controller {
 
     private static void getUser() {
         AnonymousUser anonymousUser = null;
-        System.out.println("In GetUser");
-//        if(!session.contains("loggedIn") || !session.contains("anonymousUserId")){
         if(!session.contains("loggedIn")){
-//        if(!session.contains("anonymousUserId")){
-            System.out.println("checking for session");
-            System.out.println(session.get("loggedIn"));
-            System.out.println(session.get("anonymousUserId"));
             if(!session.contains("anonymoususerId")){
-                System.out.println("Job Status = " + request.params.get("jobStatus"));
-                System.out.println("jobTitle = " + request.params.get("jobTitle"));
-                System.out.println("jobEndingYear = " + request.params.get("jobEndingYear"));
-                System.out.println("employerCountryName = " + request.params.get("employerCountryName"));
-                System.out.println("employerCityName = " + request.params.get("employerCityName"));
 
                 anonymousUser = new AnonymousUser(request.params.get("employerCityName"),
-                        request.params.get("employerCountryName"),
-                        request.params.get("jobStatus"),
-                        request.params.get("jobTitle"),
-                        request.params.get("jobEndingYear"),
-                        null).save();
+                        request.params.get("employerCountryName"), request.params.get("jobStatus"),
+                        request.params.get("jobTitle"), request.params.get("jobEndingYear"),
+                        request.remoteAddress.toString(), null).save();
 
                 session.put("anonymousUserId", anonymousUser.id);
             }
 
         }
         else if(session.contains("loggedIn")){
-            System.out.println("Checking for already loggedIn User");
-            System.out.println(session.get("loggedIn"));
             User user = User.find("userEmail", session.get("userEmail")).first();
             anonymousUser = new AnonymousUser(request.params.get("employerCityName"),
-                    request.params.get("employerCountryName"),
-                    request.params.get("jobStatus"),
-                    request.params.get("jobTitle"),
-                    request.params.get("jobEndingYear"),
-                    user).save();
+                    request.params.get("employerCountryName"), request.params.get("jobStatus"),
+                    request.params.get("jobTitle"), request.params.get("jobEndingYear"),
+                    request.remoteAddress.toString(), user).save();
 
             session.put("anonymousUserId", anonymousUser.id);
         }
-//        else if(session.contains("anonymousUserId")){
-//            System.out.println("Here I am");
-//            System.out.println(session.get("anonymousUserId"));
-//            System.out.println(session.get("loggedIn"));
-//        }
     }
 
     public static void saveReview(){
@@ -148,16 +129,17 @@ public class Experiences extends Controller {
     public static void saveRating(){
         Company company = Company.find("Id", Long.parseLong(request.params.get("companyId"))).first();
         AnonymousUser anonymousUser = AnonymousUser.find("id", Long.parseLong(session.get("anonymousUserId"))).first();
-        for (int i=1; i<11;i++){
-            if(request.params.get("a"+i)!=null){
-                new CubeRating(anonymousUser, company, Integer.parseInt(request.params.get("quest"+i)), Integer.parseInt(request.params.get("a"+i))).save();
+        List<CubeQuestion> cubeQuestions = CubeQuestion.find("order by id asc").fetch();
+
+        for(CubeQuestion question : cubeQuestions){
+            if(request.params.get("a"+question.id)!=null){
+                new CubeRating(anonymousUser, company, Integer.parseInt(request.params.get("quest"+question.id)), Integer.parseInt(request.params.get("a"+question.id))).save();
             }
         }
 
         flash.put("reviewStatus","Success");
 
         render("/Experiences/saved.html");
-
     }
 
     public static void showpage(){

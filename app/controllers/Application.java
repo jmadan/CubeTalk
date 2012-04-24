@@ -24,6 +24,7 @@ public class Application extends Controller {
         List<Article> topViewed = getTopViewedArticles();
         List<CubeReview> cubeReviewsList = CubeReview.find("order by created_on desc").fetch();
         Company.findTopRated();
+        System.out.println(request.remoteAddress);
         render(homePagePost, homeCompany, topViewed, cubeReviewsList);
     }
 

@@ -31,7 +31,6 @@
         <div class="well">
             #{form @Authenticate.signIn(), id:'signInForm', class:'form-horizontal'}
                 #{ifErrors}
-                    hello
                     <div class="alert alert-error">
                         <!--#{error 'userPassword' /}-->
                         <!--#{error 'userEmail' /}-->
@@ -54,7 +53,7 @@
                             <button type="submit" class="btn btn-primary">Sign In</button>
                         </div>
                         <br>
-                        <p>Forgot your password <a href="/users/forgot">click here</a></p>
+                        <p>Forgot your password <a href="/users/forgot">Click here</a></p>
                         <br>
                         <p>Not a cubetalker yet! <a href="/users/register"><span class="pointer">Join Now.</span></a></p>
                     </div>

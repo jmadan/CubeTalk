@@ -31,7 +31,7 @@ public class Users extends Controller{
         }
         User existingUser = User.find("userAlias", userAlias).first();
         if (existingUser == null){
-            User newUser = new User(userAlias, userEmail, userpass, profile, false, tnc).save();
+            User newUser = new User(userAlias, userEmail, userpass, profile, false, tnc, request.remoteAddress.toString()).save();
             render("/Users/registered.html");
         }
         else{

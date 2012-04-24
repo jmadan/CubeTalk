@@ -22,7 +22,6 @@ public class Authenticate extends Controller {
         if(validation.hasErrors()){
             params.flash(); // add http parameters to the flash scope
             validation.keep();
-            System.out.println("Something Wrong!");
             index();
         }
 
@@ -31,7 +30,6 @@ public class Authenticate extends Controller {
         if(user == null){
             params.flash();
             flash.error("Login failed. Please check your email/password combination and try again.");
-            System.out.println("No User found.");
             index();
 //            render("/authenticate/index.html");
         }
@@ -42,7 +40,6 @@ public class Authenticate extends Controller {
             session.put("lastName", user.lastName);
             session.put("userEmail", user.userEmail);
             session.put("loggedIn", true);
-//        System.out.println(user.userAlias);
             redirect("/mycubes");
         }
 

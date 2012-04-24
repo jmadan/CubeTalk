@@ -21,6 +21,7 @@ public class User extends Model {
     public String profile;
     public boolean approved;
     public Boolean terms_condition;
+    public String ipAddress;
 
     @OneToMany(mappedBy="author", fetch = FetchType.LAZY)
     public List<Article> articles;
@@ -28,7 +29,7 @@ public class User extends Model {
     @OneToMany(mappedBy = "anonymousUser", fetch = FetchType.LAZY)
     public  List<CubeReview> cubeReviews;
 
-    public User(String firstName, String lastName, String userAlias, String userEmail, String password, String profile, boolean approved, boolean terms_condition){
+    public User(String firstName, String lastName, String userAlias, String userEmail, String password, String profile, boolean approved, boolean terms_condition, String ipAddress){
         this.firstName = firstName;
         this.lastName = lastName;
         this.userAlias = userAlias;
@@ -38,9 +39,10 @@ public class User extends Model {
         this.approved = false;
         this.profile = profile;
         this.terms_condition = terms_condition;
+        this.ipAddress = ipAddress;
     }
 
-    public User(String userAlias, String userEmail, String password, String profile, boolean approved, boolean terms_condition){
+    public User(String userAlias, String userEmail, String password, String profile, boolean approved, boolean terms_condition, String ipAddress){
         this.userAlias = userAlias;
         this.userEmail = userEmail;
         this.password = getPassword(password);
@@ -48,6 +50,7 @@ public class User extends Model {
         this.approved = approved;
         this.terms_condition = terms_condition;
         this.registeredDate = new Date();
+        this.ipAddress = ipAddress;
     }
 
     public static User connect(String userEmail, String password){
@@ -82,6 +85,5 @@ public class User extends Model {
 
         return new String(sb);
     }
-    
 
 }
