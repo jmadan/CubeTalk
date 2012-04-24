@@ -70,9 +70,9 @@ public class Experiences extends Controller {
         render(cubeQuestions, company, topRated, topViewed);
     }
 
-    public static void yoursay(String orgName){
+    public static void yourSay(String orgName){
         Company company = Company.find("byOrgName", orgName).first();
-        render(company);
+        render("/experiences/yoursay.html",company);
     }
 
     public static void saveUserInfo(){

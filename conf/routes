@@ -22,7 +22,7 @@ GET     /articles/getPicture/{id}               Articles.getPicture
 GET     /experiences/                           Experiences.index
 GET     /experiences/show                       Experiences.show
 GET     /experiences/saved                      Experiences.showpage
-GET     /experiences/yoursay/{orgName}          Experiences.yoursay
+GET     /experiences/yoursay/{orgName}          Experiences.yourSay
 POST    /experiences/saveuserinfo               Experiences.saveUserInfo
 POST    /experiences/savereview                 Experiences.saveReview
 POST    /experiences/saverating                 Experiences.saveRating
